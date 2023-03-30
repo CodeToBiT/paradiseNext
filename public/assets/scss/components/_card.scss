@@ -1,0 +1,38 @@
+@mixin card($radius: 0.25rem) {
+    background-color: $white;
+    border-radius: $radius;
+    padding: 1.5rem;
+    height: 100%;
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    &-default {
+        @include card();
+    }
+    &-edge {
+        &-rounded {
+            @include card(0.5rem);
+        }
+        &-pointed {
+            @include card(unset);
+        }
+    }
+}
+
+.service-card {
+    position: relative;
+    &:hover {
+        background-color: $cool-gray-100;
+        transition: 0.3s all linear;
+    }
+    @include media-breakpoint-down(lg) {
+        background-color: $cool-gray-100;
+    }
+    a {
+        position: absolute;
+        inset: 0;
+    }
+}
