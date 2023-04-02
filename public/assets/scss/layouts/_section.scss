@@ -1,0 +1,38 @@
+// .landing {
+//   overflow: visible;
+//   .find-form {
+//     width: 850px;
+//     @media (max-width: 850px) {
+//       width: 100%;
+//     }
+//   }
+// }
+.landing {
+  position: relative;
+  width: 100%;
+  padding: 370px 0 280px 0;
+
+  @media (max-width: 767px) {
+    padding: 160px 0 155px 0;
+  }
+  @media (max-width: 992px) {
+    padding: 275px 0 280px 0;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    // opacity: 0.5;
+    background-image: url("/assets/image/japan.jpeg");
+    // background-color: #000;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size:cover;
+  }
+}
