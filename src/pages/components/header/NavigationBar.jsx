@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   FaLinkedin,
@@ -15,6 +15,17 @@ import {
 } from "react-icons/fa";
 
 const NavigationBar = () => {
+  const [windowChange, setWindowChange] = useState(false);
+  if (typeof window != "undefined") {
+    const changeNavbarPosition = () => {
+      if (window.scrollY >= 154) {
+        setWindowChange(true);
+      } else {
+        setWindowChange(false);
+      }
+    };
+    window.addEventListener("scroll", changeNavbarPosition);
+  }
   return (
     <>
       <header className="main-header">
@@ -49,7 +60,7 @@ const NavigationBar = () => {
             </div>
           </div>
         </div>
-        <div className="nav-bar">
+        <div className={windowChange ? "nav-bar navbar-sticky shadow-4" : "nav-bar"}>
           <Navbar expand="lg">
             <Container>
               <Navbar.Brand href="#home">

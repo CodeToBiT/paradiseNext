@@ -95,7 +95,7 @@ $red-900: #7f1d1d;
 $red: $red-600;
 $theme-colors: ( "primary": $primary, "secondary": $secondary, "accent": $accent, "accent100": $accent-100, "danger": $red-600, "warning": $yellow-600, "success": $green-600, "blue50": $blue-50, "blue": $blue-600, "blue900": $blue-900, "white": $white, "cGray100": $cool-gray-100, "cGray200": $cool-gray-200, "cGray300": $cool-gray-300, "cGray400": $cool-gray-400, "cGray500": $cool-gray-500, "cGray600": $cool-gray-600, "cGray700": $cool-gray-700, "cGray800": $cool-gray-800, "cGray900": $cool-gray-900, "gray50": $gray-50, "gray100": $gray-100, "gray200": $gray-200, "gray300": $gray-300, "gray400": $gray-400, "gray500": $gray-500, "gray600": $gray-600, "gray700": $gray-700, "gray800": $gray-800, "gray900": $gray-900, "blue700": $blue-700, "secondary100": $secondary-100, );
 //breakpoints
-$grid-gutter-width: 2.5rem;
+$grid-gutter-width: 1.5rem;
 $grid-breakpoints: ( xxs: 0, xs: 450px, sm: 485px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px, xxxl: 1600px, );
 $container-max-widths: ( sm: 540px, md: 720px, lg: 960px, xl: 1250px, xxl: 1400px, xxxl: 1500px, );
 //spacers
