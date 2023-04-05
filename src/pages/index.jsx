@@ -6,13 +6,14 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { GiIsland } from "react-icons/gi";
 import { SlLocationPin } from "react-icons/sl";
+import Combo from "./components/layout/Combo";
 
 export default function Home() {
   return (
     <>
       <Banner />
 
-      <section className="search-tab position-relative mt-n100 z-5 mb-12 mb-sm-24">
+      <section className="search-tab position-relative mt-n100 z-5 mb-16 mb-sm-56">
         <div className="container">
           <div className="search-form bg-white align-center flex-wrap shadow-4">
             <div className="bg-primary text-white text-center holiday px-32 py-24 position-relative flex-fill flex-sm-grow-0 text-sm-start">
@@ -39,6 +40,7 @@ export default function Home() {
         </div>
       </section>
 
+      <Combo />
       <Destination />
     </>
   );

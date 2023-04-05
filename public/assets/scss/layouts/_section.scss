@@ -29,12 +29,21 @@
     width: 100%;
     height: 100%;
     // opacity: 0.5;
-    background-image: url("/assets/image/japan.jpeg");
+    background-image: url("/assets/image/banner.jpg");
     // background-color: #000;
     // background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url("/assets/image/gradient.png") bottom repeat-x;
   }
 }
 
@@ -67,6 +76,7 @@
 
   .img-portrait {
     position: relative;
+    max-width: 100%;
     &::after {
       content: "";
       position: absolute;
@@ -112,51 +122,53 @@
     }
   }
 
-
   .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 10vw);
+    grid-template-rows: repeat(7, 4.6vw);
     gap: 18px;
   }
 
-
   .gallery__item:nth-child(1) {
     grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / span 2;
   }
 
   .gallery__item:nth-child(2) {
     grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
+    grid-row: 3 / span 2;
   }
 
   .gallery__item:nth-child(3) {
     grid-column: 2 / span 1;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
   }
 
   .gallery__item:nth-child(4) {
     grid-column: 3 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / span 2;
   }
 
   .gallery__item:nth-child(5) {
     grid-column: 1 / span 1;
-    grid-row: 3 / span 2;
+    grid-row: 5 / span 3;
   }
 
   .gallery__item:nth-child(6) {
     grid-column: 2 / span 1;
-    grid-row: 3 / span 1;
+    grid-row: 4 / span 2;
   }
   .gallery__item:nth-child(7) {
     grid-column: 2 / span 1;
-    grid-row: 4 / span 1;
+    grid-row: 6 / span 2;
   }
   .gallery__item:nth-child(8) {
     grid-column: 3 / span 1;
-    grid-row: 2 / span 2;
+    grid-row: 3 / span 3;
+  }
+  .gallery__item:nth-child(9) {
+    grid-column: 3 / span 1;
+    grid-row: 6 / span 2;
   }
 
   .gallery__link {
@@ -214,7 +226,6 @@
     top: 0;
     left: 0;
   }
- 
 
   .gallery__overlay span:after {
     bottom: 0;
@@ -248,7 +259,6 @@
     .gallery {
       grid-template-columns: repeat(2, 1fr);
     }
-
 
     .gallery__item:nth-child(1) {
       grid-column: 1 / span 1;
@@ -308,6 +318,31 @@
 
     .gallery__overlay {
       font-size: 1rem;
+    }
+  }
+}
+
+.combo {
+  h3 {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 1px;
+      background-color: $primary;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &-slider {
+    .swiper-wrapper {
+
+      margin-bottom: 40px;
     }
   }
 }

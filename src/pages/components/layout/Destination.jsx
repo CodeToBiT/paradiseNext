@@ -1,16 +1,17 @@
 import React from "react";
+import Image from "next/image";
 
 const Destination = () => {
   return (
     <>
-      <section className="destinations">
+      <section className="destinations mt-16 mt-sm-40">
         <div className="text-center">
           <div className=" h3">Top Destinations</div>
         </div>
         <div className="container">
-          <div className="row mt-24 mt-sm-32">
-            <div className="col-lg-6 col-md-12 col-sm-12">
-              <div className="img-portrait h-100 rounded-12">
+          <div className="row mt-24 mt-sm-32 align-items-center">
+            <div className="col-lg-6 col-md-12 col-sm-12 ">
+              <div className="img-portrait rounded-12">
                 <img src="/assets/image/destination.jpeg" alt="destination" />
                 <div className="overlay text-white">
                   <div className="h2">Up to</div>
@@ -29,103 +30,130 @@ const Destination = () => {
               </div>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12">
-              <div class="wrapper">
-                <div class="gallery">
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+              <div className="wrapper">
+                <div className="gallery">
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/japan2.jpeg"
-                        class="gallery__image"
+                        fill
+                        alt="destination"
+                        className="gallery__image"
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Japan</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/thailand.jpeg"
-                        class="gallery__image"
+                        fill
+                        className="gallery__image"
+                        alt="destination"
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Thailand</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/maldives.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Maldives</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/russia.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Russia</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/dubai.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Dubai</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/philippines.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Philippines</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/korea.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+
+                      <div className="gallery__overlay">
                         <span>Korea</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      <img
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
                         src="/assets/image/london.jpeg"
-                        class="gallery__image"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      <div class="gallery__overlay">
+                     
+                      <div className="gallery__overlay">
                         <span>London</span>
                       </div>
                     </a>
                   </div>
-                  <div class="gallery__item">
-                    <a href="#" class="gallery__link">
-                      {/* <img
-                        src="/assets/image/london.jpeg"
-                        class="gallery__image"
-                      /> */}
-                      <div class="gallery__overlay">
+                  <div className="gallery__item">
+                    <a href="#" className="gallery__link">
+                      <Image
+                             src="/assets/image/viewall.png"
+                             className="gallery__image"
+                         alt="destination"
+                         fill
+                      />
+                      
+                      <div className="gallery__overlay">
                         <span>View All</span>
                       </div>
                     </a>

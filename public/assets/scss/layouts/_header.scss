@@ -51,6 +51,7 @@
   z-index: 9999;
   .top-nav {
     border-bottom: 1px solid #ffffff3d;
+    background: rgba(0,0,0,0.1);
     .phone {
       position: relative;
       &::before {

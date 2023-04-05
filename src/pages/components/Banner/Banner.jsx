@@ -73,11 +73,11 @@ const Banner = () => {
         <div className="container">
           <div className="row align-center">
             <div>
-              <h1 className="h3 text-secondary">
-                <span className="text-primary "> Explore</span> the
-                <span className="text-primary"> world</span> with
+              <h1 className="h3 text-white">
+                <span className="text-white "> Explore</span> the
+                <span className="text-white"> world</span> with
                 <br />
-                <span className="text-secondary h2"> Paradise Destination</span>
+                <span className=" h2"> Paradise Destination</span>
               </h1>
 
               <div className="h5 fw-regular text-white mt-12 mt-sm-16 ">
@@ -87,6 +87,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
+        <div className="gradient-overlay"></div>
       </div>
     </>
   );
