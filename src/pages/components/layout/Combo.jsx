@@ -1,5 +1,6 @@
 import React from "react";
 import ComboSlider from "../slider/ComboSlider";
+import Link from "next/link";
 
 const Combo = () => {
   return (
@@ -10,6 +11,11 @@ const Combo = () => {
         </div>
         <div className="container">
           <ComboSlider />
+        </div>
+        <div className="flex-center mt-12 mt-sm-24">
+          <Link href="#" className="btn btn-secondary">
+            View All
+          </Link>
         </div>
       </section>
     </>
