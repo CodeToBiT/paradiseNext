@@ -7,9 +7,9 @@ import "swiper/css/navigation"
 
 import { Autoplay, FreeMode, Pagination } from "swiper";
 
-import ComboCard from "../card/ComboCard";
+import FeaturedCard from "../card/FeaturedCard";
 
-const ComboSlider = () => {
+const FeaturedSlider = () => {
   return (
     <>
       <div className="combo-slider mt-24 mt-sm-32">
@@ -44,25 +44,26 @@ const ComboSlider = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <ComboCard image="/assets/image/japan.webp" />
+            
+            <FeaturedCard image="/assets/image/japan.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/singapore.webp" />
+            <FeaturedCard image="/assets/image/singapore.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/dubai.webp" />
+            <FeaturedCard image="/assets/image/dubai.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/china.webp" />
+            <FeaturedCard image="/assets/image/china.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/japan.webp" />
+            <FeaturedCard image="/assets/image/japan.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/japan.webp" />
+            <FeaturedCard image="/assets/image/japan.webp" />
           </SwiperSlide>
           <SwiperSlide>
-            <ComboCard image="/assets/image/japan.webp" />
+            <FeaturedCard image="/assets/image/japan.webp" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -70,4 +71,4 @@ const ComboSlider = () => {
   );
 };
 
-export default ComboSlider;
+export default FeaturedSlider;

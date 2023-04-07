@@ -6,7 +6,8 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { GiIsland } from "react-icons/gi";
 import { SlLocationPin } from "react-icons/sl";
-import Combo from "./components/layout/Combo";
+import Combo from "./components/layout/Featured";
+import Deals from "./components/layout/Deals";
 
 export default function Home() {
   return (
@@ -42,6 +43,8 @@ export default function Home() {
 
       <Combo />
       <Destination />
+
+      <Deals />
     </>
   );
 }

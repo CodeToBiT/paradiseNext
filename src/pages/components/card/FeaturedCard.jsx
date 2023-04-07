@@ -1,14 +1,15 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
-const ComboCard = (props) => {
+const FeaturedCard = (props) => {
   return (
     <>
       <div className="card-combo rounded-12">
         <div className="position-relative">
-          <div className="img-portrait-02 rounded-12">
-            <img src={props.image} alt="" />
+          <div className="img-portrait-02 rounded-12 position-relative">
+            <Image src={props.image} fill alt="" />
           </div>
           <div className="gradient-overlay"></div>
           <div className="tag-overlay">
@@ -38,4 +39,4 @@ const ComboCard = (props) => {
   );
 };
 
-export default ComboCard;
+export default FeaturedCard;

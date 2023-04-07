@@ -73,4 +73,33 @@
       }
     }
   }
+
+  &-deals {
+    position: relative;
+    margin: 0 30px;
+    overflow: visible;
+    &::before {
+      position: absolute;
+      height: 97%;
+      width: 50%;
+      content: "";
+      background: #fff;
+      top: 15px;
+      left: 5px;
+      z-index: -1;
+      transform: rotate(-6deg);
+    }
+
+    &::after {
+      position: absolute;
+      height: 50%;
+      width: 90%;
+      content: "";
+      background: #fff;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      transform: rotate(5deg);
+    }
+  }
 }

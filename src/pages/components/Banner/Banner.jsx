@@ -69,7 +69,7 @@ const Banner = () => {
         </div>
       </section> */}
 
-      <div className="landing">
+      <section className="landing">
         <div className="container">
           <div className="row align-center">
             <div>
@@ -88,7 +88,7 @@ const Banner = () => {
           </div>
         </div>
         <div className="gradient-overlay"></div>
-      </div>
+      </section>
     </>
   );
 };

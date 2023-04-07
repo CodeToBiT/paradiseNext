@@ -11,8 +11,12 @@ const Destination = () => {
         <div className="container">
           <div className="row mt-24 mt-sm-32 align-items-center">
             <div className="col-lg-6 col-md-12 col-sm-12 ">
-              <div className="img-portrait rounded-12">
-                <img src="/assets/image/destination.jpeg" alt="destination" />
+              <div className="img-portrait rounded-12 position-relative">
+                <Image
+                  src="/assets/image/destination.jpeg"
+                  fill
+                  alt="destination"
+                />
                 <div className="overlay text-white">
                   <div className="h2">Up to</div>
                   <div className="align-center gap-8 px-4">
@@ -138,7 +142,7 @@ const Destination = () => {
                         alt="destination"
                         fill
                       />
-                     
+
                       <div className="gallery__overlay">
                         <span>London</span>
                       </div>
@@ -147,12 +151,12 @@ const Destination = () => {
                   <div className="gallery__item">
                     <a href="#" className="gallery__link">
                       <Image
-                             src="/assets/image/viewall.png"
-                             className="gallery__image"
-                         alt="destination"
-                         fill
+                        src="/assets/image/viewall.png"
+                        className="gallery__image"
+                        alt="destination"
+                        fill
                       />
-                      
+
                       <div className="gallery__overlay">
                         <span>View All</span>
                       </div>
