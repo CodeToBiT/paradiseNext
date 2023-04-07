@@ -8,6 +8,7 @@ import { GiIsland } from "react-icons/gi";
 import { SlLocationPin } from "react-icons/sl";
 import Combo from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
+import Service from "./components/layout/Service";
 
 export default function Home() {
   return (
@@ -44,6 +45,7 @@ export default function Home() {
       <Combo />
       <Destination />
 
+      <Service />
       <Deals />
     </>
   );
