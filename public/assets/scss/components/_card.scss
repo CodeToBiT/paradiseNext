@@ -134,4 +134,16 @@
       border-radius: inherit;
     }
   }
+  &-testimonial {
+    position: relative;
+    &-desc {
+      line-height: 150%;
+    }
+    .quotation {
+      position: absolute;
+      opacity: 0.1;
+      bottom: 20px;
+      right: 128px;
+    }
+  }
 }

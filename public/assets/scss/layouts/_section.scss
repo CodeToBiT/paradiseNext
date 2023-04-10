@@ -116,7 +116,7 @@
       .h2 {
         font-size: 2.5rem;
       }
-    }
+    }                                                        
     img {
       transition: 0.4s all ease-in-out;
     }
@@ -438,6 +438,52 @@
       border-bottom: 25px solid transparent;
       border-right: 25px solid $white;
       right: 0;
+    }
+  }
+}
+
+.testimonials {
+  h3 {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 1px;
+      background-color: $primary;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &-slider {
+    position: relative;
+    .swiper-slide {
+      padding: 16px;
+    }
+    .arrows {
+      .prev {
+        position: absolute;
+        background: $primary;
+        color: #fff;
+        bottom: 50%;
+        left: -10px;
+        z-index: 999;
+        padding: 12px;
+      }
+      .next {
+        position: absolute;
+
+        background: $primary;
+        color: #fff;
+        bottom: 50%;
+        right: -10px;
+        z-index: 999;
+        padding: 12px;
+      }
     }
   }
 }

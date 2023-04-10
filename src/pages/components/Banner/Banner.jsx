@@ -82,7 +82,7 @@ const Banner = () => {
 
               <div className="h5 fw-regular text-white mt-12 mt-sm-16 ">
                 Enjoy every step of the journey and record stories of the <br />
-                world's most beautiful landscapes with us.
+                world&apos;s most beautiful landscapes with us.
               </div>
             </div>
           </div>

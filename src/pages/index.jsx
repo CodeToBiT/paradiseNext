@@ -10,6 +10,8 @@ import Combo from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
 import Service from "./components/layout/Service";
 
+import Testimonials from "./components/layout/Testimonials";
+
 export default function Home() {
   return (
     <>
@@ -35,7 +37,7 @@ export default function Home() {
                 <Button className="btn btn-sm btn-secondary">Search Now</Button>
               </div>
               <div className="h6 mt-12 fw-bold text-cGray800">
-                Love where you're going now.
+                Love where you&apos;re going now.
               </div>
             </div>
           </div>
@@ -47,6 +49,8 @@ export default function Home() {
 
       <Service />
       <Deals />
+
+      <Testimonials />
     </>
   );
 }

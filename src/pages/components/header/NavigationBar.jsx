@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
   FaLinkedin,
   FaFacebookSquare,
@@ -60,11 +60,20 @@ const NavigationBar = () => {
             </div>
           </div>
         </div>
-        <div className={windowChange ? "nav-bar navbar-sticky shadow-4" : "nav-bar"}>
+        <div
+          className={
+            windowChange ? "nav-bar navbar-sticky shadow-4" : "nav-bar"
+          }
+        >
           <Navbar expand="lg">
             <Container>
               <Navbar.Brand href="#home">
-                <Image src="/assets/image/logo.png" width="150" height="70" />
+                <Image
+                  src="/assets/image/logo.png"
+                  width="150"
+                  height="70"
+                  alt="logo"
+                />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
