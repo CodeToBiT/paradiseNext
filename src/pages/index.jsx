@@ -9,6 +9,7 @@ import { SlLocationPin } from "react-icons/sl";
 import Combo from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
 import Service from "./components/layout/Service";
+import AboutSection from "./components/layout/AboutSection";
 
 import Testimonials from "./components/layout/Testimonials";
 
@@ -45,10 +46,12 @@ export default function Home() {
       </section>
 
       <Combo />
+
       <Destination />
 
-      <Service />
       <Deals />
+      <Service />
+      <AboutSection />
 
       <Testimonials />
     </>

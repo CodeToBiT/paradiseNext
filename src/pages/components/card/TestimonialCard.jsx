@@ -4,7 +4,7 @@ import Image from "next/image";
 const TestimonialCard = () => {
   return (
     <>
-      <div className="card-testimonial shadow p-24">
+      <div className="card-testimonial shadow-4 p-24">
         <div className="tname h4 text-center text-primary">
           Christian Nguyen
         </div>
@@ -30,13 +30,17 @@ const TestimonialCard = () => {
               inventore repellendus itaque cupiditate numquam vero ipsum dolore?
               Minima quam necessitatibus, officia similique asperiores atque
               dicta ad, voluptatibus, vero adipisci debitis id dolor
-              reprehenderit nesciunt itaque neque velit.&quot;     
-              
+              reprehenderit nesciunt itaque neque velit.&quot;
             </div>
           </div>
         </div>
-
-        <Image className="quotation" src="/assets/icon/quotation-mark.png" width={120} height={120} alt="" />
+        <Image
+          className="quotation"
+          src="/assets/icon/quotation-mark.png"
+          width={120}
+          height={120}
+          alt=""
+        />
       </div>
     </>
   );

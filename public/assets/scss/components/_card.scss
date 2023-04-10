@@ -133,6 +133,16 @@
       background: inherit;
       border-radius: inherit;
     }
+    &-pattern {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 262px;
+      height: 175px;
+      border-radius: 8px;
+      background-image: url("/assets/image/service-pattern.png");
+      background-repeat: no-repeat;
+    }
   }
   &-testimonial {
     position: relative;
