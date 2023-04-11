@@ -6,7 +6,7 @@ const Destination = () => {
     <>
       <section className="destinations mt-16 mt-sm-40">
         <div className="text-center">
-          <div className=" h3">Top Destinations</div>
+          <h3 className=" h3">Top Destinations</h3>
         </div>
         <div className="container">
           <div className="row mt-24 mt-sm-32 align-items-center">

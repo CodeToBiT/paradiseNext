@@ -7,7 +7,7 @@ const Combo = () => {
     <>
       <section className="combo ">
         <div className="text-center">
-          <div className=" h3">Featured Packages</div>
+          <h3 className=" h3">Featured Packages</h3>
         </div>
         <div className="container">
           <FeaturedSlider />

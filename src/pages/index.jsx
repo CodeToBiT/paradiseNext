@@ -10,8 +10,9 @@ import Combo from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
 import Service from "./components/layout/Service";
 import AboutSection from "./components/layout/AboutSection";
-
 import Testimonials from "./components/layout/Testimonials";
+import Ourteams from "./components/layout/Ourteams";
+import Blog from "./components/layout/Blog";
 
 export default function Home() {
   return (
@@ -54,6 +55,10 @@ export default function Home() {
       <AboutSection />
 
       <Testimonials />
+
+      <Ourteams />
+
+      <Blog />
     </>
   );
 }

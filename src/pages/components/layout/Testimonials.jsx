@@ -7,7 +7,7 @@ const Testimonials = () => {
     <>
       <section className="testimonials py-80">
         <div className="text-center">
-          <div className=" h3">Testimonials</div>
+          <h3 className=" h3">Testimonials</h3>
         </div>
         <div className="container">
           <div className="row justify-content-center mt-24">
@@ -19,6 +19,7 @@ const Testimonials = () => {
       </section>
     </>
   );
+  
 };
 
 export default Testimonials;
