@@ -5,10 +5,8 @@ import Link from "next/link";
 const AboutSection = () => {
   return (
     <>
-      <section className="about mt-24 mt-sm-48">
-        <div className="circle-layer">
-            
-        </div>
+      <section className="about mt-24 mt-sm-48 py-24">
+        <div className="circle-layer"></div>
         <div className="container">
           <div className="row gap-16-row align-items-center">
             <div className="col-lg-6 col-sm-12">
@@ -22,9 +20,9 @@ const AboutSection = () => {
               </div>
             </div>
             <div className="col-lg-6 col-sm-12">
-              <div className="px-12">
-                <div className="h5 text-primary">ABOUT US</div>
-                <div className="h4 mt-4">VACATION TO DREAM DESTINATION</div>
+              <div className="px-12 z-1 position-relative">
+                <h5 className="text-primary">ABOUT US</h5>
+                <h4 className=" mt-4">VACATION TO DREAM DESTINATION</h4>
 
                 <div className="p mt-8">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga

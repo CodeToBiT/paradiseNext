@@ -18,10 +18,10 @@ const Destination = () => {
                   alt="destination"
                 />
                 <div className="overlay text-white">
-                  <div className="h2">Up to</div>
+                  <h2 >Up to</h2>
                   <div className="align-center gap-8 px-4">
-                    <div className="h1">50</div>
-                    <div className="h2">
+                    <h2 className="h1">50</h2>
+                    <div className="h3">
                       <span>%</span>
                       <span>off</span>
                     </div>

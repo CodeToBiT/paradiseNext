@@ -32805,6 +32805,9 @@ x-small,
   top: 24px;
   right: 32px;
 }
+.search-form .location {
+  font-size: 2rem;
+}
 
 .destinations {
   /* Gallery Image */
@@ -32850,7 +32853,7 @@ x-small,
 .destinations .img-portrait .overlay {
   z-index: 99;
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%);
 }
@@ -32863,6 +32866,24 @@ x-small,
 }
 .destinations .img-portrait .overlay .h2 {
   font-size: 2.5rem;
+}
+@media screen and (max-width: 60rem) {
+  .destinations .img-portrait .overlay .h1 {
+    font-size: 4.5rem;
+    line-height: 100%;
+  }
+  .destinations .img-portrait .overlay .h2 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 35rem) {
+  .destinations .img-portrait .overlay .h1 {
+    font-size: 4rem;
+    line-height: 100%;
+  }
+  .destinations .img-portrait .overlay .h2 {
+    font-size: 1.125rem;
+  }
 }
 .destinations .img-portrait img {
   transition: 0.4s all ease-in-out;
@@ -33202,10 +33223,7 @@ x-small,
   height: 467px;
   background-repeat: no-repeat;
   animation: rotateme 15s linear 0s infinite normal;
-  -webkit-animation-name: rotateme;
-  -webkit-animation-duration: 15s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  -webkit-animation: rotateme 15s linear 0s infinite normal;
 }
 @keyframes rotateme {
   0% {
@@ -33252,6 +33270,22 @@ x-small,
   position: relative;
 }
 .blogs h3::after, .blogs .h3::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background-color: #005294;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partners h3, .partners .h3 {
+  position: relative;
+}
+.partners h3::after, .partners .h3::after {
   content: "";
   position: absolute;
   width: 120px;

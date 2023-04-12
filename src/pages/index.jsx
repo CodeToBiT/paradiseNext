@@ -5,7 +5,7 @@ import Destination from "./components/layout/Destination";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { GiIsland } from "react-icons/gi";
-import { SlLocationPin } from "react-icons/sl";
+import { GrLocation } from "react-icons/gr";
 import Combo from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
 import Service from "./components/layout/Service";
@@ -13,6 +13,7 @@ import AboutSection from "./components/layout/AboutSection";
 import Testimonials from "./components/layout/Testimonials";
 import Ourteams from "./components/layout/Ourteams";
 import Blog from "./components/layout/Blog";
+import Partner from "./components/layout/Partner";
 
 export default function Home() {
   return (
@@ -27,9 +28,10 @@ export default function Home() {
               <h2>Holiday</h2>
               <GiIsland className="h3 island" />
             </div>
+
             <div className="px-32 py-12 flex-fill bg-white">
-              <div className="flex-center-between gap-12">
-                <SlLocationPin className="h4" />
+              <div className="align-center gap-8">
+                <GrLocation className="location" />
                 <Form.Select>
                   <option>Choose your Destination</option>
                   <option value="1">Japan</option>
@@ -59,6 +61,8 @@ export default function Home() {
       <Ourteams />
 
       <Blog />
+
+      <Partner />
     </>
   );
 }

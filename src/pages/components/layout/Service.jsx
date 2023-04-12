@@ -6,7 +6,7 @@ const Service = () => {
     <>
       <section className="service mt-24 mt-sm-64">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row align-items-cente gap-12-row">
             <div className="col-lg-4 col-sm-12 text-center d-grid align-self-stretch">
               <div className="service-title flex-center-center flex-column p-24 rounded-4 text-white">
                 <h3>Our Services</h3>
