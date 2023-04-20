@@ -46,9 +46,10 @@
 // }
 
 .main-header {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  z-index: 9999;
+  z-index: 999;
+  top: 0;
   .top-nav {
     border-bottom: 1px solid #ffffff3d;
     background: rgba(0, 0, 0, 0.1);

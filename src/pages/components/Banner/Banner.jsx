@@ -71,7 +71,7 @@ const Banner = () => {
 
       <section className="landing">
         <div className="container">
-          <div className="row align-center">
+          <div className=" align-center">
             <div>
               <h1 className="h3 text-white">
                 <span className="text-white "> Explore</span> the
@@ -80,6 +80,7 @@ const Banner = () => {
                 <span className=" h2"> Paradise Destination</span>
               </h1>
 
+,, 
               <div className="h5 fw-regular text-white mt-12 mt-sm-16 ">
                 Enjoy every step of the journey and record stories of the <br />
                 world&apos;s most beautiful landscapes with us.

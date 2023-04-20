@@ -611,3 +611,138 @@
     }
   }
 }
+
+.single {
+  .trip-info {
+    &-item {
+      list-style: none;
+      max-width: 33.33%;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 33.33%;
+      flex: 0 0 33.33%;
+      svg {
+        font-size: 2.5rem;
+        color: $primary;
+      }
+    }
+  }
+
+  .highlights {
+    ul {
+      li {
+        font-size: 1.125rem;
+      }
+      li::marker {
+        content: "\2192 \0020";
+        color: $primary;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .itinerary {
+    .accordion {
+      &-item {
+        border: 0;
+        border-bottom: 1px solid #c2d7e9 !important;
+      }
+      &-header {
+        button {
+          font-size: 1.125rem;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+  .cost-details {
+    .includes {
+      ul {
+        li {
+          font-size: 1.25rem;
+          margin-bottom: 12px;
+        }
+        li::before {
+          content: "\2714";
+          color: $primary;
+          display: inline-block;
+          position: relative;
+          top: -2px;
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+          padding: 2px;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 18px;
+          border: 2px solid $primary;
+          border-radius: 50%;
+          text-align: center;
+        }
+      }
+    }
+    .excludes {
+      ul {
+        li {
+          font-size: 1.25rem;
+          margin-bottom: 12px;
+        }
+        li::before {
+          content: "\2716";
+          color: $gray-600;
+          display: inline-block;
+          position: relative;
+          top: -2px;
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+          padding: 2px;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 18px;
+          border: 2px solid $gray-600;
+          border-radius: 50%;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .book-trip {
+    top: 120px;
+    a {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .group-price {
+      li {
+        padding: 7px 0;
+        border-bottom: 1px solid #d5e8f3;
+      }
+    }
+    .why-us {
+      ul {
+        li {
+          font-size: 0.875rem;
+          margin-bottom: 12px;
+        }
+        li::before {
+          content: "\2714";
+          color: $white;
+          display: inline-block;
+          position: relative;
+          top: -2px;
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+          padding: 2px;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 18px;
+          border: 2px solid $white;
+          border-radius: 50%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

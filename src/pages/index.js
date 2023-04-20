@@ -58,7 +58,7 @@ export default function Home() {
 
       <Testimonials />
 
-      <Ourteams />
+      <Ourteams/>
 
       <Blog />
 

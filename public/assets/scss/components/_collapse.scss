@@ -3,7 +3,7 @@
         padding: 0.75rem;
         background: white;
         &:not(:first-child) {
-            border-top: 1px solid $gray-88;
+            border-top: 1px solid $gray-100;
         }
         .title {
             display: flex;
@@ -22,21 +22,21 @@
             padding: 0.5rem 1rem;
             a {
                 text-transform: uppercase;
-                color: $blue-80;
+                color: $blue-100;
                 font-weight: 800;
                 @include rfs(12px);
             }
         }
     }
     &-03 {
-        // width: 100%;
-        // padding: 1rem;
-        // h6{
-        //   font-weight: 600;
-        // }
+        width: 100%;
+        padding: 1rem;
+        h6{
+          font-weight: 600;
+        }
     }
     &-04 {
-        border-bottom: 1px solid $gray-92;
+        border-bottom: 1px solid $gray-100;
         border-left: 2px solid transparent;
         &.expanded {
             border-left: 2px solid $info;
