@@ -92,3 +92,59 @@
     }
   }
 }
+
+.navbar {
+  &-nav {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    .nav-item {
+      font-size: 1.15rem;
+      .nav-link {
+        padding: 15px 0;
+        color: #000 !important;
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    li ul li a {
+      position: relative;
+      display: block;
+      line-height: 24px;
+      font-weight: 500;
+      padding: 10px 20px;
+      text-transform: capitalize;
+      transition: all 500ms ease;
+      -moz-transition: all 500ms ease;
+      -webkit-transition: all 500ms ease;
+      -ms-transition: all 500ms ease;
+      -o-transition: all 500ms ease;
+
+      &:hover {
+        color: $primary;
+        padding-left: 30px;
+      }
+    }
+
+    li > ul > li:hover > a::before {
+      opacity: 1;
+    }
+    li > ul > li {
+      z-index: 9;
+    }
+    li > ul > li > a:before {
+      position: absolute;
+      content: "//";
+      left: 10px;
+      top: 10px;
+      opacity: 0;
+      color: $primary;
+      transition: all 500ms ease;
+      -moz-transition: all 500ms ease;
+      -webkit-transition: all 500ms ease;
+      -ms-transition: all 500ms ease;
+      -o-transition: all 500ms ease;
+    }
+  }
+}

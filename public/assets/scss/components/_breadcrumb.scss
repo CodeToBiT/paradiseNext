@@ -1,16 +1,16 @@
 .breadcrumb {
-  &-main {
+ 
     @include flex(center);
     gap: 0.5rem;
     &-item {
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-weight: 400;
-      color: $cool-gray-600;
+      color: $cool-gray-300;
       @include flex(center);
       gap: 0.5rem;
       &:not(:last-child) {
         &::after {
-          content: "\e913";
+          content: "\e923";
           font-family: "icomoon";
         }
       }
@@ -101,5 +101,5 @@
         }
       }
     }
-  }
+
 }

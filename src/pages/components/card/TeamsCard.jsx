@@ -32,6 +32,7 @@ const TeamsCard = () => {
         <div className="card-team-content position-relative z-1 mt-16">
           <h4>Utsav Sakhya</h4>
           <div className="p position">CEO</div>
+          <p className="pe-64">This is a description for the team dsg ads fgad nbvbnv</p>
         </div>
       </div>
     </>

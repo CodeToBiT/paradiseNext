@@ -2,7 +2,7 @@ import React from "react";
 import FeaturedSlider from "../slider/FeaturedSlider";
 import Link from "next/link";
 
-const Combo = () => {
+const Featured = () => {
   return (
     <>
       <section className="combo ">
@@ -22,4 +22,4 @@ const Combo = () => {
   );
 };
 
-export default Combo;
+export default Featured;

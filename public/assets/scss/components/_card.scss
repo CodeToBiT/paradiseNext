@@ -23,7 +23,7 @@
 }
 
 .card {
-  &-combo {
+  &-featured {
     &::before {
       content: "";
       position: absolute;
@@ -192,6 +192,7 @@
       }
 
       h4,
+      p,
       .position {
         color: #fff !important;
       }
@@ -251,6 +252,43 @@
         background-color: $cool-gray-100;
         color: $cool-gray-800;
       }
+    }
+  }
+  &-combo {
+    overflow: hidden;
+    .img-wide {
+      position: relative;
+    }
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url("/assets/image/gradient.png") bottom repeat-x;
+    }
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .next {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      z-index: 99;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      svg{
+        font-size: 1rem;
+      }
+    }
+    &-content {
+      z-index: 999;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
     }
   }
 }

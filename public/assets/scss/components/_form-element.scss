@@ -29,10 +29,11 @@ $form-check-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04),
         &[type~="checkbox"] {
           background-image: unset;
           background-color: $white;
+          padding: 8px ;
           border: 1px solid $cool-gray-300;
           @include flex(center, center);
           &::after {
-            content: "\e90e";
+            content: "\e920";
             font-family: "icomoon";
             font-size: 0.75rem;
             line-height: 100%;

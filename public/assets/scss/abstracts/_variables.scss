@@ -95,6 +95,7 @@ $red-900: #7f1d1d;
 $red: $red-600;
 $theme-colors: (
   "primary": $primary,
+  "primary100": $primary-100,
   "secondary": $secondary,
   "accent": $accent,
   "accent100": $accent-100,
@@ -144,8 +145,8 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1250px,
-  xxl: 1400px,
+  xl: 1140px,
+  xxl: 1320px,
   xxxl: 1500px,
 );
 //spacers

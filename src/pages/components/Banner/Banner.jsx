@@ -79,8 +79,6 @@ const Banner = () => {
                 <br />
                 <span className=" h2"> Paradise Destination</span>
               </h1>
-
-,, 
               <div className="h5 fw-regular text-white mt-12 mt-sm-16 ">
                 Enjoy every step of the journey and record stories of the <br />
                 world&apos;s most beautiful landscapes with us.

@@ -6,7 +6,7 @@ import Image from "next/image";
 const FeaturedCard = (props) => {
   return (
     <>
-      <div className="card-combo rounded-12">
+      <div className="card-featured rounded-12">
         <div className="position-relative">
           <div className="img-portrait-02 rounded-12 position-relative">
             <Image src={props.image} fill alt="" />

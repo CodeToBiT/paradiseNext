@@ -31,7 +31,7 @@ const DealsSlider = () => {
       <div className="deals-slider mt-24 mt-sm-32">
         <Swiper
           grabCursor={true}
-          spaceBetween={60}
+          spaceBetween={30}
           pagination={{
             clickable: true,
           }}

@@ -47,13 +47,13 @@ textarea {
   font-size: $form-fs;
   line-height: $form-lh;
   font-weight: $form-fw;
-  transition: all 0.15s ease-in;
+  // transition: all 0.05s ease-in;
   background-color: $form-bg;
   color: $form-color;
   display: block;
   &:focus,
   &:active {
-    box-shadow: $form-focus-shadow;
+    // box-shadow: $form-focus-shadow;
     outline: 0;
   }
 }
@@ -64,6 +64,7 @@ select {
 }
 
 select {
+  position: relative;
   appearance: none;
   display: flex;
   gap: 1rem;

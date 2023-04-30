@@ -4,7 +4,7 @@ import TeamsCard from "../card/TeamsCard";
 const Ourteams = () => {
   return (
     <>
-      <section className="ourteams">
+      <section className="ourteams mt-12 mt-sm-32">
         <div className="text-center">
           <h3 className=" h3">Our Teams</h3>
         </div>

@@ -6,14 +6,14 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { GiIsland } from "react-icons/gi";
 import { GrLocation } from "react-icons/gr";
-import Combo from "./components/layout/Featured";
+import Featured from "./components/layout/Featured";
 import Deals from "./components/layout/Deals";
 import Service from "./components/layout/Service";
 import AboutSection from "./components/layout/AboutSection";
 import Testimonials from "./components/layout/Testimonials";
-import Ourteams from "./components/layout/Ourteams";
 import Blog from "./components/layout/Blog";
 import Partner from "./components/layout/Partner";
+import Combo from "./components/layout/Combo";
 
 export default function Home() {
   return (
@@ -48,17 +48,18 @@ export default function Home() {
         </div>
       </section>
 
-      <Combo />
+      <Featured />
 
       <Destination />
 
       <Deals />
       <Service />
+
+      <Combo />
+
       <AboutSection />
 
       <Testimonials />
-
-      <Ourteams/>
 
       <Blog />
 

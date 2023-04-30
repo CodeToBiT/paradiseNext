@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.cdnfonts.com/css/icomoon");
 @import "abstracts/variables";
 @import "./frameworks/cbootstrap";
 @import "./frameworks/overrides";
 @import "./frameworks/storybook";
-@import "./../icon/style.scss";
+@import "./abstracts/style.scss";
 @import "abstracts/mixins";
 @import "abstracts/position";
 
@@ -16,6 +17,7 @@
 @import "layouts/header";
 @import "layouts/sidebar";
 @import "layouts/section";
+@import "layouts/footer";
 
 @import "components/slider";
 @import "components/flex";
@@ -29,9 +31,8 @@
 @import "components/tags";
 @import "components/alert";
 @import "components/image";
-@import "components/breadcrumb"; 
+@import "components/breadcrumb";
 @import "components/emptyStates";
 @import "components/note";
 @import "components/tab";
 @import "components/dropdown";
-

@@ -84,12 +84,12 @@ $font-size-sm: (
     &::after {
       content: "";
       position: absolute;
-      width: 50px;
-      height: 4px;
-      background-color: $accent;
+      width: 60px;
+      height: 2px;
+      background-color: $primary;
       border-radius: 100px;
       z-index: 1;
-      bottom: -1rem;
+      bottom: -10px;
       left: 0;
       transform: translateY(-50%);
     }
