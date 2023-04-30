@@ -6,7 +6,7 @@ import Link from "next/link";
 const ComboCard = () => {
   return (
     <>
-      <div className="card-combo">
+      <div className="card-combo rounded-8">
         <div className="img-wide">
           <Image
             src="/assets/image/about.webp"
@@ -17,14 +17,15 @@ const ComboCard = () => {
 
           <div className="tag small bg-white">Rs. 99999</div>
           <div className="card-combo-content">
-            <h4 className="text-white">Nepal , Russia , Japan</h4>
+            <h5 >Nepal, Russia, Japan</h5>
+            <p className="small">Visit at a discounted rate to Nepal, Russia, Japan.</p>
           </div>
 
           <div className="next bg-white flex-center-center">
             <GrNext />
           </div>
         </div>
-        <div className="gradient-overlay"></div>
+        <div className="gradient-overlay rounded-8"></div>
         <a href="#" className="stretched-link"></a>
       </div>
     </>

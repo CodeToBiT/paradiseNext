@@ -280,7 +280,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      svg{
+      svg {
         font-size: 1rem;
       }
     }
@@ -289,6 +289,8 @@
       position: absolute;
       bottom: 20px;
       left: 20px;
+      max-width: 280px;
+      color: #ffffffd2;
     }
   }
 }
