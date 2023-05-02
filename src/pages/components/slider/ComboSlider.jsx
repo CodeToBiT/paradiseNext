@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Autoplay, FreeMode, Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import ComboCard from "../card/ComboCard";
 
 

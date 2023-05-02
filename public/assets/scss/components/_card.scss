@@ -293,4 +293,65 @@
       color: #ffffffd2;
     }
   }
+  &-packages {
+    .img-portrait {
+      position: relative;
+      img {
+        -webkit-transform: scale(1) translateZ(0);
+        transform: scale(1) translateZ(0);
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        -webkit-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+    }
+
+    &-content {
+      background: #fff;
+      position: absolute;
+      bottom: 0;
+      width: calc(100% + 2px);
+      padding: 15px 20px;
+      transform: translate3d(0px, 114px, 0px);
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .combo {
+      position: absolute;
+      top: 0;
+      left: 20px;
+      -webkit-transform: rotate(270deg) translateX(-100%);
+      -ms-transform: rotate(270deg) translateX(-100%);
+      transform: rotate(270deg) translateX(-100%);
+      -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+      transform-origin: 0 0;
+      background-color: white;
+      padding: 6px 20px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    &:hover {
+      .img-portrait {
+        img {
+          transform: scale(1.02);
+        }
+      }
+      .card-packages-content {
+        transform: translate3d(0px, 0px, 0px);
+      }
+    }
+  }
 }

@@ -3,6 +3,9 @@ import NavigationBar from "./components/header/Bottomnav";
 import Footer from "./components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
+import Package from "./components/card/Package";
+
+import Accordion from "react-bootstrap/Accordion";
 
 // import MultiRangeSlider from "multi-range-slider-react";
 
@@ -51,12 +54,12 @@ const Packages = () => {
         </div>
       </section>
 
-      <section className="packages">
+      <section className="packages mt-12 mt-sm-32">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-sm-12">
+            <div className="col-lg-3 col-sm-12">
               <div className="filter">
-                <h5>FILTER BY:</h5>
+                <h6>FILTER BY:</h6>
                 {/* <MultiRangeSlider
                   onInput={(e) => {
                     setMinValue(e.minValue);
@@ -74,6 +77,106 @@ const Packages = () => {
                     padding: "15px 10px",
                   }}
                 ></MultiRangeSlider> */}
+              </div>
+              <Accordion defaultActiveKey={["0", "1", "2", "3"]} alwaysOpen>
+                <Accordion.Item eventKey="0" activeKey="true">
+                  <Accordion.Header>Filter Price</Accordion.Header>
+                  <Accordion.Body>demo fill</Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header>Tour Type</Accordion.Header>
+                  <Accordion.Body>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="combopackages"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="combopackages"
+                      >
+                        Combo Packages
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="irregularpackages"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="irregularpackages"
+                      >
+                        Irregular Packages
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="regularpackages"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="regularpackages"
+                      >
+                        Regular Packages
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="specialoffers"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="specialoffers"
+                      >
+                        Special Offers
+                      </label>
+                    </div>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header>Duration</Accordion.Header>
+                  <Accordion.Body>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="threedays"
+                      />
+                      <label className="form-check-label" htmlFor="threedays">
+                        2 - 3 days
+                      </label>
+                    </div>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+
+            <div className="col-lg-9 col-sm-12">
+              <div className="row gap-24-row">
+                <div className="col-lg-4 col-sm-12">
+                  <Package />
+                </div>
+                <div className="col-lg-4 col-sm-12">
+                  <Package />
+                </div>
+                <div className="col-lg-4 col-sm-12">
+                  <Package />
+                </div>
+                <div className="col-lg-4 col-sm-12">
+                  <Package />
+                </div>
               </div>
             </div>
           </div>
