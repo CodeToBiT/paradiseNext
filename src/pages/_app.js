@@ -1,9 +1,12 @@
 import "../styles/globals.scss";
-import { SSRProvider } from "react-bootstrap";
-import NavigationBar from "./components/header/Bottomnav";
-import Topnav from "./components/header/Topnav";
+
+import NavigationBar from "@/components/header/Bottomnav";
+
+import Topnav from "@/components/header/Topnav";
 import { useEffect } from "react";
-import Footer from "./components/footer/Footer";
+
+import Footer from "@/components/footer/Footer";
+import { Providers } from "../../frontend/services/providers";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -16,14 +19,14 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <>
-      <SSRProvider>
+      <Providers>
         <header className="main-header">
           <Topnav />
           <NavigationBar />
         </header>
         <Component {...pageProps} />
         <Footer />
-      </SSRProvider>
+      </Providers>
     </>
   );
 }

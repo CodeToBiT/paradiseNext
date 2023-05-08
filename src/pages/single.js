@@ -8,7 +8,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { TbCompass } from "react-icons/tb";
 import { GiPriceTag } from "react-icons/gi";
 import Link from "next/link";
-import NavigationBar from "./components/header/Bottomnav";
+import NavigationBar from "@/components/header/Bottomnav";
 
 import Accordion from "react-bootstrap/Accordion";
 

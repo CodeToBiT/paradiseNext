@@ -3,7 +3,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { useGetSettingsQuery } from "../../../frontend/services/api";
+
 const NavigationBar = () => {
+  const { data: settings } = useGetSettingsQuery();
   const [windowChange, setWindowChange] = useState(false);
   if (typeof window != "undefined") {
     const changeNavbarPosition = () => {
@@ -52,7 +55,7 @@ const NavigationBar = () => {
           <div className="container">
             <a className="navbar-brand" href="/">
               <Image
-                src="/assets/image/logo.png"
+                src={settings?.data.site_main_logo}
                 width="150"
                 height="70"
                 alt="logo"
@@ -117,7 +120,7 @@ const NavigationBar = () => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/contact">
                         Contact
                       </a>
                     </li>

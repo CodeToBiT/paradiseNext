@@ -13,7 +13,10 @@ import SwiperCore, { Autoplay, Navigation } from "swiper";
 
 SwiperCore.use([Navigation]);
 
+import { useGetTestimonialsQuery } from "../../../frontend/services/api";
+
 const TestimonialSlider = () => {
+  const { data: testimonial } = useGetTestimonialsQuery();
   const swiperRef = React.useRef(null);
 
   const goNext = () => {
@@ -42,15 +45,18 @@ const TestimonialSlider = () => {
           className="dealsSwiper"
           ref={swiperRef}
         >
-          <SwiperSlide>
-            <TestimonialCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard />
-          </SwiperSlide>
+          {testimonial?.data.map((data, i) => {
+            return (
+              <SwiperSlide key={i}>
+                <TestimonialCard
+                  name={data.name}
+                  image={data.image}
+                  position={data.position}
+                  description={data.description}
+                />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
 
         <div className="d-flex gap-4 arrows">

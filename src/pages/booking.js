@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import NavigationBar from "./components/header/Bottomnav";
-import Footer from "./components/footer/Footer";
+import NavigationBar from "@/components/header/Bottomnav";
+import Footer from "@/components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import { RxPlus, RxMinus } from "react-icons/rx";

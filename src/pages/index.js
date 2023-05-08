@@ -1,19 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import Banner from "./components/banner/Banner";
-import Destination from "./components/layout/Destination";
+import Banner from "@/components/banner/Banner";
+import Destination from "@/components/layout/Destination";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { GiIsland } from "react-icons/gi";
 import { GrLocation } from "react-icons/gr";
-import Featured from "./components/layout/Featured";
-import Deals from "./components/layout/Deals";
-import Service from "./components/layout/Service";
-import AboutSection from "./components/layout/AboutSection";
-import Testimonials from "./components/layout/Testimonials";
-import Blog from "./components/layout/Blog";
-import Partner from "./components/layout/Partner";
-import Combo from "./components/layout/Combo";
+import Featured from "@/components/layout/Featured";
+import Deals from "@/components/layout/Deals";
+import Service from "@/components/layout/Service";
+import AboutSection from "@/components/layout/AboutSection";
+import Testimonials from "@/components/layout/Testimonials";
+import Blog from "@/components/layout/Blog";
+import Partner from "@/components/layout/Partner";
+import Combo from "@/components/layout/Combo";
 
 export default function Home() {
   return (

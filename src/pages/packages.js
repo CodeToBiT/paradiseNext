@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import NavigationBar from "./components/header/Bottomnav";
-import Footer from "./components/footer/Footer";
+import NavigationBar from "@/components/header/Bottomnav";
+import Footer from "@/components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
-import Package from "./components/card/Package";
+import Package from "@/components/card/Package";
 
 import Accordion from "react-bootstrap/Accordion";
 

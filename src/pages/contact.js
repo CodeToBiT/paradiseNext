@@ -1,11 +1,71 @@
-import React from "react";
-import NavigationBar from "./components/header/Bottomnav";
-import Footer from "./components/footer/Footer";
+import React, { useState, useEffect } from "react";
+import NavigationBar from "@/components/header/Bottomnav";
+import Footer from "@/components/footer/Footer";
 import Image from "next/image";
+import { toast, Toaster } from "react-hot-toast";
+import { Providers } from "../../frontend/services/providers";
+
+import { useRouter } from "next/router";
+import {
+  useCreateInquiriesMutation,
+  useGetSettingsQuery,
+} from "../../frontend/services/api";
 
 const Contact = () => {
+  const router = useRouter();
+  const { data: settings } = useGetSettingsQuery();
+  const [createInquiry, { isError, isSuccess }] = useCreateInquiriesMutation();
+  const [contactData, setContactData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const { first_name, last_name, email, phone, message } = contactData;
+
+  useEffect(() => {
+    if (isError) {
+      toast.failed("failed");
+      alert("failed");
+    }
+    if (isSuccess) {
+      toast.success("Submitted Successfully");
+      setTimeout(() => {
+        router.reload();
+      }, 1000);
+    }
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      first_name,
+      last_name,
+      email,
+      phone,
+      message,
+    };
+
+    createInquiry(data);
+  };
+
+  const onChange = (e) => {
+    setContactData({ ...contactData, [e.target.name]: e.target.value });
+  };
   return (
     <>
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            border: "1px solid #d60d45",
+            padding: "16px",
+            color: "#005294",
+          },
+        }}
+      />
       <section className="contact">
         <div className="container">
           <div className="contact-intro text-center py-32 ">
@@ -28,7 +88,7 @@ const Contact = () => {
                   />
                   <div>
                     <h5 className="fw-bold">Call us</h5>
-                    <h5 className="fw-regular">+977 14543023</h5>
+                    <h5 className="fw-regular">{settings?.data.site_contact}</h5>
                   </div>
                 </div>
               </div>
@@ -42,7 +102,7 @@ const Contact = () => {
                   />
                   <div>
                     <h5 className="fw-bold">Send us an email</h5>
-                    <h5 className="fw-regular">sales@pdes.com.np</h5>
+                    <h5 className="fw-regular">{settings?.data.site_email}</h5>
                   </div>
                 </div>
               </div>
@@ -57,7 +117,7 @@ const Contact = () => {
                   <div>
                     <h5 className="fw-bold">Location</h5>
                     <h5 className="fw-regular">
-                      2nd Floor, Shukra Bhawan, Thamel
+                    {settings?.data.site_location}
                     </h5>
                   </div>
                 </div>
@@ -88,28 +148,47 @@ const Contact = () => {
                 </div>
               </div>
               <div className="col-lg-7 col-sm-12">
-                <form>
+                <form className="form" onSubmit={handleSubmit}>
                   <div className="row gap-16-row">
                     <div className="col-lg-6 col-sm-12">
                       <label
-                        htmlFor="fname"
+                        htmlFor="first_name"
                         className="p fw-bold text-cGray700"
                       >
-                        First Name <span className="text-accent">*</span>
+                        Full Name <span className="text-accent">*</span>
                       </label>
 
-                      <input type="text" placeholder="First Name" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={first_name}
+                        name="first_name"
+                        // id="full_name"
+                        placeholder="Your First Name"
+                        onChange={onChange}
+                        required
+                      />
                     </div>
                     <div className="col-lg-6 col-sm-12">
                       <label
-                        htmlFor="lname"
+                        htmlFor="last_name"
                         className="p fw-bold text-cGray700"
                       >
-                        Last Name <span className="text-accent">*</span>
+                        Full Name <span className="text-accent">*</span>
                       </label>
 
-                      <input type="text" placeholder="Last Name" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={last_name}
+                        name="last_name"
+                        // id="full_name"
+                        placeholder="Your Last Name"
+                        onChange={onChange}
+                        required
+                      />
                     </div>
+
                     <div className="col-lg-6 col-sm-12">
                       <label
                         htmlFor="email"
@@ -118,7 +197,16 @@ const Contact = () => {
                         Email Address <span className="text-accent">*</span>
                       </label>
 
-                      <input type="email" placeholder="Email Address" />
+                      <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        value={email}
+                        id="email"
+                        placeholder="Your Email"
+                        onChange={onChange}
+                        required
+                      />
                     </div>
                     <div className="col-lg-6 col-sm-12">
                       <label
@@ -128,21 +216,33 @@ const Contact = () => {
                         Phone Number <span className="text-accent">*</span>
                       </label>
 
-                      <input type="phone" placeholder="Phone Number" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={phone}
+                        name="phone"
+                        id="phone"
+                        placeholder="Your Phone Number"
+                        onChange={onChange}
+                        required
+                      />
                     </div>
 
                     <div className="col-lg-12 col-sm-12">
                       <label
                         htmlFor="message"
-                        className="p fwbold text-cGray700"
+                        className="p fw-bold text-cGray700"
                       >
                         Your Message
                       </label>
                       <textarea
+                        value={message}
+                        className="form-control"
                         name="message"
-                        id=""
-                        cols="30"
-                        rows="5"
+                        rows="10"
+                        onChange={onChange}
+                        placeholder="Your Message"
+                        required
                       ></textarea>
                     </div>
                     <div className="col-lg-4">
@@ -164,9 +264,11 @@ export default Contact;
 Contact.getLayout = function PageLayout(page) {
   return (
     <>
-      <NavigationBar />
-      {page}
-      <Footer />
+      <Providers>
+        <NavigationBar />
+        {page}
+        <Footer />
+      </Providers>
     </>
   );
 };

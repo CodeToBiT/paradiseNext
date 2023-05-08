@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import Ourteams from "@/components/layout/Ourteams";
 
-import Ourteams from "./components/layout/Ourteams";
-import Testimonials from "./components/layout/Testimonials";
+import Testimonials from "@/components/layout/Testimonials";
 
 const about = () => {
   return (
