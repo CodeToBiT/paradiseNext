@@ -63,6 +63,10 @@ select {
   height: calc($form-fs + calc(2 * $form-py) + $input-extra-height);
 }
 
+input[type = "range"]{
+  padding: 0;
+}
+
 select {
   position: relative;
   appearance: none;

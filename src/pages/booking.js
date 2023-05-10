@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import NavigationBar from "@/components/header/Bottomnav";
 import Footer from "@/components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import { Providers } from "../../frontend/services/providers";
+import Link from "next/link";
 
 import { RxPlus, RxMinus } from "react-icons/rx";
 
@@ -298,9 +300,9 @@ const Booking = () => {
                   <input type="checkbox" className="form-check-input" />
                   <label className="form-check-label">
                     I accept the &nbsp;
-                    <a href="#" className="text-primary" target="_blank">
+                    <Link href="#" className="text-primary" target="_blank">
                       terms and conditions*
-                    </a>
+                    </Link>
                   </label>
                 </div>
                 <button className="btn btn-primary fw-medium rounded-24 mt-12">
@@ -320,9 +322,11 @@ export default Booking;
 Booking.getLayout = function PageLayout(page) {
   return (
     <>
-      <NavigationBar />
-      {page}
-      <Footer />
+      <Providers>
+        <NavigationBar />
+        {page}
+        <Footer />
+      </Providers>
     </>
   );
 };

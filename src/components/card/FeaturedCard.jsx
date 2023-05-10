@@ -9,7 +9,7 @@ const FeaturedCard = (props) => {
       <div className="card-featured rounded-12">
         <div className="position-relative">
           <div className="img-portrait-02 rounded-12 position-relative">
-            <Image src={props.image} fill alt="" />
+            <Image src={props.image} fill alt="featured" />
           </div>
           <div className="gradient-overlay"></div>
           <div className="tag-overlay">

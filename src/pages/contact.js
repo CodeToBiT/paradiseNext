@@ -144,6 +144,7 @@ const Contact = () => {
                     width={0}
                     height={0}
                     sizes="100vw"
+                    alt="contact"
                   />
                 </div>
               </div>

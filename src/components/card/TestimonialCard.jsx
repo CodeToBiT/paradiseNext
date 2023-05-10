@@ -33,7 +33,7 @@ const TestimonialCard = (props) => {
           src="/assets/icon/quotation-mark.png"
           width={120}
           height={120}
-          alt=""
+          alt="quotation"
         />
       </div>
     </>

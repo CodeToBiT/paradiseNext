@@ -13,6 +13,7 @@ const Package = () => {
               width={0}
               height={0}
               sizes="100vh"
+              alt="packages"
             />
             <div className="card-packages-content">
               <div className="flex-center-between">

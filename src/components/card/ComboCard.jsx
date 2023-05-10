@@ -13,6 +13,7 @@ const ComboCard = () => {
             width={0}
             height={0}
             sizes="100vh"
+            alt="combo"
           />
 
           <div className="tag small bg-white">Rs. 99999</div>
@@ -26,7 +27,7 @@ const ComboCard = () => {
           </div>
         </div>
         <div className="gradient-overlay rounded-8"></div>
-        <a href="#" className="stretched-link"></a>
+        <Link href="#" className="stretched-link"></Link>
       </div>
     </>
   );

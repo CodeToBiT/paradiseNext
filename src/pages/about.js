@@ -6,7 +6,10 @@ import Ourteams from "@/components/layout/Ourteams";
 
 import Testimonials from "@/components/layout/Testimonials";
 
+import { useGetWhychooseusQuery } from "../../frontend/services/api";
+
 const about = () => {
+  const { data: whychooseus } = useGetWhychooseusQuery();
   return (
     <>
       <section className="about-banner">
@@ -16,6 +19,7 @@ const about = () => {
             width={0}
             height={0}
             sizes="100vw"
+            alt="about"
           />
           <div className="about-banner-content">
             <h1 className="text-white">About Us</h1>
@@ -62,6 +66,7 @@ const about = () => {
                   width={0}
                   height={0}
                   sizes="100vw"
+                  alt="about"
                 />
               </div>
             </div>
@@ -80,6 +85,7 @@ const about = () => {
                     width={0}
                     height={0}
                     sizes="100vw"
+                    alt="about"
                   />
                 </div>
                 <div className="bubble-big">
@@ -87,6 +93,7 @@ const about = () => {
                     src="/assets/image/about.jpeg"
                     width={260}
                     height={260}
+                    alt="about"
                   />
                 </div>
                 <div className="bubble-small">
@@ -94,6 +101,7 @@ const about = () => {
                     src="/assets/image/about.jpeg"
                     width={190}
                     height={190}
+                    alt="about"
                   />
                 </div>
               </div>
@@ -110,110 +118,25 @@ const about = () => {
                 in exercitationem fuga!
               </div>
               <div className="row gap-16-row mt-16">
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image
-                      src="/assets/icon/safety.png"
-                      width={60}
-                      height={60}
-                    />
+                {whychooseus?.data.map((data, i) => {
+                  return (
+                    <div className="col-lg-6 col-sm12">
+                      <div className="align-center gap-8">
+                        <Image src={data.image} width={60} height={60} alt="whyus"/>
 
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
+                        <div>
+                          <h6>{data.title}</h6>
+                          <div
+                            className="clamp-2 x-small"
+                            dangerouslySetInnerHTML={{
+                              __html: data.description,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image src="/assets/icon/code.png" width={60} height={60} />
-
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image
-                      src="/assets/icon/group.png"
-                      width={60}
-                      height={60}
-                    />
-
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image
-                      src="/assets/icon/timer.png"
-                      width={60}
-                      height={60}
-                    />
-
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image
-                      src="/assets/icon/achievement.png"
-                      width={60}
-                      height={60}
-                    />
-
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm12">
-                  <div className="align-center gap-8">
-                    <Image
-                      src="/assets/icon/price.png"
-                      width={60}
-                      height={60}
-                    />
-
-                    <div>
-                      <h6>Safety Guarantee</h6>
-                      <p className="clamp-2 x-small">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In aspernatur ab odio porro, itaque officia
-                        nesciunt voluptatum magni eligendi qui.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -233,6 +156,7 @@ const about = () => {
                         width={0}
                         height={0}
                         sizes="100vw"
+                        alt="ceo"
                       />
                     </div>
                   </div>

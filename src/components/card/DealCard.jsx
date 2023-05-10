@@ -8,7 +8,7 @@ const DealCard = () => {
       <div className="card-deals p-8 pb-12 bg-white">
         <div className="position-relative">
           <div className="img-landscape position-relative">
-            <Image src="/assets/image/japan.jpeg" fill alt="deals" />
+            <Image src="/assets/image/japan.jpeg" fill alt="deals"  />
           </div>
 
           <div className="card-deals-content mt-24 text-center">

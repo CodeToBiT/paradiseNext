@@ -9,6 +9,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
 } from "react-icons/fa";
+import Link from "next/link";
 
 import {
   useGetSocialmediaQuery,
@@ -47,9 +48,9 @@ const Topnav = (props) => {
             <div className="align-center text-white h5 gap-8">
               {social?.data.map((data, i) => {
                 return (
-                  <a href={data.link} key={i}>
+                  <Link href={data.link} key={i}>
                     {getIcon(data.icon)}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

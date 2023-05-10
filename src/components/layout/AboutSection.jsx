@@ -16,6 +16,7 @@ const AboutSection = () => {
                   width="0"
                   height="0"
                   sizes="100vw"
+                  alt="about"
                 />
               </div>
             </div>

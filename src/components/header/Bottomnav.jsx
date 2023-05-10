@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { useGetSettingsQuery } from "../../../frontend/services/api";
+import Link from "next/link";
 
 const NavigationBar = () => {
   const { data: settings } = useGetSettingsQuery();
@@ -53,14 +54,30 @@ const NavigationBar = () => {
       >
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
-            <a className="navbar-brand" href="/">
-              <Image
+            <Link className="navbar-brand" href="/">
+              {settings?.data.site_main_logo ? (
+                <Image
+                  src={settings?.data.site_main_logo}
+                  width="150"
+                  height="70"
+                  alt="logo"
+                />
+                
+              ) : (
+                <Image
+                  src="/assets/image/logo.png"
+                  width="150"
+                  height="70"
+                  alt="logo"
+                />
+              )}
+              {/* <Image
                 src={settings?.data.site_main_logo}
                 width="150"
                 height="70"
                 alt="logo"
-              />
-            </a>
+              /> */}
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -75,12 +92,16 @@ const NavigationBar = () => {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav mx-auto gap-32 px-32">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    href="/"
+                  >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdownMenuLink"
@@ -89,45 +110,45 @@ const NavigationBar = () => {
                     aria-expanded="false"
                   >
                     Our Company
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="/about">
+                      <Link className="dropdown-item" href="/about">
                         About Us
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Message From CEO
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Our Team
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Wy Choose Us?
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Terms and Conditions
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/contact">
+                      <Link className="dropdown-item" href="/contact">
                         Contact
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdownMenuLink"
@@ -136,27 +157,27 @@ const NavigationBar = () => {
                     aria-expanded="false"
                   >
                     Destination
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Asia
-                      </a>
+                      </Link>
                       <ul className="dropdown-menu dropdown-submenu">
                         <li>
-                          <a className="dropdown-item" href="#">
+                          <Link className="dropdown-item" href="#">
                             Nepal
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </li>
                   </ul>
                 </li>
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdownMenuLink"
@@ -165,30 +186,30 @@ const NavigationBar = () => {
                     aria-expanded="false"
                   >
                     Combo Package
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Action
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Another action
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Something else here
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdownMenuLink"
@@ -197,32 +218,32 @@ const NavigationBar = () => {
                     aria-expanded="false"
                   >
                     Travelers Info
-                  </a>
+                  </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Action
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Another action
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Something else here
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
               </ul>
-              <a href="#" className="btn btn-primary btn-sm text-white">
+              <Link href="#" className="btn btn-primary btn-sm text-white">
                 Tour Nepal
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

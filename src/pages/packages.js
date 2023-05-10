@@ -3,17 +3,16 @@ import NavigationBar from "@/components/header/Bottomnav";
 import Footer from "@/components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
-import Package from "@/components/card/Package";
+import PackageCard from "@/components/card/PackageCard";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 import Accordion from "react-bootstrap/Accordion";
 
-// import MultiRangeSlider from "multi-range-slider-react";
-
 const Packages = () => {
-  // const [minValue, setMinValue] = useState(0);
-  // const [maxValue, setMaxValue] = useState(0);
-  // const [minValue2, setMinValue2] = useState(0);
-  // const [maxValue2, setMaxValue2] = useState(0);
+  const [value, setValue] = useState(0);
+
+  const handleChange = (num) => setValue(num);
   return (
     <>
       <section className="packages-banner">
@@ -60,28 +59,23 @@ const Packages = () => {
             <div className="col-lg-3 col-sm-12">
               <div className="filter">
                 <h6>FILTER BY:</h6>
-                {/* <MultiRangeSlider
-                  onInput={(e) => {
-                    setMinValue(e.minValue);
-                    setMaxValue(e.maxValue);
-                  }}
-                  onChange={(e) => {
-                    setMinValue2(e.minValue);
-                    setMaxValue2(e.maxValue);
-                  }}
-                  label={false}
-                  ruler={false}
-                  style={{
-                    border: "none",
-                    boxShadow: "none",
-                    padding: "15px 10px",
-                  }}
-                ></MultiRangeSlider> */}
               </div>
               <Accordion defaultActiveKey={["0", "1", "2", "3"]} alwaysOpen>
-                <Accordion.Item eventKey="0" activeKey="true">
+                <Accordion.Item eventKey="0" activekey="true">
                   <Accordion.Header>Filter Price</Accordion.Header>
-                  <Accordion.Body>demo fill</Accordion.Body>
+                  <Accordion.Body>
+                    <h6>Estimated Price</h6>
+                    <h6 className="fw-regular py-8">
+                      <abbr className="text-cGray600">Rs. </abbr>
+                      {value.toLocaleString("en-Us")}
+                    </h6>
+                    <Slider
+                      step={25}
+                      max={1000000}
+                      value={value}
+                      onChange={handleChange}
+                    />
+                  </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>Tour Type</Accordion.Header>
@@ -166,16 +160,16 @@ const Packages = () => {
             <div className="col-lg-9 col-sm-12">
               <div className="row gap-24-row">
                 <div className="col-lg-4 col-sm-12">
-                  <Package />
+                  <PackageCard />
                 </div>
                 <div className="col-lg-4 col-sm-12">
-                  <Package />
+                  <PackageCard />
                 </div>
                 <div className="col-lg-4 col-sm-12">
-                  <Package />
+                  <PackageCard />
                 </div>
                 <div className="col-lg-4 col-sm-12">
-                  <Package />
+                  <PackageCard />
                 </div>
               </div>
             </div>

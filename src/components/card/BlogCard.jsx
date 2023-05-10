@@ -9,7 +9,7 @@ const BlogCard = (props) => {
       <div className="card-blog">
         <div className="position-relative">
           <div className="img-portrait">
-            <Image src={props.image} width="0" height="0" sizes="100vw" />
+            <Image src={props.image} width="0" height="0" sizes="100vw" alt="blogs" />
           </div>
           <div className="card-blog-content">
             <div className="bcat">TRAVEL</div>

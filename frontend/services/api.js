@@ -7,7 +7,7 @@ export const globalApi = createApi({
     baseUrl: "https://admin.pdes.com.np/api/",
   }),
   tagTypes: [
-    "Sliders",
+    "Whychooseus",
     "Inquiries",
     "Countries",
     "Blogs",
@@ -28,12 +28,12 @@ export const globalApi = createApi({
     }
   },
   endpoints: (builder) => ({
-    getSlider: builder.query({
+    getWhychooseus: builder.query({
       query: () => ({
-        url: "/sliders",
+        url: "/whychooseus",
         method: "GET",
       }),
-      providesTags: ["Sliders"],
+      providesTags: ["Whychooseus"],
     }),
     getServices: builder.query({
       query: () => ({
@@ -44,7 +44,6 @@ export const globalApi = createApi({
     }),
     createInquiries: builder.mutation({
       query: (data) => {
-   
         return {
           url: `/inquiries`,
           method: "POST",
@@ -202,7 +201,7 @@ export const {
 
   useGetGalleryQuery,
 
-  useGetSliderQuery,
+  useGetWhychooseusQuery,
 
   useCreateInquiriesMutation,
 } = globalApi;

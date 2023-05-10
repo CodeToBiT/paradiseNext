@@ -9,6 +9,8 @@ import { TbCompass } from "react-icons/tb";
 import { GiPriceTag } from "react-icons/gi";
 import Link from "next/link";
 import NavigationBar from "@/components/header/Bottomnav";
+import { Providers } from "../../frontend/services/providers";
+import Footer from "@/components/footer/Footer";
 
 import Accordion from "react-bootstrap/Accordion";
 
@@ -29,6 +31,7 @@ const Single = () => {
                   width="0"
                   height="0"
                   sizes="100vw"
+                  alt="single"
                 />
               </div>
 
@@ -143,8 +146,8 @@ const Single = () => {
                 <Accordion className="mt-12 mt-sm-16" defaultActiveKey="0">
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 1: </span>
-                      Arrival in Kathmandu
+                      <span className="text-primary day">Day 1: </span>
+                      <p>Arrival in Kathmandu</p>
                     </Accordion.Header>
                     <Accordion.Body>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -159,7 +162,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 2: </span>
+                      <span className="text-primary day">Day 2: </span>
                       Kathmandu city Sightseeing
                     </Accordion.Header>
                     <Accordion.Body>
@@ -175,8 +178,8 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="2">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 3: </span>
-                      Kathmand - Chitwan on the way rafting in trishuli river.
+                      <span className="text-primary day ">Day 3: </span>
+                      Kathmandu - Chitwan on the way rafting in trishuli river.
                     </Accordion.Header>
                     <Accordion.Body>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -191,7 +194,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 4: </span>
+                      <span className="text-primary day">Day 4: </span>
                       Chitwan jungle safari activities
                     </Accordion.Header>
                     <Accordion.Body>
@@ -207,7 +210,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="4">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 5: </span>
+                      <span className="text-primary day">Day 5: </span>
                       Drive from Chitwan to Pokhara.
                     </Accordion.Header>
                     <Accordion.Body>
@@ -223,7 +226,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="5">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 6: </span>
+                      <span className="text-primary day">Day 6: </span>
                       Pokhara to Australian camp.
                     </Accordion.Header>
                     <Accordion.Body>
@@ -239,7 +242,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="6">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 7: </span>
+                      <span className="text-primary day">Day 7: </span>
                       Australian Camp to Pokhara and Pokhara City SIghtseeing
                       Tour
                     </Accordion.Header>
@@ -256,7 +259,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="7">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 8: </span>
+                      <span className="text-primary day">Day 8: </span>
                       Pokhara to Kathmandu by drive or fly.
                     </Accordion.Header>
                     <Accordion.Body>
@@ -272,7 +275,7 @@ const Single = () => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="8">
                     <Accordion.Header>
-                      <span className="text-primary ">Day 9: </span>
+                      <span className="text-primary day">Day 9: </span>
                       Departure day.
                     </Accordion.Header>
                     <Accordion.Body>
@@ -432,9 +435,12 @@ export default Single;
 Single.getLayout = function PageLayout(page) {
   return (
     <>
-      <NavigationBar />
+      <Providers>
+        <NavigationBar />
 
-      {page}
+        {page}
+        <Footer />
+      </Providers>
     </>
   );
 };

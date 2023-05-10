@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Destination = () => {
   return (
@@ -27,9 +28,9 @@ const Destination = () => {
                     </div>
                   </div>
                   <div className="h2">Holiday packages</div>
-                  <a href="#" className="btn btn-primary mt-8">
+                  <Link href="#" className="btn btn-primary mt-8">
                     Book Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -37,7 +38,7 @@ const Destination = () => {
               <div className="wrapper">
                 <div className="gallery">
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/japan2.jpeg"
                         fill
@@ -48,10 +49,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Japan</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/thailand.jpeg"
                         fill
@@ -62,10 +63,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Thailand</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/maldives.jpeg"
                         className="gallery__image"
@@ -76,10 +77,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Maldives</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/russia.jpeg"
                         className="gallery__image"
@@ -90,10 +91,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Russia</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/dubai.jpeg"
                         className="gallery__image"
@@ -104,10 +105,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Dubai</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/philippines.jpeg"
                         className="gallery__image"
@@ -118,10 +119,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Philippines</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/korea.jpeg"
                         className="gallery__image"
@@ -132,10 +133,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>Korea</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/london.jpeg"
                         className="gallery__image"
@@ -146,10 +147,10 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>London</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div className="gallery__item">
-                    <a href="#" className="gallery__link">
+                    <Link href="#" className="gallery__link">
                       <Image
                         src="/assets/image/viewall.png"
                         className="gallery__image"
@@ -160,7 +161,7 @@ const Destination = () => {
                       <div className="gallery__overlay">
                         <span>View All</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

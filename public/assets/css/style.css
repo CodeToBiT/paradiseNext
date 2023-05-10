@@ -33011,6 +33011,12 @@ x-small,
     padding: 275px 0 280px 0;
   }
 }
+.landing-title {
+  max-width: 500px;
+}
+.landing-description {
+  max-width: 800px;
+}
 .landing:before {
   content: "";
   position: absolute;
@@ -33368,21 +33374,10 @@ x-small,
 }
 
 .service-title {
-  position: relative;
-}
-.service-title:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/image/service.png");
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
+  position: relative;
 }
 .service-title::after {
   content: "";
@@ -33556,8 +33551,12 @@ x-small,
   border-bottom: 1px solid #c2d7e9 !important;
 }
 .single .itinerary .accordion-header button {
+  gap: 16px;
   font-size: 1.125rem;
-  font-weight: 800;
+  font-weight: 700;
+}
+.single .itinerary .accordion-header button .day {
+  white-space: nowrap;
 }
 .single .cost-details .includes ul li {
   font-size: 1.25rem;
@@ -34183,10 +34182,20 @@ x-small,
   bottom: 0;
   width: calc(100% + 2px);
   padding: 15px 20px;
-  transform: translate3d(0px, 114px, 0px);
+  transform: translate3d(0px, 85px, 0px);
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+@media (min-width: 992px) and (max-width: 1600px) {
+  .card-packages-content {
+    transform: translate3d(0px, 114px, 0px);
+  }
+}
+@media (min-width: 420px) and (max-width: 991px) {
+  .card-packages-content {
+    transform: translate3d(0px, 55px, 0px);
+  }
 }
 .card-packages .combo {
   position: absolute;
@@ -34835,6 +34844,10 @@ textarea:active {
 input,
 select {
   height: calc(2.625rem + 2px);
+}
+
+input[type=range] {
+  padding: 0;
 }
 
 select {
