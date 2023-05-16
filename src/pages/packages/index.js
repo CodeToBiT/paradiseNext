@@ -9,13 +9,16 @@ import "rc-slider/assets/index.css";
 
 import Accordion from "react-bootstrap/Accordion";
 
+import { useGetPackagesQuery } from "../../../frontend/services/api";
+
 const Packages = () => {
+  const { data: packages } = useGetPackagesQuery();
   const [value, setValue] = useState(0);
 
   const handleChange = (num) => setValue(num);
   return (
     <>
-      <section className="packages-banner">
+      <section className="single-banner">
         <div className="img-wide">
           <Image
             src="/assets/image/about.webp"
@@ -23,7 +26,7 @@ const Packages = () => {
             height={0}
             sizes="100vw"
           />
-          <div className="packages-banner-content">
+          <div className="single-banner-content">
             <h1 className="text-white">Our Packages</h1>
             <Breadcrumb>
               <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
@@ -159,18 +162,35 @@ const Packages = () => {
 
             <div className="col-lg-9 col-sm-12">
               <div className="row gap-24-row">
-                <div className="col-lg-4 col-sm-12">
-                  <PackageCard />
-                </div>
-                <div className="col-lg-4 col-sm-12">
-                  <PackageCard />
-                </div>
-                <div className="col-lg-4 col-sm-12">
-                  <PackageCard />
-                </div>
-                <div className="col-lg-4 col-sm-12">
-                  <PackageCard />
-                </div>
+                {packages?.data.map((data, i) => {
+                  
+                  if (data.destinations.length >= 2) {
+                    return (
+                      <div className="col-lg-4 col-sm-12" key={i}>
+                        <PackageCard
+                          image={data.image}
+                          name={data.name}
+                          price={data.price}
+                          description={data.short_description}
+                          slug={data.slug}
+                          type="combo"
+                        />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div className="col-lg-4 col-sm-12" key={i}>
+                        <PackageCard
+                          image={data.image}
+                          name={data.name}
+                          price={data.price}
+                          description={data.short_description}
+                          slug={data.slug}
+                        />
+                      </div>
+                    );
+                  }
+                })}
               </div>
             </div>
           </div>

@@ -112,7 +112,7 @@ button,
     font-size: $btn-fs;
     line-height: $btn-lh;
     font-weight: $btn-fw;
-    // white-space: nowrap;
+    white-space: nowrap;
     transition: all 0.15s ease-in;
     display: inline-block;
     border: unset;
@@ -248,3 +248,7 @@ button {
         align-items: center;
     }
 }
+
+
+
+

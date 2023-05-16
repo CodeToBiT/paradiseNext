@@ -437,7 +437,6 @@ Single.getLayout = function PageLayout(page) {
     <>
       <Providers>
         <NavigationBar />
-
         {page}
         <Footer />
       </Providers>

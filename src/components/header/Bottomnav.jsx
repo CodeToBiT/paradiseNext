@@ -3,11 +3,15 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { useGetSettingsQuery } from "../../../frontend/services/api";
+import {
+  useGetSettingsQuery,
+  useGetDestinationsQuery,
+} from "../../../frontend/services/api";
 import Link from "next/link";
 
 const NavigationBar = () => {
   const { data: settings } = useGetSettingsQuery();
+  const { data: destination } = useGetDestinationsQuery();
   const [windowChange, setWindowChange] = useState(false);
   if (typeof window != "undefined") {
     const changeNavbarPosition = () => {
@@ -62,7 +66,6 @@ const NavigationBar = () => {
                   height="70"
                   alt="logo"
                 />
-                
               ) : (
                 <Image
                   src="/assets/image/logo.png"
@@ -162,7 +165,7 @@ const NavigationBar = () => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
-                    <li>
+                    {/* <li>
                       <Link className="dropdown-item" href="#">
                         Asia
                       </Link>
@@ -173,6 +176,23 @@ const NavigationBar = () => {
                           </Link>
                         </li>
                       </ul>
+                    </li> */}
+                    {destination?.data.slice(0, 5).map((data, i) => {
+                      return (
+                        <li>
+                          <Link
+                            className="dropdown-item"
+                            href={`/destinations/${data.slug}`}
+                          >
+                            {data.name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                    <li>
+                      <Link className="dropdown-item" href="/destinations">
+                        View All
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -204,6 +224,11 @@ const NavigationBar = () => {
                     <li>
                       <Link className="dropdown-item" href="#">
                         Something else here
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" href="/packages">
+                        View All
                       </Link>
                     </li>
                   </ul>

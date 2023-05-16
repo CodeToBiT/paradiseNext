@@ -57,11 +57,11 @@ const Topnav = (props) => {
             <div className="d-flex gap-32 p">
               <div className="phone align-center gap-4 text-white">
                 <FaPhoneAlt />
-                {settings?.data.site_contact}
+                <p className="small">{settings?.data.site_contact}</p>
               </div>
               <div className="mail align-center gap-4 text-white">
                 <FaEnvelope />
-                {settings?.data.site_email}
+                <p className="small">{settings?.data.site_email}</p>
               </div>
             </div>
           </div>

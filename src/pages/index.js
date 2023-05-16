@@ -15,7 +15,10 @@ import Blog from "@/components/layout/Blog";
 import Partner from "@/components/layout/Partner";
 import Combo from "@/components/layout/Combo";
 
+import { useGetDestinationsQuery } from "../../frontend/services/api";
+
 export default function Home() {
+  const { data: destinations } = useGetDestinationsQuery();
   return (
     <>
       <Banner />
@@ -32,11 +35,15 @@ export default function Home() {
             <div className="px-32 py-12 flex-fill bg-white">
               <div className="align-center gap-8">
                 <GrLocation className="location" />
-                <Form.Select>
+                <Form.Select defaultValue="1">
                   <option>Choose your Destination</option>
-                  <option value="1">Japan</option>
-                  <option value="2">Thailand</option>
-                  <option value="3">Bali</option>
+                  {destinations?.data.map((data, i) => {
+                    return (
+                      <option value={data.slug} key={i}>
+                        {data.name}
+                      </option>
+                    );
+                  })}
                 </Form.Select>
                 <Button className="btn btn-sm btn-secondary">Search Now</Button>
               </div>

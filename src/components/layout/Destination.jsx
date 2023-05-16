@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGetDestinationsQuery } from "../../../frontend/services/api";
 
 const Destination = () => {
+  const { data: destinations } = useGetDestinationsQuery();
   return (
     <>
       <section className="destinations mt-16 mt-sm-40">
@@ -19,7 +21,7 @@ const Destination = () => {
                   alt="destination"
                 />
                 <div className="overlay text-white">
-                  <h2 >Up to</h2>
+                  <h2>Up to</h2>
                   <div className="align-center gap-8 px-4">
                     <h2 className="h1">50</h2>
                     <div className="h3">
@@ -37,118 +39,25 @@ const Destination = () => {
             <div className="col-lg-6 col-md-12 col-sm-12">
               <div className="wrapper">
                 <div className="gallery">
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/japan2.jpeg"
-                        fill
-                        alt="destination"
-                        className="gallery__image"
-                      />
+                  {destinations?.data.slice(0, 8).map((data, i) => {
+                    return (
+                      <div className="gallery__item" key={i}>
+                        <Link href="#" className="gallery__link">
+                          <Image
+                            src={data.image}
+                            fill
+                            alt="destination"
+                            className="gallery__image"
+                          />
 
-                      <div className="gallery__overlay">
-                        <span>Japan</span>
+                          <div className="gallery__overlay">
+                            <span>{data.name}</span>
+                          </div>
+                        </Link>
                       </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/thailand.jpeg"
-                        fill
-                        className="gallery__image"
-                        alt="destination"
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Thailand</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/maldives.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Maldives</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/russia.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Russia</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/dubai.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Dubai</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/philippines.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Philippines</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/korea.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>Korea</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
-                      <Image
-                        src="/assets/image/london.jpeg"
-                        className="gallery__image"
-                        alt="destination"
-                        fill
-                      />
-
-                      <div className="gallery__overlay">
-                        <span>London</span>
-                      </div>
-                    </Link>
-                  </div>
+                    );
+                  })}
+                
                   <div className="gallery__item">
                     <Link href="#" className="gallery__link">
                       <Image

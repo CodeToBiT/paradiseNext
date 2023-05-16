@@ -28,7 +28,7 @@ const Contact = () => {
   useEffect(() => {
     if (isError) {
       toast.failed("failed");
-      alert("failed");
+
     }
     if (isSuccess) {
       toast.success("Submitted Successfully");

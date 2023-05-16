@@ -291,12 +291,12 @@
 
     .gallery__item:nth-child(1) {
       grid-column: 1 / span 1;
-      grid-row: 1 / span 1;
+      grid-row: 1 / span 2;
     }
 
     .gallery__item:nth-child(2) {
       grid-column: 1 / span 1;
-      grid-row: 2 / span 1;
+      grid-row: 3 / span 2;
     }
 
     .gallery__item:nth-child(3) {
@@ -306,25 +306,25 @@
 
     .gallery__item:nth-child(4) {
       grid-column: 1 / span 1;
-      grid-row: 3 / span 2;
+      grid-row: 5 / span 2;
     }
 
     .gallery__item:nth-child(5) {
       grid-column: 2 / span 1;
-      grid-row: 3 / span 1;
+      grid-row: 3 / span 2;
     }
 
     .gallery__item:nth-child(6) {
       grid-column: 2 / span 1;
-      grid-row: 4 / span 1;
+      grid-row: 5 / span 2;
     }
     .gallery__item:nth-child(7) {
-      grid-column: 3 / span 1;
-      grid-row: 1 / span 1;
+      grid-column: 1 / span 1;
+      grid-row: 7 / span 3;
     }
     .gallery__item:nth-child(8) {
-      grid-column: 3 / span 1;
-      grid-row: 2 / span 2;
+      grid-column: 2 / span 1;
+      grid-row: 7 / span 3;
     }
 
     .gallery__overlay {
@@ -332,23 +332,23 @@
     }
   }
 
-  @media screen and (max-width: 35rem) {
-    .gallery {
-      display: block;
-    }
+  // @media screen and (max-width: 35rem) {
+  //   .gallery {
+  //     display: block;
+  //   }
 
-    .gallery__item {
-      margin: 0.5rem;
-    }
+  //   .gallery__item {
+  //     margin: 0.5rem;
+  //   }
 
-    .gallery__link {
-      height: 80vw;
-    }
+  //   .gallery__link {
+  //     height: 80vw;
+  //   }
 
-    .gallery__overlay {
-      font-size: 1rem;
-    }
-  }
+  //   .gallery__overlay {
+  //     font-size: 1rem;
+  //   }
+  // }
 }
 
 .combo {
@@ -489,7 +489,7 @@
         color: #fff;
         bottom: 50%;
         left: -10px;
-        z-index: 999;
+        z-index: 99;
         padding: 8px;
         svg {
           font-size: 1.5rem;
@@ -501,7 +501,7 @@
         color: #fff;
         bottom: 50%;
         right: -10px;
-        z-index: 999;
+        z-index: 99;
         padding: 8px;
         svg {
           font-size: 1.5rem;
@@ -624,8 +624,10 @@
     }
   }
 
-  .highlights {
+  .trip-description {
     ul {
+      padding-left: 40px;
+
       li {
         font-size: 1.125rem;
       }
@@ -651,6 +653,9 @@
           .day {
             white-space: nowrap;
           }
+          p {
+            white-space: pre-wrap;
+          }
         }
       }
     }
@@ -658,6 +663,10 @@
   .cost-details {
     .includes {
       ul {
+        margin-top: 12px;
+        padding-left: 24px;
+        @extend .p;
+        color: $cool-gray-700;
         li {
           font-size: 1.25rem;
           margin-bottom: 12px;
@@ -683,6 +692,10 @@
     }
     .excludes {
       ul {
+        margin-top: 12px;
+        padding-left: 24px;
+        @extend .p;
+        color: $cool-gray-700;
         li {
           font-size: 1.25rem;
           margin-bottom: 12px;
@@ -890,7 +903,7 @@
   }
 }
 
-.packages {
+.single {
   &-banner {
     position: relative;
     &-content {
@@ -913,5 +926,32 @@
   }
   .accordion-button:not(.collapsed) {
     background-color: transparent;
+  }
+}
+
+.countries {
+  h3 {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 1px;
+      background-color: $primary;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.destination {
+  &--listing {
+    .intro {
+      margin: 0 auto;
+      max-width: 800px;
+    }
   }
 }

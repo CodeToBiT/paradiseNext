@@ -173,6 +173,9 @@ $value in $avatar-size {
     }
     &-landscape {
         @include aspect-ratio-box(16, 9);
+        &-02{
+            @include aspect-ratio-box(4, 3);
+        }
     }
     &-wide {
         @include aspect-ratio-box(30, 11);
@@ -186,7 +189,7 @@ $value in $avatar-size {
             @include aspect-ratio-box(4, 6);
         }
         &-03 {
-            @include aspect-ratio-box(8, 5);
+            @include aspect-ratio-box(4, 5);
         }
     }
 }

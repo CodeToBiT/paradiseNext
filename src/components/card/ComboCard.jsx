@@ -3,23 +3,23 @@ import Image from "next/image";
 import { GrNext } from "react-icons/gr";
 import Link from "next/link";
 
-const ComboCard = () => {
+const ComboCard = (props) => {
   return (
     <>
       <div className="card-combo rounded-8">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={props.image}
             width={0}
             height={0}
             sizes="100vh"
-            alt="combo"
+            alt={props.slug}
           />
 
-          <div className="tag small bg-white">Rs. 99999</div>
+          <div className="tag small bg-white">Rs. {props.price}</div>
           <div className="card-combo-content">
-            <h5 >Nepal, Russia, Japan</h5>
-            <p className="small">Visit at a discounted rate to Nepal, Russia, Japan.</p>
+            <h5 >{props.title}</h5>
+            <p className="small clamp-2">{props.description}</p>
           </div>
 
           <div className="next bg-white flex-center-center">
@@ -27,7 +27,7 @@ const ComboCard = () => {
           </div>
         </div>
         <div className="gradient-overlay rounded-8"></div>
-        <Link href="#" className="stretched-link"></Link>
+        <Link href={`/packages/${props.slug}`} className="stretched-link"></Link>
       </div>
     </>
   );

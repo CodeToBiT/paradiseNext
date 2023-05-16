@@ -1,3 +1,4 @@
+import Destination from "@/components/layout/Destination";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 
@@ -9,7 +10,7 @@ export const globalApi = createApi({
   tagTypes: [
     "Whychooseus",
     "Inquiries",
-    "Countries",
+    "Destinations",
     "Blogs",
     "Partners",
     "Testimonials",
@@ -21,6 +22,9 @@ export const globalApi = createApi({
     "Downloads",
     "Gallery",
     "Services",
+    "Destinations",
+    "Packages",
+    "Booking",
   ],
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -56,21 +60,21 @@ export const globalApi = createApi({
       },
       invalidatesTags: ["Inquiries"],
     }),
-    getCountries: builder.query({
+    getDestinations: builder.query({
       query: () => ({
-        url: "/countries",
+        url: "/destinations",
         method: "GET",
       }),
-      providesTags: ["Countries"],
+      providesTags: ["Destinations"],
     }),
-    getCountryDetails: builder.query({
+    getDestinationDetail: builder.query({
       query: (id) => {
         return {
-          url: `country/${id}`,
+          url: `destinations/${id}`,
           method: "GET",
         };
       },
-      providesTags: ["Countries"],
+      providesTags: ["Destinations"],
     }),
     getBlogs: builder.query({
       query: () => ({
@@ -88,22 +92,7 @@ export const globalApi = createApi({
       },
       providesTags: ["Blogs"],
     }),
-    getPartners: builder.query({
-      query: () => ({
-        url: "/partners",
-        method: "GET",
-      }),
-      providesTags: ["Partners"],
-    }),
-    getPartnerDetails: builder.query({
-      query: (id) => {
-        return {
-          url: `partner/${id}`,
-          method: "GET",
-        };
-      },
-      providesTags: ["Partners"],
-    }),
+
     getTestimonials: builder.query({
       query: () => ({
         url: "/testimonials",
@@ -155,19 +144,45 @@ export const globalApi = createApi({
       }),
       providesTags: ["Settings"],
     }),
-    getDownloads: builder.query({
-      query: () => ({
-        url: "/downloads",
-        method: "GET",
-      }),
-      providesTags: ["Downloads"],
-    }),
+
     getGallery: builder.query({
       query: () => ({
         url: "/galleries",
         method: "GET",
       }),
       providesTags: ["Gallery"],
+    }),
+
+    getPackages: builder.query({
+      query: () => ({
+        url: "/packages",
+        method: "GET",
+      }),
+      providesTags: ["Packages"],
+    }),
+    getPackageDetails: builder.query({
+      query: (id) => {
+        return {
+          url: `package/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["Packages"],
+    }),
+
+    createBookings: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/bookings`,
+          method: "POST",
+          body: data,
+          prepareHeaders: (headers) => {
+            headers.set("Content-Type", "multipart/form-data");
+            return headers;
+          },
+        };
+      },
+      invalidatesTags: ["Booking"],
     }),
   }),
 });
@@ -180,9 +195,6 @@ export const {
 
   useGetBlogsQuery,
   useGetBlogDetailsQuery,
-
-  useGetPartnersQuery,
-  useGetPartnerDetailsQuery,
 
   useGetTestimonialsQuery,
 
@@ -197,11 +209,17 @@ export const {
 
   useGetSettingsQuery,
 
-  useGetDownloadsQuery,
-
   useGetGalleryQuery,
 
   useGetWhychooseusQuery,
 
   useCreateInquiriesMutation,
+
+  useGetDestinationsQuery,
+  useGetDestinationDetailQuery,
+
+  useGetPackagesQuery,
+  useGetPackageDetailsQuery,
+
+  useCreateBookingsMutation,
 } = globalApi;
