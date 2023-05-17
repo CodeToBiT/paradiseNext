@@ -668,7 +668,7 @@
         @extend .p;
         color: $cool-gray-700;
         li {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           margin-bottom: 12px;
         }
         li::before {
@@ -697,7 +697,7 @@
         @extend .p;
         color: $cool-gray-700;
         li {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           margin-bottom: 12px;
         }
         li::before {
@@ -952,6 +952,38 @@
     .intro {
       margin: 0 auto;
       max-width: 800px;
+    }
+  }
+}
+
+.single {
+  &-blog {
+    .cat-tag {
+      background: $primary-100;
+      padding: 10px 20px 10px 30px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      position: relative;
+      color: $primary;
+      text-transform: uppercase;
+      &::before {
+        position: absolute;
+        content: "\e903";
+        font-family: "icomoon";
+        left: 10px;
+      }
+    }
+    .more-sidebar {
+      background: #f7f8fa;
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin-bottom: 30px;
+      position: sticky;
+      top: 96px;
+      h5 {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #dedede;
+      }
     }
   }
 }

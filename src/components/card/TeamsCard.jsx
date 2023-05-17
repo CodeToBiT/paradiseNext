@@ -25,8 +25,8 @@ const TeamsCard = (props) => {
           </Link>
         </div>
         <div className="card-team-content position-relative z-1 mt-16">
-          <h4>{props.name}</h4>
-          <div className="p position">{props.position}</div>
+          <h5>{props.name}</h5>
+          <div className="p position fw-medium">{props.position}</div>
           <div
             className="pe-64"
             dangerouslySetInnerHTML={{ __html: props.description }}

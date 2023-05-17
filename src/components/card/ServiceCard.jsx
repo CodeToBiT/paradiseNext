@@ -9,7 +9,7 @@ const ServiceCard = (props) => {
 
         <Image src={props.image} width={80} height={80} alt="service" />
 
-        <h5 className="text-cGray700 mt-12">{props.title}</h5>
+        <h6 className="text-cGray700 mt-12">{props.title}</h6>
         <div
           className="p text-cGray600 mt-8"
           dangerouslySetInnerHTML={{ __html: props.description }}

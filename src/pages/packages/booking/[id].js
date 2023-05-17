@@ -141,8 +141,12 @@ const Booking = () => {
       <div className="bg-primary pt-16 pb-4">
         <div className="container">
           <Breadcrumb>
-            <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="#">Destinations</Breadcrumb.Item>
+            <li class="breadcrumb-item">
+              <Link href="/">Home</Link>
+            </li>
+            <li class="breadcrumb-item">
+                <Link href="/destinations">Destinations</Link>
+              </li>
             <Breadcrumb.Item href="#">Nepal</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Tour</Breadcrumb.Item>
 

@@ -26,6 +26,7 @@ const Blog = () => {
                     image={data.image}
                     title={data.title}
                     date={formatDate(data.date)}
+                    slug={data.slug}
                   />
                 </div>
               );

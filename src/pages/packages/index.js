@@ -6,6 +6,7 @@ import Image from "next/image";
 import PackageCard from "@/components/card/PackageCard";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Link from "next/link";
 
 import Accordion from "react-bootstrap/Accordion";
 
@@ -29,7 +30,9 @@ const Packages = () => {
           <div className="single-banner-content">
             <h1 className="text-white">Our Packages</h1>
             <Breadcrumb>
-              <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+              <li class="breadcrumb-item">
+                <Link href="/">Home</Link>
+              </li>
 
               <Breadcrumb.Item active>Packages</Breadcrumb.Item>
             </Breadcrumb>
@@ -163,7 +166,6 @@ const Packages = () => {
             <div className="col-lg-9 col-sm-12">
               <div className="row gap-24-row">
                 {packages?.data.map((data, i) => {
-                  
                   if (data.destinations.length >= 2) {
                     return (
                       <div className="col-lg-4 col-sm-12" key={i}>

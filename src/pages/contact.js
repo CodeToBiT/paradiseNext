@@ -69,7 +69,7 @@ const Contact = () => {
       <section className="contact">
         <div className="container">
           <div className="contact-intro text-center py-32 ">
-            <h1 className="h2 fw-bolder">Contact Us</h1>
+            <h1 className="h2 ">Contact Us</h1>
             <h5 className="fw-regular p text-cGray600">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Consequatur iure ad dolorem saepe ratione ipsam modi,
@@ -87,8 +87,8 @@ const Contact = () => {
                     alt="phone"
                   />
                   <div>
-                    <h5 className="fw-bold">Call us</h5>
-                    <h5 className="fw-regular">{settings?.data.site_contact}</h5>
+                    <h5 >Call us</h5>
+                    <h6 className="fw-regular">{settings?.data.site_contact}</h6>
                   </div>
                 </div>
               </div>
@@ -101,8 +101,8 @@ const Contact = () => {
                     alt="mail"
                   />
                   <div>
-                    <h5 className="fw-bold">Send us an email</h5>
-                    <h5 className="fw-regular">{settings?.data.site_email}</h5>
+                    <h5>Send us an email</h5>
+                    <h6 className="fw-regular">{settings?.data.site_email}</h6>
                   </div>
                 </div>
               </div>
@@ -115,10 +115,10 @@ const Contact = () => {
                     alt="mail"
                   />
                   <div>
-                    <h5 className="fw-bold">Location</h5>
-                    <h5 className="fw-regular">
+                    <h5>Location</h5>
+                    <h6 className="fw-regular">
                     {settings?.data.site_location}
-                    </h5>
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                     <div className="col-lg-6 col-sm-12">
                       <label
                         htmlFor="first_name"
-                        className="p fw-bold text-cGray700"
+                        className="p  text-cGray700"
                       >
                         Full Name <span className="text-accent">*</span>
                       </label>
@@ -173,7 +173,7 @@ const Contact = () => {
                     <div className="col-lg-6 col-sm-12">
                       <label
                         htmlFor="last_name"
-                        className="p fw-bold text-cGray700"
+                        className="p  text-cGray700"
                       >
                         Full Name <span className="text-accent">*</span>
                       </label>
@@ -193,7 +193,7 @@ const Contact = () => {
                     <div className="col-lg-6 col-sm-12">
                       <label
                         htmlFor="email"
-                        className="p fw-bold text-cGray700"
+                        className="p  text-cGray700"
                       >
                         Email Address <span className="text-accent">*</span>
                       </label>
@@ -212,7 +212,7 @@ const Contact = () => {
                     <div className="col-lg-6 col-sm-12">
                       <label
                         htmlFor="phone"
-                        className="p fw-bold text-cGray700"
+                        className="p  text-cGray700"
                       >
                         Phone Number <span className="text-accent">*</span>
                       </label>
@@ -232,7 +232,7 @@ const Contact = () => {
                     <div className="col-lg-12 col-sm-12">
                       <label
                         htmlFor="message"
-                        className="p fw-bold text-cGray700"
+                        className="p  text-cGray700"
                       >
                         Your Message
                       </label>

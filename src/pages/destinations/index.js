@@ -2,6 +2,7 @@ import React from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import DestinationCard from "@/components/card/DestinationCard";
+import Link from "next/link";
 
 import { useGetDestinationsQuery } from "../../../frontend/services/api";
 
@@ -20,7 +21,9 @@ const Destinations = () => {
           <div className="single-banner-content">
             <h1 className="text-white">Our Destinations</h1>
             <Breadcrumb>
-              <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+              <li class="breadcrumb-item">
+                <Link href="/">Home</Link>
+              </li>
               <Breadcrumb.Item active>Destinations</Breadcrumb.Item>
             </Breadcrumb>
           </div>

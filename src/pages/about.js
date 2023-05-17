@@ -24,7 +24,9 @@ const about = () => {
           <div className="about-banner-content">
             <h1 className="text-white">About Us</h1>
             <Breadcrumb>
-              <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+              <li class="breadcrumb-item">
+                <Link href="/">Home</Link>
+              </li>
 
               <Breadcrumb.Item active>About</Breadcrumb.Item>
             </Breadcrumb>
@@ -122,7 +124,12 @@ const about = () => {
                   return (
                     <div className="col-lg-6 col-sm12">
                       <div className="align-center gap-8">
-                        <Image src={data.image} width={60} height={60} alt="whyus"/>
+                        <Image
+                          src={data.image}
+                          width={60}
+                          height={60}
+                          alt="whyus"
+                        />
 
                         <div>
                           <h6>{data.title}</h6>

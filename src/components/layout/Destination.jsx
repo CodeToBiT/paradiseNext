@@ -30,7 +30,7 @@ const Destination = () => {
                     </div>
                   </div>
                   <div className="h2">Holiday packages</div>
-                  <Link href="#" className="btn btn-primary mt-8">
+                  <Link href="/destinations" className="btn btn-primary mt-8">
                     Book Now
                   </Link>
                 </div>

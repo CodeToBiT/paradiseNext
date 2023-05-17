@@ -33594,7 +33594,7 @@ x-small,
   color: #495057;
 }
 .single .cost-details .includes ul li {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 12px;
 }
 .single .cost-details .includes ul li::before {
@@ -33620,7 +33620,7 @@ x-small,
   color: #495057;
 }
 .single .cost-details .excludes ul li {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 12px;
 }
 .single .cost-details .excludes ul li::before {
@@ -33827,6 +33827,34 @@ x-small,
 .destination--listing .intro {
   margin: 0 auto;
   max-width: 800px;
+}
+
+.single-blog .cat-tag {
+  background: #ccdae8;
+  padding: 10px 20px 10px 30px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  position: relative;
+  color: #005294;
+  text-transform: uppercase;
+}
+.single-blog .cat-tag::before {
+  position: absolute;
+  content: "\e903";
+  font-family: "icomoon";
+  left: 10px;
+}
+.single-blog .more-sidebar {
+  background: #f7f8fa;
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 96px;
+}
+.single-blog .more-sidebar h5, .single-blog .more-sidebar .h5 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dedede;
 }
 
 .footer-top {
@@ -34130,7 +34158,7 @@ x-small,
 .card-team:hover::after {
   width: 90%;
 }
-.card-team:hover h4, .card-team:hover .h4,
+.card-team:hover h5, .card-team:hover .h5,
 .card-team:hover p,
 .card-team:hover .booking .order-details label,
 .booking .order-details .card-team:hover label,
@@ -34152,7 +34180,7 @@ x-small,
   border-radius: 50%;
   background: #fff;
 }
-.card-team-content h4, .card-team-content .h4,
+.card-team-content h5, .card-team-content .h5,
 .card-team-content .position {
   position: relative;
   -webkit-transition: all 0.4s;

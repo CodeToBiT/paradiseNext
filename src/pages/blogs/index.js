@@ -14,7 +14,7 @@ const Blogs = () => {
     return date.toLocaleDateString("en-US", options);
   };
   return (
-    <div>
+    <>
       <section className="single-banner">
         <div className="img-wide">
           <Image
@@ -26,7 +26,9 @@ const Blogs = () => {
           <div className="single-banner-content">
             <h1 className="text-white">Our Blogs</h1>
             <Breadcrumb>
-              <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+              <li class="breadcrumb-item">
+                <Link href="/">Home</Link>
+              </li>
               <Breadcrumb.Item active>Blogs</Breadcrumb.Item>
             </Breadcrumb>
           </div>
@@ -37,7 +39,6 @@ const Blogs = () => {
         <div className="intro text-center">
           <div className="text-primary text-center small">KNOW BEYOND</div>
           <h3>LASTEST UPDATES</h3>
-         
         </div>
         <div className="container">
           <div className="row gap-16-row mt-24 ">
@@ -48,6 +49,7 @@ const Blogs = () => {
                     image={data.image}
                     title={data.title}
                     date={formatDate(data.date)}
+                    slug={data.slug}
                   />
                 </div>
               );
@@ -55,7 +57,7 @@ const Blogs = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -29,7 +29,7 @@ const SinglePackage = () => {
         <div className="container">
           <div className="row gap-12-row">
             <div className="col-lg-9 col-sm-12">
-              <h1 className="h4 fw-bold">{packages?.data.name}</h1>
+              <h1 className="h4 ">{packages?.data.name}</h1>
 
               <div className="mt-12 img-landscape">
                 <Image
@@ -41,14 +41,14 @@ const SinglePackage = () => {
                 />
               </div>
 
-              <h6 className="mt-12 fw-bold mt-24">Trip Information</h6>
+              <h6 className="mt-12 mt-24">Trip Information</h6>
               <div className="trip-info d-flex flex-wrap mt-16">
                 {packages?.data.activity.activities ? (
                   <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
                     <FiClock />
                     <div>
                       <p className="small">Trip Duration</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.activities}
                       </p>
                     </div>
@@ -61,7 +61,7 @@ const SinglePackage = () => {
                     <FiClock />
                     <div>
                       <p className="small">Trip Duration</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.trip_duration}
                       </p>
                     </div>
@@ -75,7 +75,7 @@ const SinglePackage = () => {
                     <SlDirections />
                     <div>
                       <p className="small">Trip Mode</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.trip_mode}
                       </p>
                     </div>
@@ -89,7 +89,7 @@ const SinglePackage = () => {
                     <BiLandscape />
                     <div>
                       <p className="small">Trip Grade</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.trip_grade}
                       </p>
                     </div>
@@ -103,7 +103,7 @@ const SinglePackage = () => {
                     <BiUserPlus />
                     <div>
                       <p className="small">Trip Type</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.trip_type}
                       </p>
                     </div>
@@ -116,7 +116,7 @@ const SinglePackage = () => {
                     <IoBedOutline />
                     <div>
                       <p className="small">Accomodation</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.accomodation}
                       </p>
                     </div>
@@ -130,7 +130,7 @@ const SinglePackage = () => {
                     <FaRoute />
                     <div>
                       <p className="small">Transport</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.transportation}
                       </p>
                     </div>
@@ -143,7 +143,7 @@ const SinglePackage = () => {
                     <FaRegSnowflake />
                     <div>
                       <p className="small">Best Season</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.best_season}
                       </p>
                     </div>
@@ -156,7 +156,7 @@ const SinglePackage = () => {
                     <HiUserGroup />
                     <div>
                       <p className="small">Group Size</p>
-                      <p className="fw-bold small">
+                      <p className=" small">
                         {packages?.data.activity.group_size}
                       </p>
                     </div>
@@ -167,7 +167,7 @@ const SinglePackage = () => {
               </div>
 
               <div className="highlights mt-12 mt-sm-24">
-                <h5 className="fw-bold">Highlights</h5>
+                <h5 className="">Highlights</h5>
               </div>
 
               <div
@@ -178,7 +178,7 @@ const SinglePackage = () => {
               <div className="itinerary mt-12 mt-sm-32">
                 <div className="align-center gap-8">
                   <SlDirections className="h4 text-primary" />
-                  <h4 className="fw-bold">Itinerary</h4>
+                  <h4 className="">Itinerary</h4>
                 </div>
 
                 {packages?.data.activity.trip_duration ? (
@@ -198,7 +198,7 @@ const SinglePackage = () => {
                       <Accordion.Item eventKey={i} key={i}>
                         <Accordion.Header>
                           <span className="text-primary day">Day {i + 1}:</span>
-                          <p>{data.title}</p>
+                          <p className="fw-medium">{data.title}</p>
                         </Accordion.Header>
                         <Accordion.Body>{data.description}</Accordion.Body>
                       </Accordion.Item>
@@ -210,11 +210,11 @@ const SinglePackage = () => {
               <div className="cost-details mt-12 mt-sm-32">
                 <div className="align-baseline gap-8">
                   <SlCup className="h4 text-primary" />
-                  <h4 className="fw-bold">Cost Details</h4>
+                  <h4 >Cost Details</h4>
                 </div>
                 {packages?.data.inclusion ? (
                   <div className="includes ps-40 mt-12">
-                    <h6>Cost Includes</h6>
+                    <h6 className="p">Cost Includes</h6>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: packages?.data.inclusion,
@@ -226,7 +226,7 @@ const SinglePackage = () => {
                 )}
                 {packages?.data.exclusion ? (
                   <div className="excludes ps-40 mt-12">
-                    <h6>Cost Excludes</h6>
+                    <h6 className="p">Cost Excludes</h6>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: packages?.data.exclusion
@@ -242,7 +242,7 @@ const SinglePackage = () => {
               <div className="essential mt-12 mt-sm-32">
                 <div className="align-center gap-8">
                   <TbCompass className="h3 text-primary" />
-                  <h4 className="fw-bold">Visa Information</h4>
+                  <h4 className="">Visa Information</h4>
                 </div>
 
                 <div
@@ -279,7 +279,7 @@ const SinglePackage = () => {
                   </div>
                 </div>
                 <div className="group-price bg-white px-8 py-12 rounded-4 mt-12">
-                  <p className="fw-bold">WE OFFER GROUP PRICE</p>
+                  <p className="">WE OFFER GROUP PRICE</p>
                   <ul className=" mt-8">
                     <li>
                       <div className="flex-center-between">

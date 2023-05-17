@@ -31,7 +31,7 @@ const Footer = () => {
                   </p>
                 </div>
 
-                <p className="mt-12 fw-bold">STAY CONNECTED WITH US</p>
+                <p className="mt-12 fw-medium ">STAY CONNECTED WITH US</p>
                 <div className="socials d-flex mt-8 gap-12">
                   <Link href="#">
                     <Image
