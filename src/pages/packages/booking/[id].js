@@ -13,6 +13,7 @@ import {
   useGetPackageDetailsQuery,
   useCreateBookingsMutation,
 } from "../../../../frontend/services/api";
+import { retry } from "@reduxjs/toolkit/dist/query";
 
 const Booking = () => {
   const router = useRouter();
@@ -141,12 +142,12 @@ const Booking = () => {
       <div className="bg-primary pt-16 pb-4">
         <div className="container">
           <Breadcrumb>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <Link href="/">Home</Link>
             </li>
-            <li class="breadcrumb-item">
-                <Link href="/destinations">Destinations</Link>
-              </li>
+            <li className="breadcrumb-item">
+              <Link href="/destinations">Destinations</Link>
+            </li>
             <Breadcrumb.Item href="#">Nepal</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Tour</Breadcrumb.Item>
 
@@ -166,9 +167,9 @@ const Booking = () => {
             <div className="col-lg-8 col-sm-12">
               <form>
                 <div className="shadow-4 px-32 py-24">
-                  <h5>Date & Traveler's</h5>
+                  <h5>Date & Traveler&apos;s</h5>
                   <div className="row gap-16-row ">
-                    <div className="col-lg-3">
+                    <div className="col-lg-3 align-self-baseline">
                       <label
                         htmlFor="trip_date"
                         className="small text-cGray700"
@@ -188,7 +189,7 @@ const Booking = () => {
                         <div className="col-lg-6">
                           <label
                             htmlFor="travellers"
-                            className="small text-cGray700"
+                            className="x-small text-cGray700"
                           >
                             No. of Adults ( Rs. {adultValue} / person )
                             <span className="text-accent">*</span>
@@ -222,7 +223,7 @@ const Booking = () => {
                         <div className="col-lg-6">
                           <label
                             htmlFor="travellers"
-                            className="small text-cGray700"
+                            className="x-small text-cGray700"
                           >
                             No. of Children ( Rs. {childValue} / person )
                           </label>
@@ -410,7 +411,9 @@ const Booking = () => {
                         </option>
                         <option value="Cook Islands">Cook Islands</option>
                         <option value="Costa Rica">Costa Rica</option>
-                        <option value="Cote D'Ivoire">Cote D'Ivoire</option>
+                        <option value="Cote D'Ivoire">
+                          Cote D&apos;Ivoire
+                        </option>
                         <option value="Croatia">Croatia</option>
                         <option value="Cuba">Cuba</option>
                         <option value="Curacao">Curacao</option>
@@ -490,7 +493,7 @@ const Booking = () => {
                         <option value="Kenya">Kenya</option>
                         <option value="Kiribati">Kiribati</option>
                         <option value="Korea, Democratic People's Republic of">
-                          Korea, Democratic People's Republic of
+                          Korea, Democratic People&apos;s Republic of
                         </option>
                         <option value="Korea, Republic of">
                           Korea, Republic of
@@ -499,7 +502,7 @@ const Booking = () => {
                         <option value="Kuwait">Kuwait</option>
                         <option value="Kyrgyzstan">Kyrgyzstan</option>
                         <option value="Lao People's Democratic Republic">
-                          Lao People's Democratic Republic
+                          Lao People&apos;s Democratic Republic
                         </option>
                         <option value="Latvia">Latvia</option>
                         <option value="Lebanon">Lebanon</option>
@@ -731,39 +734,24 @@ const Booking = () => {
 
                 <div className="extra mt-12">
                   <p className="fw-bolder">Extra prices:</p>
-                  {/* <div className="extra-item">
-                    <div className="form-check flex-between">
-                      <div className="d-flex gap-12">
-                        <input type="checkbox" className="form-check-input" />
-                        <label className="form-check-label">
-                          Safari World + Mari
-                        </label>
+                  {packages?.data.services.map((data, i) => {
+                    return (
+                      <div className="extra-item">
+                        <div className="form-check flex-between">
+                          <div className="d-flex gap-12">
+                            <input
+                              type="checkbox"
+                              className="form-check-input"
+                            />
+                            <label className="form-check-label">
+                              {data.service}
+                            </label>
+                          </div>
+                          <p>Rs. {data.price}</p>
+                        </div>
                       </div>
-                      <p>Rs. 50000</p>
-                    </div>
-                  </div>
-                  <div className="extra-item">
-                    <div className="form-check flex-between flex-wrap">
-                      <div className="d-flex gap-12">
-                        <input type="checkbox" className="form-check-input" />
-                        <label className="form-check-label">
-                          Safari World + Mari asdf dsfg
-                        </label>
-                      </div>
-                      <p>Rs. 50000</p>
-                    </div>
-                  </div>
-                  <div className="extra-item">
-                    <div className="form-check flex-between">
-                      <div className="d-flex gap-12">
-                        <input type="checkbox" className="form-check-input" />
-                        <label className="form-check-label">
-                          Safari World + Mari asdf dsa
-                        </label>
-                      </div>
-                      <p>Rs. 50000</p>
-                    </div>
-                  </div> */}
+                    );
+                  })}
                 </div>
 
                 <div className="total mt-12 flex-center-between">

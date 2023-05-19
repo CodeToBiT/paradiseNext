@@ -31,7 +31,7 @@ const Service = () => {
               <div className="row gap-24-row">
                 {service?.data.slice(0,6).map((data, i) => {
                   return (
-                    <div className="col-lg-4 col-sm-6 d-grid align-self-stretch">
+                    <div className="col-lg-4 col-sm-6 d-grid align-self-stretch" key={i}>
                       <ServiceCard
                         title={data.title}
                         image={data.image}

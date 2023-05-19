@@ -25,6 +25,7 @@ export const globalApi = createApi({
     "Destinations",
     "Packages",
     "Booking",
+    "TourType",
   ],
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -70,7 +71,7 @@ export const globalApi = createApi({
     getDestinationDetail: builder.query({
       query: (id) => {
         return {
-          url: `destinations/${id}`,
+          url: `destination/${id}`,
           method: "GET",
         };
       },
@@ -184,6 +185,16 @@ export const globalApi = createApi({
       },
       invalidatesTags: ["Booking"],
     }),
+
+    getTourType: builder.query({
+      query: (id) => {
+        return {
+          url: `tourtype/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["TourType"],
+    }),
   }),
 });
 
@@ -222,4 +233,6 @@ export const {
   useGetPackageDetailsQuery,
 
   useCreateBookingsMutation,
+
+  useGetTourTypeQuery,
 } = globalApi;

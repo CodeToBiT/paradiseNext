@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -9,6 +9,8 @@ import DealCard from "../card/DealCard";
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+
+import { useGetPackagesQuery } from "../../../frontend/services/api";
 
 SwiperCore.use([Navigation]);
 
@@ -26,6 +28,24 @@ const DealsSlider = () => {
       swiperRef.current.swiper.slidePrev();
     }
   };
+  const { data: deal } = useGetPackagesQuery();
+
+  // const dayTourItems = deal?.data
+  //   .filter(
+  //     (item) =>
+
+  //       item.category &&
+  //       item.category.length > 0 &&
+  //       item.category.some((cat) => cat.name == "Daytour")
+  //   )
+
+  //   .map((item, i) => (
+
+  //     <SwiperSlide key={i}>
+  //       <DealCard />
+  //     </SwiperSlide>
+  //   ));
+
   return (
     <>
       <div className="deals-slider mt-24 mt-sm-32">
@@ -55,22 +75,40 @@ const DealsSlider = () => {
           ref={swiperRef}
         >
           <SwiperSlide>
-            <DealCard />
+            <DealCard
+              name="Tokyo Japan"
+              image="/assets/image/japan.jpeg"
+              description=" Japan is truly timeless, a pplace where ancient traditions are
+              fused with mordern life as if it were the most natural thing in
+              the world."
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <DealCard />
+            <DealCard
+              name="Tokyo Japan"
+              image="/assets/image/japan.jpeg"
+              description=" Japan is truly timeless, a pplace where ancient traditions are
+              fused with mordern life as if it were the most natural thing in
+              the world."
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <DealCard />
+            <DealCard
+              name="Tokyo Japan"
+              image="/assets/image/japan.jpeg"
+              description=" Japan is truly timeless, a pplace where ancient traditions are
+              fused with mordern life as if it were the most natural thing in
+              the world."
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <DealCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <DealCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <DealCard />
+            <DealCard
+              name="Tokyo Japan"
+              image="/assets/image/japan.jpeg"
+              description=" Japan is truly timeless, a pplace where ancient traditions are
+              fused with mordern life as if it were the most natural thing in
+              the world."
+            />
           </SwiperSlide>
         </Swiper>
 

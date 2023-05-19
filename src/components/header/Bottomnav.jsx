@@ -23,6 +23,37 @@ const NavigationBar = () => {
     };
     window.addEventListener("scroll", changeNavbarPosition);
   }
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const handleNavbarToggle = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
+  const handleLinkClick = () => {
+    console.log("clicked");
+    setIsNavbarOpen(false);
+  };
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      document.querySelectorAll(".aside .nav-link").forEach(function (element) {
+        element.addEventListener("click", function (e) {
+          let nextEl = element.nextElementSibling;
+          let parentEl = element.parentElement;
+          let allSubmenus_array = parentEl.querySelectorAll(".submenu");
+
+          if (nextEl && nextEl.classList.contains("submenu")) {
+            e.preventDefault();
+            if (nextEl.style.display == "block") {
+              nextEl.style.display = "none";
+            } else {
+              nextEl.style.display = "block";
+            }
+          }
+        });
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (window.innerWidth > 992) {
@@ -89,16 +120,24 @@ const NavigationBar = () => {
               aria-controls="navbarNavDropdown"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              onClick={handleNavbarToggle}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul className="navbar-nav mx-auto gap-32 px-32">
+            <div
+              className={`collapse navbar-collapse px-12 pb-8 py-sm-0 px-sm-0 ${
+                isNavbarOpen ? "show" : ""
+              }`}
+              id="navbarNavDropdown"
+            >
+              <ul className="navbar-nav mx-auto gap-4 gap-sm-32 px-sm-32">
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
                     aria-current="page"
                     href="/"
+                    passHref
+                    onClick={handleLinkClick}
                   >
                     Home
                   </Link>
@@ -119,32 +158,56 @@ const NavigationBar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <Link className="dropdown-item" href="/about">
+                      <Link
+                        className="dropdown-item"
+                        href="/about"
+                        onClick={handleLinkClick}
+                      >
                         About Us
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
                         Message From CEO
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
                         Our Team
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
                         Wy Choose Us?
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
                         Terms and Conditions
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="/contact">
+                      <Link
+                        className="dropdown-item"
+                        href="/contact"
+                        onClick={handleLinkClick}
+                      >
                         Contact
                       </Link>
                     </li>
@@ -165,27 +228,54 @@ const NavigationBar = () => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
-                    {/* <li>
-                      <Link className="dropdown-item" href="#">
-                        Asia
-                      </Link>
-                      <ul className="dropdown-menu dropdown-submenu">
-                        <li>
-                          <Link className="dropdown-item" href="#">
-                            Nepal
-                          </Link>
-                        </li>
-                      </ul>
-                    </li> */}
                     {destination?.data.slice(0, 5).map((data, i) => {
                       return (
-                        <li>
-                          <Link
-                            className="dropdown-item"
-                            href={`/destinations/${data.slug}`}
-                          >
-                            {data.name}
-                          </Link>
+                        <li key={i}>
+                          {data.children.length >= 1 ? (
+                            <Link
+                              className="dropdown-item"
+                              href={`/destinations/${data.slug}`}
+                            >
+                              {data.name}
+                            </Link>
+                          ) : (
+                            <Link
+                              className="dropdown-item"
+                              href={`/destinations/${data.slug}`}
+                              onClick={handleLinkClick}
+                            >
+                              {data.name}
+                            </Link>
+                          )}
+
+                          {data.children?.map((sub, i) => {
+                            return (
+                              <ul className="dropdown-menu dropdown-submenu">
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    href={`/destinations/${sub.slug}`}
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                  {sub.children?.map((msub, i) => {
+                                    return (
+                                      <ul className="dropdown-menu dropdown-submenu">
+                                        <li>
+                                          <Link
+                                            className="dropdown-item"
+                                            href={`/destinations/${msub.slug}`}
+                                          >
+                                            {msub.name}
+                                          </Link>
+                                        </li>
+                                      </ul>
+                                    );
+                                  })}
+                                </li>
+                              </ul>
+                            );
+                          })}
                         </li>
                       );
                     })}

@@ -1,6 +1,7 @@
 import React from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
+import Link from "next/link";
 
 import BlogCard from "@/components/card/BlogCard";
 import { useGetBlogsQuery } from "../../../frontend/services/api";
@@ -22,11 +23,12 @@ const Blogs = () => {
             width={0}
             height={0}
             sizes="100vw"
+            alt="aboutimage"
           />
           <div className="single-banner-content">
             <h1 className="text-white">Our Blogs</h1>
             <Breadcrumb>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
               <Breadcrumb.Item active>Blogs</Breadcrumb.Item>

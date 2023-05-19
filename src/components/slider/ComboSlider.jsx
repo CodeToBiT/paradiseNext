@@ -44,12 +44,12 @@ const ComboSlider = () => {
           {packages?.data.map((data, i) => {
             if (data.destinations.length >= 2) {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={i}>
                   <ComboCard
                     image={data.image}
                     title={data.name}
                     description={data.short_description}
-                    price={data.price}
+                    price={data.adult_price}
                     slug={data.slug}
                   />
                 </SwiperSlide>

@@ -12,15 +12,21 @@ const FeaturedCard = (props) => {
             <Image src={props.image} fill alt="featured" />
           </div>
           <div className="gradient-overlay"></div>
-          <div className="tag-overlay">
-            <div className="btn btn-primary btn-sm text-white">Combo Offer</div>
-          </div>
+          {props.type ? (
+            <div className="tag-overlay">
+              <div className="btn btn-primary btn-sm text-white">
+                Combo Offer
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
 
           <div className="title-overlay text-white">
-            <div className="h5">Visit Japan with Singapore</div>
+            <div className="h5">{props.name}</div>
             <div className="flex-between mt-4">
               <div>
-                <div className="p">6 Days 5 Nights</div>
+                <div className="small">{props.duration}</div>
                 <div className="d-flex gap-4 text-yellow500 x-small">
                   <FaStar />
                   <FaStar />
@@ -29,10 +35,13 @@ const FeaturedCard = (props) => {
                   <FaStar />
                 </div>
               </div>
-              <div className="p align-self-end">Rs. 1,99,999</div>
+              <div className="p align-self-end">Rs. {props.price}</div>
             </div>
           </div>
-          <Link href="#" className="stretched-link"></Link>
+          <Link
+            href={`/packages/${props.slug}`}
+             className="stretched-link"
+          ></Link>
         </div>
       </div>
     </>

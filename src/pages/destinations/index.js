@@ -17,11 +17,12 @@ const Destinations = () => {
             width={0}
             height={0}
             sizes="100vw"
+            alt="about"
           />
           <div className="single-banner-content">
             <h1 className="text-white">Our Destinations</h1>
             <Breadcrumb>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
               <Breadcrumb.Item active>Destinations</Breadcrumb.Item>
@@ -43,6 +44,7 @@ const Destinations = () => {
                     name={data.name}
                     image={data.image}
                     slug={data.slug}
+                    activities={data.children.length}
                   />
                 </div>
               );

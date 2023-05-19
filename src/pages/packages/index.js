@@ -26,11 +26,12 @@ const Packages = () => {
             width={0}
             height={0}
             sizes="100vw"
+            alt="about"
           />
           <div className="single-banner-content">
             <h1 className="text-white">Our Packages</h1>
             <Breadcrumb>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
 
@@ -42,7 +43,12 @@ const Packages = () => {
       <section className="packages-search mt-12 mt-sm-32">
         <div className="container">
           <div className=" d-flex flex-center align-center gap-16">
-            <Image src="/assets/icon/map.png" width={50} height={50} />
+            <Image
+              src="/assets/icon/map.png"
+              width={50}
+              height={50}
+              alt="map"
+            />
             <div className="packages-search-dropdown">
               <h6>Destination</h6>
               <select name="package" id="">

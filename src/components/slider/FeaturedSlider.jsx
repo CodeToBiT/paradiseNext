@@ -3,25 +3,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation"
+import "swiper/css/navigation";
 
 import { Autoplay, FreeMode, Pagination } from "swiper";
 
 import FeaturedCard from "../card/FeaturedCard";
 
+import { useGetPackagesQuery } from "../../../frontend/services/api";
+
 const FeaturedSlider = () => {
+  const { data: packages } = useGetPackagesQuery();
   return (
     <>
       <div className="combo-slider mt-24 mt-sm-32">
         <Swiper
           grabCursor={true}
-          
           spaceBetween={30}
-         
           pagination={{
             clickable: true,
           }}
-
           autoplay={{
             delay: 2500,
             disableOnInteraction: true,
@@ -43,28 +43,34 @@ const FeaturedSlider = () => {
           modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            
-            <FeaturedCard image="/assets/image/japan.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/singapore.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/dubai.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/china.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/japan.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/japan.webp" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <FeaturedCard image="/assets/image/japan.webp" />
-          </SwiperSlide>
+          {packages?.data.map((data, i) => {
+            if (data.destinations.length >= 2) {
+              return (
+                <SwiperSlide key={i}>
+                  <FeaturedCard
+                    image={data.image}
+                    name={data.name}
+                    price={data.adult_price}
+                    description={data.short_description}
+                    slug={data.slug}
+                    type="combo"
+                  />
+                </SwiperSlide>
+              );
+            } else {
+              return (
+                <SwiperSlide key={i}>
+                  <FeaturedCard
+                    image={data.image}
+                    name={data.name}
+                    price={data.adult_price}
+                    description={data.short_description}
+                    slug={data.slug}
+                  />
+                </SwiperSlide>
+              );
+            }
+          })}
         </Swiper>
       </div>
     </>

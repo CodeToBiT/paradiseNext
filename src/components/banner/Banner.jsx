@@ -10,7 +10,12 @@ const Banner = () => {
   const { data: settings } = useGetSettingsQuery();
   return (
     <>
-      <section className="landing">
+      <section
+        className="landing"
+        style={{
+          backgroundImage: `url(${settings?.data.banner_image})`,
+        }}
+      >
         <div className="container">
           <div className=" align-center">
             <div>
@@ -25,7 +30,6 @@ const Banner = () => {
         </div>
         <div className="gradient-overlay"></div>
       </section>
-      
     </>
   );
 };

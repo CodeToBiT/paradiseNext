@@ -2,6 +2,7 @@ import React from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import {
   useGetBlogDetailsQuery,
@@ -29,14 +30,15 @@ const BlogDetail = () => {
             width={0}
             height={0}
             sizes="100vw"
+            alt="about"
           />
           <div className="single-banner-content">
             <h1 className="text-white">{blog?.data.title}</h1>
             <Breadcrumb>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/blogs">Blogs</Link>
               </li>
               <Breadcrumb.Item active>{blog?.data.title}</Breadcrumb.Item>
@@ -76,9 +78,9 @@ const BlogDetail = () => {
 
                 <div className="more">
                   {blogs?.data.map((data, i) => {
-                    if (data.id != blog.data.id) {
+                    if (data.id != blog?.data.id) {
                       return (
-                        <div className="card-more mt-12 mt-sm-16">
+                        <div className="card-more mt-12 mt-sm-16" key={i}>
                           <div className="row">
                             <div className="col-4">
                               <div className="img-portrait">

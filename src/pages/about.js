@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Ourteams from "@/components/layout/Ourteams";
@@ -8,7 +9,7 @@ import Testimonials from "@/components/layout/Testimonials";
 
 import { useGetWhychooseusQuery } from "../../frontend/services/api";
 
-const about = () => {
+const About = () => {
   const { data: whychooseus } = useGetWhychooseusQuery();
   return (
     <>
@@ -24,7 +25,7 @@ const about = () => {
           <div className="about-banner-content">
             <h1 className="text-white">About Us</h1>
             <Breadcrumb>
-              <li class="breadcrumb-item">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
 
@@ -122,7 +123,7 @@ const about = () => {
               <div className="row gap-16-row mt-16">
                 {whychooseus?.data.map((data, i) => {
                   return (
-                    <div className="col-lg-6 col-sm12">
+                    <div className="col-lg-6 col-sm-12" key={i}>
                       <div className="align-center gap-8">
                         <Image
                           src={data.image}
@@ -194,4 +195,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

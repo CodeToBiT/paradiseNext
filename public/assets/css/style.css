@@ -32070,9 +32070,11 @@ p, .booking .order-details label {
   font-family: "Poppins", sans-serif;
 }
 
-.slide-down, .dropdown-menu {
-  -webkit-animation: slide-bottom 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-bottom 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+@media (min-width: 992px) {
+  .slide-down, .dropdown-menu {
+    -webkit-animation: slide-bottom 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-bottom 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
 }
 
 @-webkit-keyframes slide-bottom {
@@ -32852,9 +32854,20 @@ x-small,
   }
 }
 
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: #fff;
+    border-radius: 8px;
+  }
+}
 .navbar-nav {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 24px;
+}
+@media (max-width: 992px) {
+  .navbar-nav {
+    background: #fff;
+  }
 }
 .navbar-nav .nav-item {
   font-size: 1rem;
@@ -33038,6 +33051,9 @@ x-small,
   position: relative;
   width: 100%;
   padding: 370px 0 280px 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
 }
 @media (max-width: 767px) {
   .landing {
@@ -33054,20 +33070,6 @@ x-small,
 }
 .landing-description {
   max-width: 800px;
-}
-.landing:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/image/banner.jpg");
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: cover;
 }
 .landing .gradient-overlay {
   position: absolute;
@@ -36498,7 +36500,6 @@ textarea:disabled {
 
 .navbar .dropdown-menu {
   top: 35px;
-  padding: 5px;
 }
 .navbar .dropdown-item {
   font-size: 1rem;
@@ -36510,7 +36511,7 @@ textarea:disabled {
 .navbar .dropdown-menu .dropdown-submenu {
   display: none;
   position: absolute;
-  left: 102%;
+  left: 100%;
   top: -25px;
   transition: 0.5s;
 }

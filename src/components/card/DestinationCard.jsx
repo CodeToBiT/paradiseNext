@@ -16,9 +16,12 @@ const DestinationCard = (props) => {
           />
           <div className="content text-white">
             <h5>{props.name}</h5>
-            <p>24 Activities</p>
+            {props.activities ? <p>{props.activities} Activities</p> : <></>}
           </div>
-          <Link href={`/destinations/${props.slug}`} className="stretched-link"></Link>
+          <Link
+            href={`/destinations/${props.slug}`}
+            className="stretched-link"
+          ></Link>
         </div>
       </div>
     </>
