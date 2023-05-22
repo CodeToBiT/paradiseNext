@@ -33765,6 +33765,9 @@ x-small,
   background-color: #005294;
 }
 
+.booking input {
+  font-size: 1rem;
+}
 .booking .form-check-input:focus {
   box-shadow: none;
 }
@@ -34236,13 +34239,16 @@ x-small,
   position: absolute;
   right: 20px;
   bottom: 20px;
-  z-index: 99;
+  z-index: 1;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 .card-combo .next svg {
   font-size: 1rem;
+}
+.card-combo a {
+  z-index: 5;
 }
 .card-combo-content {
   z-index: 999;

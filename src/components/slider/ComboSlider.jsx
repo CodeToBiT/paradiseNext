@@ -11,6 +11,7 @@ import { useGetPackagesQuery } from "../../../frontend/services/api";
 
 const ComboSlider = () => {
   const { data: packages } = useGetPackagesQuery();
+
   return (
     <>
       <div className="combo-slider mt-24 mt-sm-32">

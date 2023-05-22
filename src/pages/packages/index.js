@@ -178,7 +178,7 @@ const Packages = () => {
                         <PackageCard
                           image={data.image}
                           name={data.name}
-                          price={data.price}
+                          price={data.adult_price}
                           description={data.short_description}
                           slug={data.slug}
                           type="combo"
@@ -191,7 +191,7 @@ const Packages = () => {
                         <PackageCard
                           image={data.image}
                           name={data.name}
-                          price={data.price}
+                          price={data.adult_price}
                           description={data.short_description}
                           slug={data.slug}
                         />

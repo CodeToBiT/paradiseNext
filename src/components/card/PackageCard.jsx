@@ -17,15 +17,15 @@ const Package = (props) => {
             />
             <div className="card-packages-content">
               <div className="flex-between gap-4">
-                <h6 className="card-packages-title">{props.name}</h6>
-                <h6 className="text-secondary price">Rs. {props.price}</h6>
+                <p className="card-packages-title">{props.name}</p>
+                <p className="text-secondary price fw-medium">Rs. {props.price}</p>
               </div>
-              <div className="small mt-12 clamp-3 ">{props.description}</div>
+              <div className="small mt-12 clamp-3 text-cGray600">{props.description}</div>
             </div>
           </div>
 
           {props.type ? (
-            <div className="combo px-8 py-8 fw-bold">Combo Offer</div>
+            <div className="combo px-8 py-8 fw-medium x-small">Combo Offer</div>
           ) : (
             <></>
           )}

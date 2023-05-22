@@ -27,7 +27,7 @@ const ComboCard = (props) => {
           </div>
         </div>
         <div className="gradient-overlay rounded-8"></div>
-        <Link href={`/packages/${props.slug}`} className="stretched-link"></Link>
+        <Link href={`/packages/${props.slug}`} className="stretched-link z-5"></Link>
       </div>
     </>
   );

@@ -229,16 +229,72 @@ const NavigationBar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     {destination?.data.slice(0, 5).map((data, i) => {
-                      return (
-                        <li key={i}>
-                          {data.children.length >= 1 ? (
+                      if (data.children.length >= 1) {
+                        return (
+                          <li key={i}>
                             <Link
                               className="dropdown-item"
                               href={`/destinations/${data.slug}`}
                             >
                               {data.name}
                             </Link>
-                          ) : (
+
+                            <ul
+                              className="dropdown-menu dropdown-submenu"
+                              key={i}
+                            >
+                              {data.children?.map((sub, i) => {
+                                if (
+                                  sub.children.length >= 1 &&
+                                  sub.slug != "nepal-day-tours"
+                                ) {
+                                  return (
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        href={`/destinations/${sub.slug}`}
+                                      >
+                                        {sub.name}
+                                      </Link>
+
+                                      {sub.children?.map((msub, i) => {
+                                        return (
+                                          <ul
+                                            className="dropdown-menu dropdown-submenu"
+                                            key={i}
+                                          >
+                                            <li>
+                                              <Link
+                                                className="dropdown-item"
+                                                href={`/destinations/${msub.slug}`}
+                                              >
+                                                {msub.name}
+                                              </Link>
+                                            </li>
+                                          </ul>
+                                        );
+                                      })}
+                                    </li>
+                                  );
+                                } else if (sub.slug != "nepal-day-tours") {
+                                  return (
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        href={`/destinations/${sub.slug}`}
+                                      >
+                                        {sub.name}
+                                      </Link>
+                                    </li>
+                                  );
+                                }
+                              })}
+                            </ul>
+                          </li>
+                        );
+                      } else {
+                        return (
+                          <li key={i}>
                             <Link
                               className="dropdown-item"
                               href={`/destinations/${data.slug}`}
@@ -246,38 +302,9 @@ const NavigationBar = () => {
                             >
                               {data.name}
                             </Link>
-                          )}
-
-                          {data.children?.map((sub, i) => {
-                            return (
-                              <ul className="dropdown-menu dropdown-submenu">
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    href={`/destinations/${sub.slug}`}
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                  {sub.children?.map((msub, i) => {
-                                    return (
-                                      <ul className="dropdown-menu dropdown-submenu">
-                                        <li>
-                                          <Link
-                                            className="dropdown-item"
-                                            href={`/destinations/${msub.slug}`}
-                                          >
-                                            {msub.name}
-                                          </Link>
-                                        </li>
-                                      </ul>
-                                    );
-                                  })}
-                                </li>
-                              </ul>
-                            );
-                          })}
-                        </li>
-                      );
+                          </li>
+                        );
+                      }
                     })}
                     <li>
                       <Link className="dropdown-item" href="/destinations">
@@ -286,7 +313,7 @@ const NavigationBar = () => {
                     </li>
                   </ul>
                 </li>
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -322,6 +349,17 @@ const NavigationBar = () => {
                       </Link>
                     </li>
                   </ul>
+                </li> */}
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    href="/"
+                    passHref
+                    onClick={handleLinkClick}
+                  >
+                    Day Tours
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
                   <Link

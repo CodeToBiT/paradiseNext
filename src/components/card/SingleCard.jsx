@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BsFillClockFill } from "react-icons/bs";
 import { MdGroup, MdLocationPin } from "react-icons/md";
 
@@ -51,12 +52,12 @@ const SingleCard = (props) => {
                   <span className="p"> / person</span>
                 </h5>
               </div>
-              <a
+              <Link
                 href={`/packages/${props.slug}`}
-                className="btn btn-sm btn-outline-white rounded-12 mt-12"
+                className="btn btn-sm btn-outline-white rounded-12 mt-12 stretched-link"
               >
                 Book Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>

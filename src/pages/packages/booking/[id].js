@@ -13,7 +13,6 @@ import {
   useGetPackageDetailsQuery,
   useCreateBookingsMutation,
 } from "../../../../frontend/services/api";
-import { retry } from "@reduxjs/toolkit/dist/query";
 
 const Booking = () => {
   const router = useRouter();
@@ -22,15 +21,18 @@ const Booking = () => {
   const [createBooking, { isError, isLoading, isSuccess }] =
     useCreateBookingsMutation();
 
+  const currentDate = new Date();
+  const formattedDate = currentDate.toDateString();
+
   const [bookingData, setBookingData] = useState({
     trip_date: "",
     first_name: "",
     last_name: "",
     email: "",
-
     phone: "",
     comments: "",
     total_price: 0,
+    services: "",
   });
 
   const { first_name, last_name, email, phone, comments } = bookingData;
@@ -62,6 +64,21 @@ const Booking = () => {
   const [childCount, setChildCount] = useState(0);
   const [basePrice, setBasePrice] = useState(adultValue);
   const [basePrice2, setBasePrice2] = useState(childValue);
+  const [selectedServices, setSelectedServices] = useState([]);
+
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showValidationError, setShowValidationError] = useState(false);
+
+  const handleChange = (e) => {
+    if (e.target.name === "acceptedTerms") {
+      setAcceptedTerms(e.target.checked);
+    } else {
+      setFormData({
+        ...setBookingData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   const [country, setCountry] = useState("");
 
@@ -103,7 +120,33 @@ const Booking = () => {
     setTripDate(event.target.value);
   };
 
-  const totalValue = basePrice * adultCount + basePrice2 * childCount;
+  const handleServiceCheckboxChange = (serviceId) => {
+    if (selectedServices.includes(serviceId)) {
+      setSelectedServices((prevSelectedServices) =>
+        prevSelectedServices.filter((id) => id !== serviceId)
+      );
+    } else {
+      setSelectedServices((prevSelectedServices) => [
+        ...prevSelectedServices,
+        serviceId,
+      ]);
+    }
+  };
+
+  const calculateTotalValue = () => {
+    let total = basePrice * adultCount + basePrice2 * childCount;
+    selectedServices.forEach((serviceId) => {
+      const selectedService = packages?.data.services.find(
+        (service) => service.id === serviceId
+      );
+      if (selectedService) {
+        total = Number(total) + Number(selectedService.price);
+      }
+    });
+    return total;
+  };
+
+  const totalValue = calculateTotalValue();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,14 +162,71 @@ const Booking = () => {
       phone,
       comments,
       total_price: totalValue,
+      services: selectedServices.map((serviceId) => {
+        const selectedService = packages?.data.services.find(
+          (service) => service.id === serviceId
+        );
+        return selectedService ? selectedService.service : "";
+      }),
     };
-    createBooking(data);
+
     // console.log(data);
+    // createBooking(data);
+    if (validateForm()) {
+      // console.log(data);
+      createBooking(data);
+    } else {
+      setShowValidationError(true);
+    }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+
+    if (bookingData.first_name.trim() === "") {
+      isValid = false;
+      toast("Enter Your First Name");
+    }
+
+    if (bookingData.last_name.trim() === "") {
+      isValid = false;
+
+      toast("Enter Your Last Name");
+    }
+    if (bookingData.phone.trim() === "") {
+      isValid = false;
+
+      toast("Enter Your Phone Number");
+    }
+
+    if (!validateEmail(bookingData.email)) {
+      isValid = false;
+      toast("Enter a valid email");
+    }
+
+    const currentDate = new Date();
+    const selectedDate = new Date(tripDate);
+    if (selectedDate <= currentDate) {
+      isValid = false;
+      toast("Enter a valid date");
+    }
+
+    if (!acceptedTerms) {
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const onChange = (e) => {
     setBookingData({ ...bookingData, [e.target.name]: e.target.value });
   };
+
   return (
     <>
       <Toaster
@@ -338,7 +438,9 @@ const Booking = () => {
                         onChange={handleCountry}
                         className="form-select"
                       >
-                        <option selected>---- Select Your Country ----</option>
+                        <option value="country">
+                          ---- Select Your Country ----
+                        </option>
                         <option value="Afghanistan">Afghanistan</option>
                         <option value="Aland Islands">Aland Islands</option>
                         <option value="Albania">Albania</option>
@@ -723,6 +825,8 @@ const Booking = () => {
                   <p className="small text-cGray600">
                     <span className="fw-medium">
                       Trip Start: {formatDate(tripDate)}
+                      {console.log(formattedDate)}
+                      {console.log(tripDate)}
                     </span>
                   </p>
                   <p className="small text-cGray600">
@@ -736,11 +840,15 @@ const Booking = () => {
                   <p className="fw-bolder">Extra prices:</p>
                   {packages?.data.services.map((data, i) => {
                     return (
-                      <div className="extra-item">
+                      <div className="extra-item" key={i}>
                         <div className="form-check flex-between">
                           <div className="d-flex gap-12">
                             <input
                               type="checkbox"
+                              checked={selectedServices.includes(data.id)}
+                              onChange={() =>
+                                handleServiceCheckboxChange(data.id)
+                              }
                               className="form-check-input"
                             />
                             <label className="form-check-label">
@@ -759,13 +867,30 @@ const Booking = () => {
                   <h5 className="text-primary p">Rs. {totalValue}</h5>
                 </div>
                 <div className="form-check mt-12">
-                  <input type="checkbox" className="form-check-input" />
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    name="acceptedTerms"
+                    checked={acceptedTerms}
+                    onChange={handleChange}
+                    required
+                  />
                   <label className="form-check-label">
                     I accept the &nbsp;
-                    <Link href="#" className="text-primary" target="_blank">
+                    <Link
+                      href="/terms"
+                      className="text-primary"
+                      target="_blank"
+                    >
                       terms and conditions*
                     </Link>
                   </label>
+                  {showValidationError && !acceptedTerms && (
+                    <small style={{ color: "red" }}>
+                      Please accept the terms and conditions
+                    </small>
+                  )}
+                  <br />
                 </div>
                 <button
                   className="btn btn-primary fw-medium rounded-24 mt-12"

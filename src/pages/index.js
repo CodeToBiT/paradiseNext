@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import Banner from "@/components/banner/Banner";
 import Destination from "@/components/layout/Destination";
 import Form from "react-bootstrap/Form";
@@ -14,11 +15,18 @@ import Testimonials from "@/components/layout/Testimonials";
 import Blog from "@/components/layout/Blog";
 import Partner from "@/components/layout/Partner";
 import Combo from "@/components/layout/Combo";
+import { useState } from "react";
 
 import { useGetDestinationsQuery } from "../../frontend/services/api";
 
 export default function Home() {
   const { data: destinations } = useGetDestinationsQuery();
+
+  const [selectedSlug, setSelectedSlug] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedSlug(event.target.value);
+  };
   return (
     <>
       <Banner />
@@ -35,8 +43,8 @@ export default function Home() {
             <div className="px-32 py-12 flex-fill bg-white">
               <div className="align-center gap-8">
                 <GrLocation className="location" />
-                <Form.Select defaultValue="1">
-                  <option>Choose your Destination</option>
+                <Form.Select value={selectedSlug} onChange={handleSelectChange}>
+                  <option value="">Choose your Destination</option>
                   {destinations?.data.map((data, i) => {
                     return (
                       <option value={data.slug} key={i}>
@@ -45,7 +53,7 @@ export default function Home() {
                     );
                   })}
                 </Form.Select>
-                <Button className="btn btn-sm btn-secondary">Search Now</Button>
+                <Link href={`/destinations/${selectedSlug}`} className="btn btn-sm btn-secondary">Search Now</Link>
               </div>
               <div className="h6 mt-12 fw-bold text-cGray800">
                 Love where you&apos;re going now.

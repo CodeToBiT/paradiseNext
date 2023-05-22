@@ -276,13 +276,16 @@
       position: absolute;
       right: 20px;
       bottom: 20px;
-      z-index: 99;
+      z-index: 1;
       width: 40px;
       height: 40px;
       border-radius: 50%;
       svg {
         font-size: 1rem;
       }
+    }
+    a{
+      z-index: 5;
     }
     &-content {
       z-index: 999;
