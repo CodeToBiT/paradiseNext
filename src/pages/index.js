@@ -53,7 +53,12 @@ export default function Home() {
                     );
                   })}
                 </Form.Select>
-                <Link href={`/destinations/${selectedSlug}`} className="btn btn-sm btn-secondary">Search Now</Link>
+                <Link
+                  href={`/destinations/${selectedSlug}`}
+                  className="btn btn-sm btn-secondary"
+                >
+                  Search Now
+                </Link>
               </div>
               <div className="h6 mt-12 fw-bold text-cGray800">
                 Love where you&apos;re going now.

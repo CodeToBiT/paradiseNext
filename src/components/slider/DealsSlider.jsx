@@ -30,21 +30,7 @@ const DealsSlider = () => {
   };
   const { data: deal } = useGetPackagesQuery();
 
-  // const dayTourItems = deal?.data
-  //   .filter(
-  //     (item) =>
-
-  //       item.category &&
-  //       item.category.length > 0 &&
-  //       item.category.some((cat) => cat.name == "Daytour")
-  //   )
-
-  //   .map((item, i) => (
-
-  //     <SwiperSlide key={i}>
-  //       <DealCard />
-  //     </SwiperSlide>
-  //   ));
+ 
 
   return (
     <>

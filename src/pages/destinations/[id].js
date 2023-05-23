@@ -6,16 +6,33 @@ import SingleCard from "@/components/card/SingleCard";
 import Link from "next/link";
 import DestinationCard from "@/components/card/DestinationCard";
 
+import { Skeleton } from "antd";
+
 import {
   useGetDestinationDetailQuery,
   useGetTourTypeQuery,
 } from "../../../frontend/services/api";
 
+
+
 const SingleDestination = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: destination } = useGetDestinationDetailQuery(id);
-  const { data: tour } = useGetTourTypeQuery(id);
+  const { data: tour, isLoading } = useGetTourTypeQuery(id);
+
+  const transformText = (text) => {
+    if (text && text.includes('-')) {
+ 
+      return text.split('-')[0];
+    } else {
+      return text;
+    }
+  };
+  
+  const transformedText = transformText(id);
+
+  console.log(transformedText)
   return (
     <>
       <section className="single-banner">
@@ -45,35 +62,83 @@ const SingleDestination = () => {
         <div className="intro text-center">
           <div className="text-primary text-center small">UNCOVER PLACES</div>
           <h3>POPULAR PACKAGES</h3>
-          <div
-            className="p text-cGray600 mt-12"
-            dangerouslySetInnerHTML={{ __html: destination?.data.description }}
-          ></div>
+
+          {isLoading ? (
+            <Skeleton
+              active={true}
+              paragraph={{ rows: 0 }}
+              title={{ width: "100%" }}
+              size="large"
+              className="mt-12 mx-auto w-100"
+            />
+          ) : (
+            <div
+              className="p text-cGray600 mt-12"
+              dangerouslySetInnerHTML={{
+                __html: destination?.data.description,
+              }}
+            ></div>
+          )}
         </div>
         <div className="container">
           <div className="row gap-16-row mt-12 mt-sm-40">
-            {tour?.data.length >= 1 ? (
+            {isLoading ? (
               <>
-                {tour?.data.map((data, i) => {
-                  return (
-                    <div className="col-lg-4 col-sm-12">
-                      <SingleCard
-                        image={data.image}
-                        description={data.short_description}
-                        name={data.name}
-                        duration={data.duration}
-                        price={data.adult_price}
-                        slug={data.slug}
-                      />
-                    </div>
-                  );
-                })}
+                <div className="col-lg-4 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 150 }}
+                    paragraph={{ width: [300, 300, 200] }}
+                    className="mt-12"
+                  />
+                </div>
+                <div className="col-lg-4 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 150 }}
+                    paragraph={{ width: [300, 300, 200] }}
+                    className="mt-12"
+                  />
+                </div>
+                <div className="col-lg-4 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 150 }}
+                    paragraph={{ width: [300, 300, 200] }}
+                    className="mt-12"
+                  />
+                </div>
               </>
             ) : (
               <>
-                <div className="p">
-                  <i>No packages available yet</i>
-                </div>
+                {tour?.data.length >= 1 ? (
+                  <>
+                    {tour?.data.map((data, i) => {
+                      return (
+                        <div className="col-lg-4 col-sm-12">
+                          <SingleCard
+                            image={data.image}
+                            description={data.short_description}
+                            name={data.name}
+                            duration={data.duration}
+                            price={data.adult_price}
+                            slug={data.slug}
+                            destination={transformedText}
+                          />
+                        </div>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    <div className="p text-center">
+                      <i>No packages available yet</i>
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>

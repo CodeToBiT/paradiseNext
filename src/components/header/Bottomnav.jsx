@@ -3,6 +3,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import Head from "next/head";
+
 import {
   useGetSettingsQuery,
   useGetDestinationsQuery,
@@ -30,7 +32,7 @@ const NavigationBar = () => {
   };
 
   const handleLinkClick = () => {
-    console.log("clicked");
+
     setIsNavbarOpen(false);
   };
 
@@ -84,6 +86,12 @@ const NavigationBar = () => {
 
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" href={settings?.data.fav_icon} sizes="any" />
+      </Head>
+
+     
+
       <div
         className={windowChange ? "nav-bar navbar-sticky shadow-4" : "nav-bar"}
       >
@@ -354,7 +362,7 @@ const NavigationBar = () => {
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    href="/"
+                    href="/daytours"
                     passHref
                     onClick={handleLinkClick}
                   >
@@ -394,7 +402,10 @@ const NavigationBar = () => {
                   </ul>
                 </li>
               </ul>
-              <Link href="#" className="btn btn-primary btn-sm text-white">
+              <Link
+                href={`/destinations/nepal`}
+                className="btn btn-primary rounded-8 btn-sm text-white"
+              >
                 Tour Nepal
               </Link>
             </div>

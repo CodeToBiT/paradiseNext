@@ -170,10 +170,7 @@ const Booking = () => {
       }),
     };
 
-    // console.log(data);
-    // createBooking(data);
     if (validateForm()) {
-      // console.log(data);
       createBooking(data);
     } else {
       setShowValidationError(true);
@@ -793,7 +790,6 @@ const Booking = () => {
                         <option value="Zimbabwe">Zimbabwe</option>
                       </select>
                     </div>
-
                     <div className="col-lg-12 col-sm-12">
                       <label htmlFor="comments" className="small text-cGray700">
                         Requirements
@@ -808,8 +804,6 @@ const Booking = () => {
                         rows="4"
                       ></textarea>
                     </div>
-
-                    {/* <div className="col-lg-12 col-sm-12"></div> */}
                   </div>
                 </div>
               </form>
@@ -825,8 +819,6 @@ const Booking = () => {
                   <p className="small text-cGray600">
                     <span className="fw-medium">
                       Trip Start: {formatDate(tripDate)}
-                      {console.log(formattedDate)}
-                      {console.log(tripDate)}
                     </span>
                   </p>
                   <p className="small text-cGray600">
@@ -878,7 +870,7 @@ const Booking = () => {
                   <label className="form-check-label">
                     I accept the &nbsp;
                     <Link
-                      href="/terms"
+                      href={`/terms-and-conditions`}
                       className="text-primary"
                       target="_blank"
                     >

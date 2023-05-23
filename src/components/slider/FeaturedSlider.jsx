@@ -9,10 +9,10 @@ import { Autoplay, FreeMode, Pagination } from "swiper";
 
 import FeaturedCard from "../card/FeaturedCard";
 
-import { useGetPackagesQuery } from "../../../frontend/services/api";
+import { useGetCategoryPackageQuery } from "../../../frontend/services/api";
 
 const FeaturedSlider = () => {
-  const { data: packages } = useGetPackagesQuery();
+  const { data: packages } = useGetCategoryPackageQuery("featured");
   return (
     <>
       <div className="combo-slider mt-24 mt-sm-32">

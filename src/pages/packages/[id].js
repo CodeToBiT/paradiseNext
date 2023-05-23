@@ -15,14 +15,25 @@ import Link from "next/link";
 import NavigationBar from "@/components/header/Bottomnav";
 import { Providers } from "../../../frontend/services/providers";
 import Footer from "@/components/footer/Footer";
+
 import { useGetPackageDetailsQuery } from "../../../frontend/services/api";
 
 import Accordion from "react-bootstrap/Accordion";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { EffectCoverflow, Pagination } from "swiper";
 
 const SinglePackage = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: packages } = useGetPackageDetailsQuery(id);
+
+  
   return (
     <>
       <section className="single mt-16">
@@ -210,7 +221,7 @@ const SinglePackage = () => {
               <div className="cost-details mt-12 mt-sm-32">
                 <div className="align-baseline gap-8">
                   <SlCup className="h4 text-primary" />
-                  <h4 >Cost Details</h4>
+                  <h4>Cost Details</h4>
                 </div>
                 {packages?.data.inclusion ? (
                   <div className="includes ps-40 mt-12">
@@ -229,10 +240,9 @@ const SinglePackage = () => {
                     <h6 className="p">Cost Excludes</h6>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: packages?.data.exclusion
+                        __html: packages?.data.exclusion,
                       }}
                     ></div>
-                 
                   </div>
                 ) : (
                   <></>
@@ -273,7 +283,7 @@ const SinglePackage = () => {
                   <div className="price">
                     <div className="x-small">Start from </div>
                     <h6>
-                      Rs {packages?.data.price}
+                      {packages?.data.currency} {packages?.data.adult_price}
                       {/* <strike>Rs 150000</strike> */}
                     </h6>
                   </div>
@@ -284,19 +294,30 @@ const SinglePackage = () => {
                     <li>
                       <div className="flex-center-between">
                         <p className="small fw-medium">1px </p>
-                        <p className="small">Rs 100000</p>
+                        <p className="small">
+                          {" "}
+                          {packages?.data.currency} {packages?.data.adult_price}
+                        </p>
                       </div>
                     </li>
                     <li>
                       <div className="flex-center-between">
                         <p className="small fw-medium">2px </p>
-                        <p className=" small">Rs 100000</p>
+                        <p className=" small">
+                          {" "}
+                          {packages?.data.currency}{" "}
+                          {packages?.data.adult_price * 2}
+                        </p>
                       </div>
                     </li>
                     <li>
                       <div className="flex-center-between">
-                        <p className="small fw-medium">3px - 15px </p>
-                        <p className="small">Rs 100000</p>
+                        <p className="small fw-medium">3px </p>
+                        <p className="small">
+                          {" "}
+                          {packages?.data.currency}{" "}
+                          {packages?.data.adult_price * 3}
+                        </p>
                       </div>
                     </li>
                   </ul>
@@ -335,6 +356,56 @@ const SinglePackage = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="single-gallery w-100 mt-12 mt-sm-32">
+          <div className="text-center text-white pt-24">
+            <h3>Gallery</h3>
+          </div>
+
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            spaceBetween={30}
+            coverflowEffect={{
+              rotate: 20,
+              stretch: 0,
+              depth: 200,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 2,
+              },
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Pagination]}
+            className="mySwiper"
+          >
+            {packages?.data.galleries.map((data, i) => {
+              return (
+                <SwiperSlide>
+                  <div className="img-landscape">
+                    <Image
+                      src={data.image}
+                      width={0}
+                      height={0}
+                      sizes="100vh"
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
       </section>
     </>

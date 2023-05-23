@@ -15,7 +15,7 @@ const DestinationCard = (props) => {
             alt={props.name}
           />
           <div className="content text-white">
-            <h5>{props.name}</h5>
+            <h6>{props.name}</h6>
             {props.activities ? <p>{props.activities} Activities</p> : <></>}
           </div>
           <Link

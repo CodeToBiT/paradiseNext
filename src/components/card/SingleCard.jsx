@@ -37,9 +37,9 @@ const SingleCard = (props) => {
                   <MdGroup />
                   20
                 </div>
-                <div className="location info-item">
+                <div className="location info-item text-capitalize">
                   <MdLocationPin />
-                  Nepal
+                  {props.destination}
                 </div>
               </div>
             </div>

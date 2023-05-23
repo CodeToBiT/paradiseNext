@@ -26,6 +26,7 @@ export const globalApi = createApi({
     "Packages",
     "Booking",
     "TourType",
+    "Category",
   ],
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -195,6 +196,15 @@ export const globalApi = createApi({
       },
       providesTags: ["TourType"],
     }),
+    getCategoryPackage: builder.query({
+      query: (id) => {
+        return {
+          url: `categorywisepackage/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["Category"],
+    }),
   }),
 });
 
@@ -235,4 +245,5 @@ export const {
   useCreateBookingsMutation,
 
   useGetTourTypeQuery,
+  useGetCategoryPackageQuery,
 } = globalApi;

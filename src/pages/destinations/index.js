@@ -4,10 +4,15 @@ import Image from "next/image";
 import DestinationCard from "@/components/card/DestinationCard";
 import Link from "next/link";
 
+import { Skeleton } from "antd";
+
 import { useGetDestinationsQuery } from "../../../frontend/services/api";
 
+
+
+
 const Destinations = () => {
-  const { data: destination } = useGetDestinationsQuery();
+  const { data: destination, isLoading } = useGetDestinationsQuery();
   return (
     <>
       <section className="single-banner">
@@ -37,18 +42,64 @@ const Destinations = () => {
         </div>
         <div className="container">
           <div className="row gap-24-row mt-24 mt-sm-40">
-            {destination?.data.map((data, i) => {
-              return (
-                <div className="col-lg-3" key={i}>
-                  <DestinationCard
-                    name={data.name}
-                    image={data.image}
-                    slug={data.slug}
-                    activities={data.children.length}
+            
+            {isLoading ? (
+              <>
+                <div className="col-lg-3 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 100 }}
+                    paragraph={{ width: [250, 250, 150] }}
+                    className="mt-12"
                   />
                 </div>
-              );
-            })}
+                <div className="col-lg-3 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 100 }}
+                    paragraph={{ width: [250, 250, 150] }}
+                    className="mt-12"
+                  />
+                </div>
+                <div className="col-lg-3 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 100 }}
+                    paragraph={{ width: [250, 250, 150] }}
+                    className="mt-12"
+                  />
+                </div>
+                <div className="col-lg-3 col-sm-12">
+                  <Skeleton.Image active={true} />
+                  <Skeleton
+                    active={true}
+                    title={{ width: 100 }}
+                    paragraph={{ width: [250, 250, 150] }}
+                    className="mt-12"
+                  />
+                </div>
+              
+              </>
+            ) : (
+              <>
+                {destination?.data.map((data, i) => {
+                  return (
+                    <div className="col-lg-3" key={i}>
+                      <DestinationCard
+                        name={data.name}
+                        image={data.image}
+                        slug={data.slug}
+                        activities={data.children.length}
+                        
+                      />
+                    </div>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </section>

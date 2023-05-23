@@ -8,6 +8,10 @@ import { useEffect } from "react";
 import Footer from "@/components/footer/Footer";
 import { Providers } from "../../frontend/services/providers";
 
+import Head from "next/head";
+
+
+
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     typeof document !== undefined
@@ -20,6 +24,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Providers>
+
         <header className="main-header">
           <Topnav />
           <NavigationBar />
