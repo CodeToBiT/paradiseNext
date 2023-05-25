@@ -24,7 +24,7 @@ const Notfound = () => {
               </div>
 
               <div className="flex-center-center flex-column">
-                <h2>Not Found</h2>
+                <h1 className="h2">Not Found</h1>
                 <p className="text-cGray600">
                   The page you requested is cannot be found or does not exist
                 </p>

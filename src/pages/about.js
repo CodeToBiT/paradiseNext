@@ -61,7 +61,7 @@ const About = () => {
           <div className="row gap-16-row borders align-center ps-24 py-24 pe-12 px-sm-56 py-sm-40">
             <div className="col-lg-6">
               <div className="about-info-content">
-                <h1 className="h3 text-primary">About Us</h1>
+                <h2 className="h3 text-primary">About Us</h2>
                 <p className="text-primary">The best travel agencey for you</p>
                 <div
                   className="p fw-regular text-cGray600 mt-12"
