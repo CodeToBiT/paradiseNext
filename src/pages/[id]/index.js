@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 import { useGetPageDetailsQuery } from "../../../frontend/services/api";
 
@@ -46,6 +47,9 @@ const Single = () => {
         </>
       ) : (
         <>
+          <Head>
+            <title>{single?.data.title} | Paradise Destination</title>
+          </Head>
           <section className="single-banner">
             <div className="img-wide">
               <Image

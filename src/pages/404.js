@@ -1,12 +1,14 @@
 import React from "react";
-import { useRouter } from "next/router";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 const Notfound = () => {
   return (
     <>
+    <Head>
+        <title>404 Error | Paradise Destination</title>
+      </Head>
       <div className="single-notfound flex-column mt-32 mt-sm-80">
         <div className="container">
           <div className="row flex-center-center">

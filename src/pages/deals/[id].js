@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
@@ -61,6 +62,9 @@ const Offers = () => {
         </>
       ) : (
         <>
+          <Head>
+            <title>Our Deals | Paradise Destination</title>
+          </Head>
           <section className="single-banner">
             <div className="img-wide">
               <Image

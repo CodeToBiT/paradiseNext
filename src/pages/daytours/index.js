@@ -3,6 +3,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import SingleCard from "@/components/card/SingleCard";
 import Link from "next/link";
+import Head from "next/head";
 
 import {
   useGetDestinationDetailQuery,
@@ -14,6 +15,9 @@ const Daytours = () => {
   const { data: destination } = useGetDestinationDetailQuery("nepal-day-tours");
   return (
     <>
+    <Head>
+        <title>Day Tours | Paradise Destination</title>
+      </Head> 
       <section className="single-banner">
         <div className="img-wide">
           <Image
