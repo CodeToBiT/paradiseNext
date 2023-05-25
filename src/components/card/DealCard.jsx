@@ -18,9 +18,11 @@ const DealCard = (props) => {
           <div className="flex-center mt-24">
             <Link
               href={`/packages/${props.slug}`}
-              className="btn btn-secondary text-white rounded-0 btn-sm stretched-link"
+              className="btn btn-secondary text-white rounded-0 btn-bubble            btn-sm stretched-link"
             >
+              <span>
               View More Details
+              </span>
             </Link>
           </div>
         </div>

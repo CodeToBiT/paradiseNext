@@ -898,7 +898,7 @@
     &-content {
       color: white !important;
       position: absolute;
-      bottom: 20%;
+      bottom: 10%;
       left: 10%;
     }
   }
@@ -962,18 +962,18 @@
         left: 10px;
       }
     }
-    .more-sidebar {
-      background: #f7f8fa;
-      border-radius: 20px;
-      padding: 30px 20px;
-      margin-bottom: 30px;
-      position: sticky;
-      top: 96px;
-      h5 {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #dedede;
-      }
-    }
+  }
+}
+.more-sidebar {
+  background: #f7f8fa;
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 96px;
+  h5 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dedede;
   }
 }
 

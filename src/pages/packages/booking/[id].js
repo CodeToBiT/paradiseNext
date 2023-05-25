@@ -5,6 +5,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Providers } from "../../../../frontend/services/providers";
 import Link from "next/link";
 import { toast, Toaster } from "react-hot-toast";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 
@@ -31,7 +32,7 @@ const Booking = () => {
     email: "",
     phone: "",
     comments: "",
-    total_price: 0,
+    total_price: "",
     services: "",
   });
 
@@ -55,12 +56,12 @@ const Booking = () => {
     setPackageId(packages?.data.id);
   }, [packages?.data.id]);
 
-  const [tripDate, setTripDate] = useState(null);
+  const [tripDate, setTripDate] = useState(currentDate);
 
   const adultValue = 100000;
   const childValue = 50000;
 
-  const [adultCount, setAdultCount] = useState(1);
+  const [adultCount, setAdultCount] = useState(2);
   const [childCount, setChildCount] = useState(0);
   const [basePrice, setBasePrice] = useState(adultValue);
   const [basePrice2, setBasePrice2] = useState(childValue);
@@ -68,6 +69,21 @@ const Booking = () => {
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showValidationError, setShowValidationError] = useState(false);
+
+  const [isFname, setIsFname] = useState(true);
+  const [isLname, setIsLname] = useState(true);
+  const [isEmail, setIsEmail] = useState(true);
+  const [isPhone, setIsPhone] = useState(true);
+  const [isDate, setIsDate] = useState(true);
+  const [isCountry, setIsCountry] = useState(true);
+
+  const [currency, setCurrency] = useState("");
+
+  useEffect(() => {
+    if (packages) {
+      setCurrency(packages?.data.currency);
+    }
+  }, [packages]);
 
   const handleChange = (e) => {
     if (e.target.name === "acceptedTerms") {
@@ -88,7 +104,7 @@ const Booking = () => {
 
   const handleMinusClick = (event) => {
     event.preventDefault();
-    const newValue = Math.max(adultCount - 1, 1);
+    const newValue = Math.max(adultCount - 1, 2);
     setAdultCount(newValue);
   };
 
@@ -132,6 +148,7 @@ const Booking = () => {
       ]);
     }
   };
+  const totalCount = childCount + adultCount;
 
   const calculateTotalValue = () => {
     let total = basePrice * adultCount + basePrice2 * childCount;
@@ -140,13 +157,16 @@ const Booking = () => {
         (service) => service.id === serviceId
       );
       if (selectedService) {
-        total = Number(total) + Number(selectedService.price);
+        total =
+          Number(total) + Number(selectedService.price) * Number(totalCount);
       }
     });
     return total;
   };
 
   const totalValue = calculateTotalValue();
+
+  const finalTotal = currency + " " + totalValue;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -161,7 +181,7 @@ const Booking = () => {
       country,
       phone,
       comments,
-      total_price: totalValue,
+      total_price: finalTotal,
       services: selectedServices.map((serviceId) => {
         const selectedService = packages?.data.services.find(
           (service) => service.id === serviceId
@@ -182,35 +202,43 @@ const Booking = () => {
 
     if (bookingData.first_name.trim() === "") {
       isValid = false;
-      toast("Enter Your First Name");
-    }
+
+      setIsFname(false);
+    } else setIsFname(true);
 
     if (bookingData.last_name.trim() === "") {
       isValid = false;
 
-      toast("Enter Your Last Name");
-    }
+      setIsLname(false);
+    } else setIsLname(true);
     if (bookingData.phone.trim() === "") {
       isValid = false;
 
-      toast("Enter Your Phone Number");
-    }
+      setIsPhone(false);
+    } else setIsPhone(true);
 
     if (!validateEmail(bookingData.email)) {
       isValid = false;
-      toast("Enter a valid email");
-    }
+
+      setIsEmail(false);
+    } else setIsEmail(true);
 
     const currentDate = new Date();
     const selectedDate = new Date(tripDate);
     if (selectedDate <= currentDate) {
       isValid = false;
-      toast("Enter a valid date");
-    }
+
+      setIsDate(false);
+    } else setIsDate(true);
 
     if (!acceptedTerms) {
       isValid = false;
     }
+
+    if (country == "country") {
+      isValid = false;
+      setIsCountry(false);
+    } else setIsCountry(true);
 
     return isValid;
   };
@@ -236,6 +264,12 @@ const Booking = () => {
           },
         }}
       />
+
+      <Head>
+        <title>{packages?.data?.seo_title}</title>
+        <meta name="description" content={packages?.data?.meta_description} />
+        <meta name="keywords" content={packages?.data?.meta_keywords} />
+      </Head>
       <div className="bg-primary pt-16 pb-4">
         <div className="container">
           <Breadcrumb>
@@ -245,10 +279,12 @@ const Booking = () => {
             <li className="breadcrumb-item">
               <Link href="/destinations">Destinations</Link>
             </li>
-            <Breadcrumb.Item href="#">Nepal</Breadcrumb.Item>
-            <Breadcrumb.Item href="#">Tour</Breadcrumb.Item>
+            <Breadcrumb.Item href="/packages">Packages</Breadcrumb.Item>
+            <Breadcrumb.Item href={`/packages/${id}`}>
+              {packages?.data.name}
+            </Breadcrumb.Item>
 
-            <Breadcrumb.Item active>About</Breadcrumb.Item>
+            <Breadcrumb.Item active>Booking</Breadcrumb.Item>
           </Breadcrumb>
         </div>
       </div>
@@ -279,6 +315,14 @@ const Booking = () => {
                         className="border border-1 border-gray300 "
                         onChange={handleDateChange}
                       />
+
+                      {showValidationError && isDate == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a valid Date
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
 
                     <div className="col-lg-9">
@@ -288,7 +332,8 @@ const Booking = () => {
                             htmlFor="travellers"
                             className="x-small text-cGray700"
                           >
-                            No. of Adults ( Rs. {adultValue} / person )
+                            No. of Adults ( {packages?.data.currency}{" "}
+                            {adultValue} / person )
                             <span className="text-accent">*</span>
                           </label>
 
@@ -322,7 +367,8 @@ const Booking = () => {
                             htmlFor="travellers"
                             className="x-small text-cGray700"
                           >
-                            No. of Children ( Rs. {childValue} / person )
+                            No. of Children ( {packages?.data.currency}{" "}
+                            {childValue} / person )
                           </label>
 
                           <div className="people d-flex align-stretch overflow-hidden border border-1 border-gray300 rounded-4">
@@ -375,6 +421,13 @@ const Booking = () => {
                         placeholder="Your First Name"
                         required
                       />
+                      {showValidationError && isFname == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a your First Name
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <div className="col-lg-6 col-sm-12">
                       <label
@@ -392,6 +445,13 @@ const Booking = () => {
                         onChange={onChange}
                         placeholder="Last Name"
                       />
+                      {showValidationError && isLname == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a your Last Name
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <div className="col-lg-12 col-sm-12">
                       <label htmlFor="email" className="small text-cGray700">
@@ -406,6 +466,13 @@ const Booking = () => {
                         onChange={onChange}
                         placeholder="Email Address"
                       />
+                      {showValidationError && isEmail == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a Valid Email
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <div className="col-lg-6 col-sm-12">
                       <label htmlFor="phone" className="small text-cGray700">
@@ -421,6 +488,13 @@ const Booking = () => {
                         name="phone"
                         onChange={onChange}
                       />
+                      {showValidationError && isPhone == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a your Phone Number
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
 
                     <div className="col-lg-6 col-sm-12">
@@ -789,6 +863,14 @@ const Booking = () => {
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                       </select>
+
+                      {showValidationError && isCountry == false ? (
+                        <small style={{ color: "red" }}>
+                          Please Enter a your Country
+                        </small>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <div className="col-lg-12 col-sm-12">
                       <label htmlFor="comments" className="small text-cGray700">
@@ -812,9 +894,12 @@ const Booking = () => {
               <div className="order-details px-16 shadow-4 py-24">
                 <h5>Review Order Details</h5>
                 <div className="bg-blue50 rounded-8 px-16 py-24">
-                  <h5 className="fw-bolder p text-primary">9 Days Adventure</h5>
+                  <h5 className="fw-bolder p text-primary">
+                    {packages?.data.name}
+                  </h5>
                   <p className="small text-cGray600">
-                    <span className="fw-medium">Duration: </span> 9 Days
+                    <span className="fw-medium">Duration: </span>{" "}
+                    {packages?.data.duration}
                   </p>
                   <p className="small text-cGray600">
                     <span className="fw-medium">
@@ -847,7 +932,13 @@ const Booking = () => {
                               {data.service}
                             </label>
                           </div>
-                          <p>Rs. {data.price}</p>
+                          <p>
+                            {/* <span className="x-small">
+                              ({totalCount} * {data.price} )
+                            </span> */}
+                            {packages?.data.currency} &nbsp;
+                            {totalCount * data.price}
+                          </p>
                         </div>
                       </div>
                     );
@@ -856,7 +947,9 @@ const Booking = () => {
 
                 <div className="total mt-12 flex-center-between">
                   <h5 className="text-cGray600 p">Total Price:</h5>
-                  <h5 className="text-primary p">Rs. {totalValue}</h5>
+                  <h5 className="text-primary p">
+                    {packages?.data.currency} {totalValue}
+                  </h5>
                 </div>
                 <div className="form-check mt-12">
                   <input
@@ -885,10 +978,10 @@ const Booking = () => {
                   <br />
                 </div>
                 <button
-                  className="btn btn-primary fw-medium rounded-24 mt-12"
+                  className="btn btn-primary fw-medium rounded-24 mt-12 btn-slide"
                   onClick={handleSubmit}
                 >
-                  Book Now
+                  <span>Book Now</span>
                 </button>
               </div>
             </div>

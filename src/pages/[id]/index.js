@@ -25,6 +25,7 @@ const Single = () => {
                       width={0}
                       height={0}
                       sizes="100vh"
+                      alt="Paradise Destination"
                     />
                   </div>
 
@@ -48,7 +49,7 @@ const Single = () => {
           <section className="single-banner">
             <div className="img-wide">
               <Image
-                src="/assets/image/about.webp"
+                src={single?.data.image}
                 width={0}
                 height={0}
                 sizes="100vw"

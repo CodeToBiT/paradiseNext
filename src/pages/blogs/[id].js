@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import {
   useGetBlogDetailsQuery,
   useGetBlogsQuery,
+  useGetSettingsQuery,
 } from "../../../frontend/services/api";
 
 const BlogDetail = () => {
@@ -14,6 +16,7 @@ const BlogDetail = () => {
   const { id } = router.query;
   const { data: blog } = useGetBlogDetailsQuery(id);
   const { data: blogs } = useGetBlogsQuery();
+  const {data: settings} = useGetSettingsQuery();
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -23,10 +26,22 @@ const BlogDetail = () => {
 
   return (
     <>
+
+    <Head>
+    <title>{blog?.data?.seo_title}</title>
+          <meta
+            name="description"
+            content={blog?.data?.meta_description}
+          />
+          <meta
+            name="keywords"
+            content={blog?.data?.meta_keywords}
+          />
+    </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={settings?.data.destination_page_image}
             width={0}
             height={0}
             sizes="100vw"
@@ -80,7 +95,10 @@ const BlogDetail = () => {
                   {blogs?.data.map((data, i) => {
                     if (data.id != blog?.data.id) {
                       return (
-                        <div className="card-more mt-12 mt-sm-16" key={i}>
+                        <div
+                          className="card-more mt-12 mt-sm-16 position-relative"
+                          key={i}
+                        >
                           <div className="row">
                             <div className="col-4">
                               <div className="img-portrait">
@@ -100,6 +118,7 @@ const BlogDetail = () => {
                               </p>
                             </div>
                           </div>
+                          <Link href={`/blogs/${data.slug}`} className="stretched-link"></Link>
                         </div>
                       );
                     }

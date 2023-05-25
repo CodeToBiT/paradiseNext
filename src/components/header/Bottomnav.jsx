@@ -32,7 +32,6 @@ const NavigationBar = () => {
   };
 
   const handleLinkClick = () => {
-
     setIsNavbarOpen(false);
   };
 
@@ -89,8 +88,6 @@ const NavigationBar = () => {
       <Head>
         <link rel="shortcut icon" href={settings?.data.fav_icon} sizes="any" />
       </Head>
-
-     
 
       <div
         className={windowChange ? "nav-bar navbar-sticky shadow-4" : "nav-bar"}
@@ -153,7 +150,7 @@ const NavigationBar = () => {
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
-                    href="#"
+                    href="/about"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -186,7 +183,7 @@ const NavigationBar = () => {
                     <li>
                       <Link
                         className="dropdown-item"
-                        href="#"
+                        href="/teams"
                         onClick={handleLinkClick}
                       >
                         Our Team
@@ -224,7 +221,7 @@ const NavigationBar = () => {
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
-                    href="#"
+                    href="/destinations"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -243,6 +240,7 @@ const NavigationBar = () => {
                             <Link
                               className="dropdown-item"
                               href={`/destinations/${data.slug}`}
+                              onClick={handleLinkClick}
                             >
                               {data.name}
                             </Link>
@@ -257,10 +255,11 @@ const NavigationBar = () => {
                                   sub.slug != "nepal-day-tours"
                                 ) {
                                   return (
-                                    <li>
+                                    <li key={i}>
                                       <Link
                                         className="dropdown-item"
                                         href={`/destinations/${sub.slug}`}
+                                        onClick={handleLinkClick}
                                       >
                                         {sub.name}
                                       </Link>
@@ -286,7 +285,7 @@ const NavigationBar = () => {
                                   );
                                 } else if (sub.slug != "nepal-day-tours") {
                                   return (
-                                    <li>
+                                    <li key={i}>
                                       <Link
                                         className="dropdown-item"
                                         href={`/destinations/${sub.slug}`}
@@ -385,28 +384,67 @@ const NavigationBar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <Link className="dropdown-item" href="#">
-                        Action
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        News and Updates
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
-                        Another action
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        Nepal at Glance
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" href="#">
-                        Something else here
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        Best time to visit Nepal
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        People and Language
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        Festivals and Holidays
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLinkClick}
+                      >
+                        Equipment Checklist
                       </Link>
                     </li>
                   </ul>
                 </li>
               </ul>
               <Link
-                href={`/destinations/nepal`}
-                className="btn btn-primary rounded-8 btn-sm text-white"
+                href={`/deals/special-offer`}
+                className="btn btn-primary btn-bubble rounded-8 btn-sm text-white"
               >
-                Tour Nepal
+                Hot Deals
               </Link>
             </div>
           </div>

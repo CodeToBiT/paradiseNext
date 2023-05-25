@@ -12,8 +12,7 @@ import {
   useGetDestinationDetailQuery,
   useGetTourTypeQuery,
 } from "../../../frontend/services/api";
-
-
+import Head from "next/head";
 
 const SingleDestination = () => {
   const router = useRouter();
@@ -22,23 +21,32 @@ const SingleDestination = () => {
   const { data: tour, isLoading } = useGetTourTypeQuery(id);
 
   const transformText = (text) => {
-    if (text && text.includes('-')) {
- 
-      return text.split('-')[0];
+    if (text && text.includes("-")) {
+      return text.split("-")[0];
     } else {
       return text;
     }
   };
-  
+
   const transformedText = transformText(id);
 
-  console.log(transformedText)
   return (
     <>
+      <Head>
+        <title>{destination?.data?.seo_title}</title>
+        <meta
+          name="description"
+          content={destination?.data?.meta_description}
+        />
+        <meta
+          name="keywords"
+          content={destination?.data?.meta_keywords}
+        />
+      </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={destination?.data.image}
             width={0}
             height={0}
             sizes="100vw"
@@ -118,7 +126,7 @@ const SingleDestination = () => {
                   <>
                     {tour?.data.map((data, i) => {
                       return (
-                        <div className="col-lg-4 col-sm-12">
+                        <div className="col-lg-4 col-sm-12" key={i}>
                           <SingleCard
                             image={data.image}
                             description={data.short_description}
@@ -126,6 +134,7 @@ const SingleDestination = () => {
                             duration={data.duration}
                             price={data.adult_price}
                             slug={data.slug}
+                            size={data.activity.group_size}
                             destination={transformedText}
                           />
                         </div>

@@ -1,7 +1,6 @@
 .breadcrumb {
   padding-left: 0;
 
-
   @include flex(center);
   gap: 0.5rem;
   &-item {
@@ -103,4 +102,8 @@
       }
     }
   }
+}
+
+.breadcrumb {
+  flex-wrap: wrap !important;
 }

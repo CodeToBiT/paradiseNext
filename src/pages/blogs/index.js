@@ -1,13 +1,16 @@
 import React from "react";
+import Head from "next/head";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import Link from "next/link";
 
+
 import BlogCard from "@/components/card/BlogCard";
-import { useGetBlogsQuery } from "../../../frontend/services/api";
+import { useGetBlogsQuery , useGetSettingsQuery } from "../../../frontend/services/api";
 
 const Blogs = () => {
   const { data: blog } = useGetBlogsQuery();
+  const { data: settings } = useGetSettingsQuery();
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -16,10 +19,13 @@ const Blogs = () => {
   };
   return (
     <>
+    <Head>
+      <title>Blogs | Paradise Destination</title>
+    </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={settings?.data.destination_page_image}
             width={0}
             height={0}
             sizes="100vw"

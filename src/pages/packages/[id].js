@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { FiClock } from "react-icons/fi";
@@ -11,12 +12,17 @@ import { TbCompass } from "react-icons/tb";
 import { GiPriceTag } from "react-icons/gi";
 import { HiUserGroup } from "react-icons/hi";
 
+import OverlayLoader from "@/components/layout/OverlayLoader";
+
 import Link from "next/link";
 import NavigationBar from "@/components/header/Bottomnav";
 import { Providers } from "../../../frontend/services/providers";
 import Footer from "@/components/footer/Footer";
 
-import { useGetPackageDetailsQuery } from "../../../frontend/services/api";
+import {
+  useGetPackageDetailsQuery,
+  useGetSettingsQuery,
+} from "../../../frontend/services/api";
 
 import Accordion from "react-bootstrap/Accordion";
 
@@ -31,11 +37,20 @@ import { EffectCoverflow, Pagination } from "swiper";
 const SinglePackage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data: packages } = useGetPackageDetailsQuery(id);
+  const { data: packages, isLoading } = useGetPackageDetailsQuery(id);
+  const { data: settings } = useGetSettingsQuery();
 
-  
+  if (isLoading) {
+    return <OverlayLoader />;
+  }
+
   return (
     <>
+      <Head>
+        <title>{packages?.data?.seo_title}</title>
+        <meta name="description" content={packages?.data?.meta_description} />
+        <meta name="keywords" content={packages?.data?.meta_keywords} />
+      </Head>
       <section className="single mt-16">
         <div className="container">
           <div className="row gap-12-row">
@@ -275,7 +290,7 @@ const SinglePackage = () => {
                   </div>
                   <div className="small fw-medium">based on</div>
                   <Link href="#review" className="small text-primary">
-                    1 review
+                    reviews
                   </Link>
                 </div>
                 <div className="mt-8 d-flex price-tag gap-8 text-white">
@@ -325,11 +340,18 @@ const SinglePackage = () => {
 
                 <div className="why-us text-white mt-12">
                   <h6>WHY BOOK WITH US?</h6>
-                  <ul className="mt-8">
+
+                  <div
+                   className="mt-8"
+                    dangerouslySetInnerHTML={{
+                      __html: settings?.data.why_book_with_us,
+                    }}
+                  ></div>
+                  {/* <ul className="mt-8">
                     <li>Best Price Offer</li>
                     <li>Instant Onlne Booking Confirmation</li>
                     <li>Extend and Customize Trip Itineraries</li>
-                  </ul>
+                  </ul> */}
                 </div>
 
                 <Link
@@ -393,13 +415,14 @@ const SinglePackage = () => {
           >
             {packages?.data.galleries.map((data, i) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={i}>
                   <div className="img-landscape">
                     <Image
                       src={data.image}
                       width={0}
                       height={0}
                       sizes="100vh"
+                      alt="gallery"
                     />
                   </div>
                 </SwiperSlide>

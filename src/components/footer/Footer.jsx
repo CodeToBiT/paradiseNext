@@ -2,169 +2,313 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import {
+  useGetSettingsQuery,
+  useGetSocialmediaQuery,
+} from "../../../frontend/services/api";
+
 const Footer = () => {
+  const { data: settings } = useGetSettingsQuery();
+  const { data: social } = useGetSocialmediaQuery();
+
+  function getIcon(iconName) {
+    switch (iconName) {
+      case "facebook":
+        return (
+          <Image
+            src="/assets/icon/facebook.png"
+            width={30}
+            height={30}
+            alt="facebook"
+          />
+        );
+      case "twitter":
+        return (
+          <Image
+            src="/assets/icon/twitter.png"
+            width={30}
+            height={30}
+            alt="twitter"
+          />
+        );
+      case "instagram":
+        return (
+          <Image
+            src="/assets/icon/instagram.png"
+            width={30}
+            height={30}
+            alt="instagram"
+          />
+        );
+      case "linkedin":
+        return (
+          <Image
+            src="/assets/icon/linkedin.png"
+            width={30}
+            height={30}
+            alt="linkedin"
+          />
+        );
+      default:
+        return (
+          <Image
+            src="/assets/icon/facebook.png"
+            width={30}
+            height={30}
+            alt="facebook"
+          />
+        );
+    }
+  }
+
   return (
     <>
-      <footer className="footer py-56">
-        <div className="container">
-          <div className="footer-top px-40 py-24">
+      <footer className="footer mt-12 mt-sm-40">
+        <div className="container py-56">
+          <div className="footer-top px-40 py-24 ">
             <div className="row">
-              <div className="col-lg-5 col-md-12">
+              <div className="col-lg-3 col-md-12">
                 <Link href="/">
-                  <Image
-                    src="/assets/image/logo.png"
-                    width="150"
-                    height="70"
-                    alt="logo"
-                  />
+                  {settings?.data.site_footer_logo ? (
+                    <Image
+                      src={settings?.data.site_footer_logo}
+                      width="150"
+                      height="70"
+                      alt="logo"
+                    />
+                  ) : (
+                    <Image
+                      src="/assets/image/logo.png"
+                      width="150"
+                      height="70"
+                      alt="logo"
+                    />
+                  )}
                 </Link>
 
                 <div className="contacts mt-12 mt-sm-16">
                   <p className="small fw-medium py-4">
-                    Phone: +977 1 4543023 / 4543024
+                    Phone: {settings?.data.site_contact}
                   </p>
                   <p className="small fw-medium py-4">
-                    Email: sales@pdes.com.np
+                    Email: {settings?.data.site_email}
                   </p>
                   <p className="small fw-medium py-4">
-                    Address: Thamel Marg, Kathmandu Nepal
+                    Address: {settings?.data.site_location}
                   </p>
                 </div>
 
                 <p className="mt-12 fw-medium ">STAY CONNECTED WITH US</p>
                 <div className="socials d-flex mt-8 gap-12">
-                  <Link href="#">
-                    <Image
-                      src="/assets/icon/facebook.png"
-                      width={30}
-                      height={30}
-                      alt="facebook"
-                    />
-                  </Link>
-                  <Link href="#">
-                    <Image
-                      src="/assets/icon/instagram.png"
-                      width={30}
-                      height={30}
-                      alt="instagram"
-                    />
-                  </Link>
-                  <Link href="#">
-                    <Image
-                      src="/assets/icon/linkedin.png"
-                      width={30}
-                      height={30}
-                      alt="linkedin"
-                    />
-                  </Link>
-
-                  <Link href="#">
-                    <Image
-                      src="/assets/icon/twitter.png"
-                      width={30}
-                      height={30}
-                      alt="twitter"
-                    />
-                  </Link>
+                  {social?.data.map((data, i) => {
+                    return (
+                      <Link href={data.link} key={i}>
+                        {getIcon(data.icon)}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
 
-              <div className="col-lg-7 col-md-12">
-                <div className="row">
-                  <div className="col-lg-4 col-sm-12">
-                    <h5>Company</h5>
+              <div className="col-lg-3 col-sm-12">
+                <h5>COMPANY</h5>
 
-                    <ul className="mt-12">
-                      <li>
-                        <Link href="#" className="nav-links">
-                          About Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#" className="nav-links">
-                          Our Team
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Payment and Booking
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Terms and Conditions
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          FAQs
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Contact Us
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-lg-8 col-sm-12">
-                    <h5>Useful Links</h5>
-                    <ul className="mt-12 d-flex flex-wrap">
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="" className="nav-links">
-                          Demo
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <ul className="mt-12">
+                  <li>
+                    <Link href={`/terms-and-contitions`} className="nav-links">
+                      Terms and Conditions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="nav-links">
+                      Corporate Social Responsiblity
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Message from Management
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Work at Paradise
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Meet our Team
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Privilege Card
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Privilege Card Outlets
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Our Fleet
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Contact Us
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-lg-3 col-sm-12">
+                <h5>TRAVELERS INFO</h5>
+
+                <ul className="mt-12">
+                  <li>
+                    <Link href="#" className="nav-links">
+                      Our Travel Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="nav-links">
+                      Visa and Entry Procedure
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Best Time to Visit Nepal
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Equipment Checklist
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Frequently asked questions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Payment Gateway
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Nepal Climate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      Travel at high altitude
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="" className="nav-links">
+                      People and Language
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-lg-3 col-sm-12">
+                {settings?.data.affiliated_image ? (
+                  <>
+                    <h5>AFFILIATED WITH</h5>
+
+                    <div className="img-landscape mt-12">
+                      <Image
+                        src={settings?.data.affiliated_image}
+                        width={0}
+                        height={0}
+                        sizes="100vh"
+                        alt="affiliated"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+
+                {settings?.data.coe_image ? (
+                  <>
+                    <p className="mt-16 fw-medium">CERTIFICATE OF EXELLENCE</p>
+
+                    <div className="img-wide mt-12">
+                      <Image
+                        src={settings?.data.coe_image}
+                        width={0}
+                        height={0}
+                        sizes="100vh"
+                        alt="certified"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
+          </div>
+        </div>
+        <div className="footer-bottom py-16 py-sm-56 z-3">
+          <div className="container">
+            <div className="flex-center-between flex-column gap-16">
+              <div className="align-center gap-16  flex-wrap">
+                <div className="h6 fw-medium text-white d-sm-block d-none ">
+                  We Accept:
+                </div>
+                <Image
+                  src="/assets/icon/paypal.png"
+                  width={80}
+                  height={50}
+                  alt="paypal"
+                />
+                <Image
+                  src="/assets/icon/visapayment.png"
+                  width={70}
+                  height={60}
+                  alt="visa"
+                />
+                <Image
+                  src="/assets/icon/mastercard.png"
+                  width={80}
+                  height={50}
+                  alt="mastercard"
+                />
+                <Image
+                  src="/assets/icon/maestro.png"
+                  width={80}
+                  height={50}
+                  alt="maestro"
+                />
+              </div>
+              <div className="p copyright text-white">
+                Copyright &copy; 2023 by Paradise Destination
+              </div>
+
+              <Link href="https://paradiseit.com.np/">
+                <Image
+                  src="/assets/image/paradise.png"
+                  width={165}
+                  height={40}
+                  alt="paradise"
+                />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="footer-background z-1">
+          <div className="img-wrapper">
+            <Image
+              src="/assets/image/footer.jpg"
+              width={1920}
+              height={500}
+              quality={100}
+              unoptimized
+              alt="footerbg"
+            />
           </div>
         </div>
       </footer>

@@ -17,6 +17,7 @@ const Notfound = () => {
                   width={0}
                   height={0}
                   sizes="100vh"
+                  alt="404error"
                 />
               </div>
 

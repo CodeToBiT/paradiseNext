@@ -44,6 +44,12 @@
       transform: translateZ(0);
     }
   }
+
+  .nav-item{
+    &:after{
+      background-color: $primary !important;
+    }
+  }
 }
 
 .navbar {

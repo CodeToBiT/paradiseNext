@@ -13,7 +13,7 @@ const Featured = () => {
           <FeaturedSlider />
         </div>
         <div className="flex-center mt-12 mt-sm-24">
-          <Link href="/packages" className="btn btn-secondary">
+          <Link href="/deals/featured" className="btn btn-secondary btn-bubble">
             View All
           </Link>
         </div>

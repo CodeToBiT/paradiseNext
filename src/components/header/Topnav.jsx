@@ -4,7 +4,7 @@ import {
   FaFacebookSquare,
   FaInstagramSquare,
   FaTwitterSquare,
-  FaTiktokSquare,
+  FaTiktok,
   FaWhatsappSquare,
   FaPhoneAlt,
   FaEnvelope,
@@ -25,8 +25,8 @@ function getIcon(iconName) {
     case "instagram":
       return <FaInstagramSquare />;
     case "tiktok":
-      return <FaTiktokSquare />;
-    case "instagram":
+      return <FaTiktok />;
+    case "whatsapp":
       return <FaWhatsappSquare />;
     case "linkedin":
       return <FaLinkedin />;

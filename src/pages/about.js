@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,16 +8,37 @@ import Ourteams from "@/components/layout/Ourteams";
 
 import Testimonials from "@/components/layout/Testimonials";
 
-import { useGetWhychooseusQuery } from "../../frontend/services/api";
+import {
+  useGetWhychooseusQuery,
+  useGetSettingsQuery,
+  useGetPageDetailsQuery,
+} from "../../frontend/services/api";
+import OverlayLoader from "@/components/layout/OverlayLoader";
 
 const About = () => {
   const { data: whychooseus } = useGetWhychooseusQuery();
+  const { data: settings, isLoading } = useGetSettingsQuery();
+  const { data: ceo } = useGetPageDetailsQuery("message-from-ceo");
+  const { data: why } = useGetPageDetailsQuery("why-choose-us");
+  const { data: about } = useGetPageDetailsQuery("about-us");
+
+  if (isLoading) {
+    return <OverlayLoader />;
+  }
   return (
     <>
+      <Head>
+        <title>{settings?.data?.aboutpage_seo_title}</title>
+        <meta
+          name="description"
+          content={settings?.data?.aboutpage_seo_description}
+        />
+        <meta name="keywords" content={settings?.data?.aboutpage_seo_keywords} />
+      </Head>
       <section className="about-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={settings?.data.about_page_image}
             width={0}
             height={0}
             sizes="100vw"
@@ -41,31 +63,17 @@ const About = () => {
               <div className="about-info-content">
                 <h1 className="h3 text-primary">About Us</h1>
                 <p className="text-primary">The best travel agencey for you</p>
-                <div className="p fw-regular text-cGray600 mt-12">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-                  rerum quod consectetur molestias dolorum quaerat mollitia
-                  ullam animi eaque exercitationem, excepturi nulla fugiat
-                  aperiam cumque laborum velit maxime nam eius. A in quod odio
-                  reprehenderit est, quam quas porro voluptatem tenetur
-                  recusandae nobis optio perspiciatis repudiandae temporibus
-                  vitae quisquam maxime voluptatum nihil quae voluptate?
-                  Voluptatum beatae sequi exercitationem tenetur natus libero
-                  quaerat repudiandae repellendus asperiores quasi distinctio
-                  expedita, quia dolorem ipsam omnis sed cupiditate nesciunt.
-                  Odit dolor maiores consectetur consequuntur? vitae quisquam
-                  maxime voluptatum nihil quae voluptate? Voluptatum beatae
-                  sequi exercitationem tenetur natus libero quaerat repudiandae
-                  repellendus asperiores quasi distinctio expedita, quia dolorem
-                  ipsam omnis sed cupiditate nesciunt. Odit dolor maiores
-                  consectetur consequuntur?
-                </div>
+                <div
+                  className="p fw-regular text-cGray600 mt-12"
+                  dangerouslySetInnerHTML={{ __html: about?.data.description }}
+                ></div>
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="img-portrait">
                 <Image
-                  src="/assets/image/about.jpeg"
+                  src={about?.data.image}
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -84,7 +92,7 @@ const About = () => {
               <div className="fix mx-auto">
                 <div className="img-portrait">
                   <Image
-                    src="/assets/image/about.jpeg"
+                    src={why?.data.image}
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -93,7 +101,7 @@ const About = () => {
                 </div>
                 <div className="bubble-big">
                   <Image
-                    src="/assets/image/about.jpeg"
+                    src={why?.data.image}
                     width={260}
                     height={260}
                     alt="about"
@@ -101,7 +109,7 @@ const About = () => {
                 </div>
                 <div className="bubble-small">
                   <Image
-                    src="/assets/image/about.jpeg"
+                    src={why?.data.image}
                     width={190}
                     height={190}
                     alt="about"
@@ -110,16 +118,15 @@ const About = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <p className="small text-primary">Why Choose Us</p>
-              <h4 className="mt-8 text-primary">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </h4>
+              <p className="small text-primary">
+                The reason why choose the best
+              </p>
+              <h4 className="mt-8 text-primary">{why?.data.title}</h4>
 
-              <div className="p mt-12">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium aliquam eaque minima dolores omnis illum amet optio,
-                in exercitationem fuga!
-              </div>
+              <div
+                className="p mt-12"
+                dangerouslySetInnerHTML={{ __html: why?.data.description }}
+              ></div>
               <div className="row gap-16-row mt-16">
                 {whychooseus?.data.map((data, i) => {
                   return (
@@ -160,7 +167,7 @@ const About = () => {
                   <div className="image">
                     <div className="img-portrait">
                       <Image
-                        src="/assets/image/japan.jpeg"
+                        src={ceo?.data.image}
                         width={0}
                         height={0}
                         sizes="100vw"
@@ -171,16 +178,13 @@ const About = () => {
                 </div>
                 <div className="col-lg-5 col-sm-12">
                   <div className="about-ceo-content">
-                    <h3 className="text-primary">Message from CEO</h3>
-                    <p className="text-cGray600 mt-12">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Laudantium ipsa, maxime amet voluptates quis velit soluta
-                      dicta quaerat magnam ducimus asperiores ut eos eum optio
-                      facere nobis quos delectus est cumque aperiam saepe
-                      repudiandae, rerum, error repellat? Minus et est eum
-                      incidunt quam a laudantium perspiciatis sequi fugiat.
-                      Nemo, amet?
-                    </p>
+                    <h3 className="text-primary">{ceo?.data.title}</h3>
+                    <p
+                      className="text-cGray600 mt-12"
+                      dangerouslySetInnerHTML={{
+                        __html: ceo?.data.description,
+                      }}
+                    ></p>
                   </div>
                 </div>
               </div>

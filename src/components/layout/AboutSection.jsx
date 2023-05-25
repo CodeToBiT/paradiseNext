@@ -34,10 +34,10 @@ const AboutSection = () => {
                 </div>
 
                 <Link
-                  href="#"
-                  className="btn btn-sm btn-secondary text-white mt-16"
+                  href="/about"
+                  className="btn btn-sm btn-secondary text-white mt-16 btn-slide"
                 >
-                  Learn More
+                  <span>Learn More</span>
                 </Link>
               </div>
             </div>

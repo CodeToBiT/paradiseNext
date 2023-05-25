@@ -30,8 +30,11 @@ const Destination = () => {
                     </div>
                   </div>
                   <div className="h2">Holiday packages</div>
-                  <Link href="/destinations" className="btn btn-primary mt-8">
-                    Book Now
+                  <Link
+                    href="/destinations"
+                    className="btn btn-primary mt-8 btn-slide"
+                  >
+                    <span>Book Now</span>
                   </Link>
                 </div>
               </div>
@@ -42,7 +45,7 @@ const Destination = () => {
                   {destinations?.data.slice(0, 8).map((data, i) => {
                     return (
                       <div className="gallery__item" key={i}>
-                        <Link href="#" className="gallery__link">
+                        <Link href={`/destinations/${data.slug}`} className="gallery__link">
                           <Image
                             src={data.image}
                             fill
@@ -57,9 +60,9 @@ const Destination = () => {
                       </div>
                     );
                   })}
-                
+
                   <div className="gallery__item">
-                    <Link href="#" className="gallery__link">
+                    <Link href="/destinations" className="gallery__link">
                       <Image
                         src="/assets/image/viewall.png"
                         className="gallery__image"

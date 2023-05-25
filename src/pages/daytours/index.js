@@ -17,7 +17,7 @@ const Daytours = () => {
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={destination?.data.image}
             width={0}
             height={0}
             sizes="100vw"
@@ -50,7 +50,7 @@ const Daytours = () => {
               <>
                 {tour?.data.map((data, i) => {
                   return (
-                    <div className="col-lg-4 col-sm-12">
+                    <div className="col-lg-4 col-sm-12" key={i}>
                       <SingleCard
                         image={data.image}
                         description={data.short_description}
@@ -58,6 +58,7 @@ const Daytours = () => {
                         duration={data.duration}
                         price={data.adult_price}
                         slug={data.slug}
+                        destination="Nepal"
                       />
                     </div>
                   );

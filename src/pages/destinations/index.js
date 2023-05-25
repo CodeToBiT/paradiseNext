@@ -3,22 +3,35 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import DestinationCard from "@/components/card/DestinationCard";
 import Link from "next/link";
+import Head from "next/head";
 
 import { Skeleton } from "antd";
 
-import { useGetDestinationsQuery } from "../../../frontend/services/api";
-
-
-
+import {
+  useGetDestinationsQuery,
+  useGetSettingsQuery,
+} from "../../../frontend/services/api";
 
 const Destinations = () => {
   const { data: destination, isLoading } = useGetDestinationsQuery();
+  const { data: settings } = useGetSettingsQuery();
   return (
     <>
+      <Head>
+        <title>{settings?.data?.destination_seo_title}</title>
+        <meta
+          name="description"
+          content={settings?.data?.destination_seo_description}
+        />
+        <meta
+          name="keywords"
+          content={settings?.data?.destination_seo_keywords}
+        />
+      </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={settings?.data.destination_page_image}
             width={0}
             height={0}
             sizes="100vw"
@@ -42,7 +55,6 @@ const Destinations = () => {
         </div>
         <div className="container">
           <div className="row gap-24-row mt-24 mt-sm-40">
-            
             {isLoading ? (
               <>
                 <div className="col-lg-3 col-sm-12">
@@ -81,7 +93,6 @@ const Destinations = () => {
                     className="mt-12"
                   />
                 </div>
-              
               </>
             ) : (
               <>
@@ -93,7 +104,6 @@ const Destinations = () => {
                         image={data.image}
                         slug={data.slug}
                         activities={data.children.length}
-                        
                       />
                     </div>
                   );

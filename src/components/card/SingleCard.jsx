@@ -35,7 +35,7 @@ const SingleCard = (props) => {
                 </div>
                 <div className="pax info-item">
                   <MdGroup />
-                  20
+                  {props.size}
                 </div>
                 <div className="location info-item text-capitalize">
                   <MdLocationPin />

@@ -4,6 +4,8 @@ import Footer from "@/components/footer/Footer";
 import Image from "next/image";
 import { toast, Toaster } from "react-hot-toast";
 import { Providers } from "../../frontend/services/providers";
+import OverlayLoader from "@/components/layout/OverlayLoader";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 import {
@@ -13,7 +15,7 @@ import {
 
 const Contact = () => {
   const router = useRouter();
-  const { data: settings } = useGetSettingsQuery();
+  const { data: settings, isLoading } = useGetSettingsQuery();
   const [createInquiry, { isError, isSuccess }] = useCreateInquiriesMutation();
   const [contactData, setContactData] = useState({
     first_name: "",
@@ -28,7 +30,6 @@ const Contact = () => {
   useEffect(() => {
     if (isError) {
       toast.failed("failed");
-
     }
     if (isSuccess) {
       toast.success("Submitted Successfully");
@@ -54,6 +55,10 @@ const Contact = () => {
   const onChange = (e) => {
     setContactData({ ...contactData, [e.target.name]: e.target.value });
   };
+
+  if (isLoading) {
+    return <OverlayLoader />;
+  }
   return (
     <>
       <Toaster
@@ -66,6 +71,15 @@ const Contact = () => {
           },
         }}
       />
+
+      <Head>
+        <title>{settings?.data?.contactpage_seo_title}</title>
+        <meta
+          name="description"
+          content={settings?.data?.contactpage_seo_description}
+        />
+        <meta name="keywords" content={settings?.data?.contactpage_seo_keywords} />
+      </Head>
       <section className="contact">
         <div className="container">
           <div className="contact-intro text-center py-32 ">
@@ -87,8 +101,10 @@ const Contact = () => {
                     alt="phone"
                   />
                   <div>
-                    <h5 >Call us</h5>
-                    <h6 className="fw-regular">{settings?.data.site_contact}</h6>
+                    <h5>Call us</h5>
+                    <h6 className="fw-regular">
+                      {settings?.data.site_contact}
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -117,7 +133,7 @@ const Contact = () => {
                   <div>
                     <h5>Location</h5>
                     <h6 className="fw-regular">
-                    {settings?.data.site_location}
+                      {settings?.data.site_location}
                     </h6>
                   </div>
                 </div>
@@ -140,7 +156,7 @@ const Contact = () => {
 
                 <div className="img-portrait mt-16 rounded-12">
                   <Image
-                    src="/assets/image/contact.png"
+                    src={settings?.data.contact_page_image}
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -152,10 +168,7 @@ const Contact = () => {
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="row gap-16-row">
                     <div className="col-lg-6 col-sm-12">
-                      <label
-                        htmlFor="first_name"
-                        className="p  text-cGray700"
-                      >
+                      <label htmlFor="first_name" className="p  text-cGray700">
                         Full Name <span className="text-accent">*</span>
                       </label>
 
@@ -171,10 +184,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="col-lg-6 col-sm-12">
-                      <label
-                        htmlFor="last_name"
-                        className="p  text-cGray700"
-                      >
+                      <label htmlFor="last_name" className="p  text-cGray700">
                         Full Name <span className="text-accent">*</span>
                       </label>
 
@@ -191,10 +201,7 @@ const Contact = () => {
                     </div>
 
                     <div className="col-lg-6 col-sm-12">
-                      <label
-                        htmlFor="email"
-                        className="p  text-cGray700"
-                      >
+                      <label htmlFor="email" className="p  text-cGray700">
                         Email Address <span className="text-accent">*</span>
                       </label>
 
@@ -210,10 +217,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="col-lg-6 col-sm-12">
-                      <label
-                        htmlFor="phone"
-                        className="p  text-cGray700"
-                      >
+                      <label htmlFor="phone" className="p  text-cGray700">
                         Phone Number <span className="text-accent">*</span>
                       </label>
 
@@ -230,10 +234,7 @@ const Contact = () => {
                     </div>
 
                     <div className="col-lg-12 col-sm-12">
-                      <label
-                        htmlFor="message"
-                        className="p  text-cGray700"
-                      >
+                      <label htmlFor="message" className="p  text-cGray700">
                         Your Message
                       </label>
                       <textarea
@@ -247,7 +248,9 @@ const Contact = () => {
                       ></textarea>
                     </div>
                     <div className="col-lg-4">
-                      <button className="btn btn-primary"> Submit</button>
+                      <button className="btn btn-primary btn-slide">
+                        <span>Submit</span>
+                      </button>
                     </div>
                   </div>
                 </form>

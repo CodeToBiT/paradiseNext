@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import NavigationBar from "@/components/header/Bottomnav";
 import Footer from "@/components/footer/Footer";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
@@ -10,19 +11,33 @@ import Link from "next/link";
 
 import Accordion from "react-bootstrap/Accordion";
 
-import { useGetPackagesQuery } from "../../../frontend/services/api";
+import {
+  useGetPackagesQuery,
+  useGetBlogsQuery,
+  useGetSettingsQuery,
+} from "../../../frontend/services/api";
 
 const Packages = () => {
   const { data: packages } = useGetPackagesQuery();
+  const { data: blogs } = useGetBlogsQuery();
+  const { data: settings } = useGetSettingsQuery();
   const [value, setValue] = useState(0);
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
+  };
 
   const handleChange = (num) => setValue(num);
   return (
     <>
+      <Head>
+        <title>Packages | Paradise Destination</title>
+      </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
-            src="/assets/image/about.webp"
+            src={settings?.data.destination_page_image}
             width={0}
             height={0}
             sizes="100vw"
@@ -40,7 +55,7 @@ const Packages = () => {
           </div>
         </div>
       </section>
-      <section className="packages-search mt-12 mt-sm-32">
+      {/* <section className="packages-search mt-12 mt-sm-32">
         <div className="container">
           <div className=" d-flex flex-center align-center gap-16">
             <Image
@@ -63,12 +78,12 @@ const Packages = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="packages mt-12 mt-sm-32">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-sm-12">
+            {/* <div className="col-lg-3 col-sm-12">
               <div className="filter">
                 <h6>FILTER BY:</h6>
               </div>
@@ -167,7 +182,7 @@ const Packages = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-            </div>
+            </div> */}
 
             <div className="col-lg-9 col-sm-12">
               <div className="row gap-24-row">
@@ -199,6 +214,49 @@ const Packages = () => {
                     );
                   }
                 })}
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-sm-12">
+              <div className="more-sidebar">
+                <h5>Popular blogs</h5>
+
+                <div className="more">
+            
+                  {blogs?.data.map((data, i) => {
+                    return (
+                      <div
+                        className="card-more mt-12 mt-sm-16 position-relative"
+                        key={i}
+                      >
+                        <div className="row">
+                          <div className="col-4">
+                            <div className="img-portrait">
+                              <Image
+                                src={data.image}
+                                width={0}
+                                height={0}
+                                sizes="100vh"
+                                alt={data.slug}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-8">
+                            <h6 className="small clamp-3">{data.title}</h6>
+                       
+                            <p className="mt-8 text-cGray600">
+                              {formatDate(data.date)}
+                            </p>
+                          </div>
+                        </div>
+                        <Link
+                          href={`/blogs/${data.slug}`}
+                          className="stretched-link"
+                        ></Link>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
