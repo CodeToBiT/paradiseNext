@@ -33630,7 +33630,7 @@ x-small,
 }
 .single .cost-details .excludes ul li::before {
   content: "✖";
-  color: #4d4d4d;
+  color: #dc2626;
   display: inline-block;
   position: relative;
   top: -2px;
@@ -33641,7 +33641,7 @@ x-small,
   font-size: 16px;
   font-weight: bold;
   line-height: 18px;
-  border: 2px solid #4d4d4d;
+  border: 2px solid #dc2626;
   border-radius: 50%;
   text-align: center;
 }
