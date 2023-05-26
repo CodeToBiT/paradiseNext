@@ -797,6 +797,10 @@
       max-width: 500px;
       position: relative;
 
+      @media (max-width: 600px) {
+        overflow: hidden;
+      }
+
       .bubble {
         &-big {
           position: absolute;

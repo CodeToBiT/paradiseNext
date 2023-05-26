@@ -33720,6 +33720,11 @@ x-small,
   max-width: 500px;
   position: relative;
 }
+@media (max-width: 600px) {
+  .about-why .fix {
+    overflow: hidden;
+  }
+}
 .about-why .fix .bubble-big {
   position: absolute;
   top: 0;
