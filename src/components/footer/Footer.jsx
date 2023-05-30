@@ -5,11 +5,14 @@ import Link from "next/link";
 import {
   useGetSettingsQuery,
   useGetSocialmediaQuery,
+  useGetMenusQuery,
 } from "../../../frontend/services/api";
 
 const Footer = () => {
   const { data: settings } = useGetSettingsQuery();
   const { data: social } = useGetSocialmediaQuery();
+  const { data: menuOne } = useGetMenusQuery("2");
+  const { data: menuTwo } = useGetMenusQuery("3");
 
   function getIcon(iconName) {
     switch (iconName) {
@@ -114,102 +117,30 @@ const Footer = () => {
                 <h5>COMPANY</h5>
 
                 <ul className="mt-12">
-                  <li>
-                    <Link href={`/terms-and-contitions`} className="nav-links">
-                      Terms and Conditions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="nav-links">
-                      Corporate Social Responsiblity
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Message from Management
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Work at Paradise
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Meet our Team
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Privilege Card
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Privilege Card Outlets
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Our Fleet
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Contact Us
-                    </Link>
-                  </li>
+                  {menuOne?.data.map((data, i) => {
+                    return (
+                      <li key={i}>
+                        <Link href={data.slug} className="nav-links">
+                          {data.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="col-lg-3 col-sm-12">
                 <h5>TRAVELERS INFO</h5>
 
                 <ul className="mt-12">
-                  <li>
-                    <Link href="#" className="nav-links">
-                      Our Travel Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="nav-links">
-                      Visa and Entry Procedure
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Best Time to Visit Nepal
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Equipment Checklist
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Frequently asked questions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Payment Gateway
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Nepal Climate
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      Travel at high altitude
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className="nav-links">
-                      People and Language
-                    </Link>
-                  </li>
+                  {menuTwo?.data.map((data, i) => {
+                    return (
+                      <li key={i}>
+                        <Link href={data.slug} className="nav-links">
+                          {data.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="col-lg-3 col-sm-12">

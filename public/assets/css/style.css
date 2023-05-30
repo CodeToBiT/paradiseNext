@@ -33647,6 +33647,7 @@ x-small,
 }
 .single .book-trip {
   top: 120px;
+  margin-top: 12px;
 }
 .single .book-trip a {
   font-size: 1rem;
@@ -33891,6 +33892,28 @@ x-small,
   background: rgba(255, 255, 255, 0.8);
 }
 
+.anchor {
+  display: block;
+  height: 92px;
+  margin-top: -92px;
+  visibility: hidden;
+}
+
+.single-tabs .nav {
+  gap: 4px;
+}
+.single-tabs li {
+  background: #005294;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.single-tabs li a {
+  color: #fff;
+}
+.single-tabs li a:hover {
+  color: #c2d7e9;
+}
+
 .footer {
   position: relative;
 }
@@ -34103,7 +34126,7 @@ x-small,
   right: 10px;
 }
 .card-featured .title-overlay {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   bottom: 30px;
   left: 20px;

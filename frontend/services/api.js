@@ -28,6 +28,7 @@ export const globalApi = createApi({
     "TourType",
     "Category",
     "Payment",
+    "Menus",
   ],
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -214,6 +215,16 @@ export const globalApi = createApi({
       }),
       providesTags: ["Payment"],
     }),
+
+    getMenus: builder.query({
+      query: (id) => {
+        return {
+          url: `menus/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["Menus"],
+    }),
   }),
 });
 
@@ -257,4 +268,6 @@ export const {
   useGetCategoryPackageQuery,
 
   useGetPaymentQuery,
+
+  useGetMenusQuery,
 } = globalApi;

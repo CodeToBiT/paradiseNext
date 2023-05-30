@@ -21,11 +21,13 @@ import OverlayLoader from "@/components/layout/OverlayLoader";
 import {
   useGetDestinationsQuery,
   useGetSettingsQuery,
+
 } from "../../frontend/services/api";
 
 export default function Home() {
   const { data: destinations } = useGetDestinationsQuery();
-  const {data: settings,  isLoading } = useGetSettingsQuery();
+  const {data: settings, isLoading } = useGetSettingsQuery();
+
 
   const [selectedSlug, setSelectedSlug] = useState("");
 

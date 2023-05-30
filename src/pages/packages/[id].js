@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import { FiClock } from "react-icons/fi";
-import { FaRoute, FaStar, FaRegSnowflake } from "react-icons/fa";
+import { FaRoute, FaStar, FaRegSnowflake, FaRunning } from "react-icons/fa";
 import { SlDirections, SlCup } from "react-icons/sl";
 import { BiLandscape, BiUserPlus } from "react-icons/bi";
 import { IoBedOutline } from "react-icons/io5";
@@ -51,6 +52,20 @@ const SinglePackage = () => {
         <meta name="description" content={packages?.data?.meta_description} />
         <meta name="keywords" content={packages?.data?.meta_keywords} />
       </Head>
+      <div className="bg-primary pt-16 pb-4">
+        <div className="container">
+          <Breadcrumb>
+            <li className="breadcrumb-item">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link href="/destinations">Destinations</Link>
+            </li>
+            <Breadcrumb.Item href="/packages">Packages</Breadcrumb.Item>
+            <Breadcrumb.Item active>{packages?.data.name}</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+      </div>
       <section className="single mt-16">
         <div className="container">
           <div className="row gap-12-row">
@@ -71,9 +86,9 @@ const SinglePackage = () => {
               <div className="trip-info d-flex flex-wrap mt-16">
                 {packages?.data.activity.activities ? (
                   <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                    <FiClock />
+                    <FaRunning />
                     <div>
-                      <p className="small">Trip Duration</p>
+                      <p className="small">Trip Activity</p>
                       <p className=" small">
                         {packages?.data.activity.activities}
                       </p>
@@ -192,91 +207,147 @@ const SinglePackage = () => {
                 )}
               </div>
 
-              <div className="highlights mt-12 mt-sm-24">
-                <h5 className="">Highlights</h5>
-              </div>
+              <nav id="tab" className="navbar single-tabs">
+                <ul className="nav nav-pills">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#highlights">
+                      Highlights
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#itinerary">
+                      Itinerary
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#cost">
+                      Cost Details
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#visa">
+                      Visa Information
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#gallery">
+                     Gallery
+                    </a>
+                  </li>
+                </ul>
+              </nav>
 
               <div
-                className="trip-description p mt-12 mt-sm-32"
-                dangerouslySetInnerHTML={{ __html: packages?.data.description }}
-              ></div>
+                data-bs-spy="scroll"
+                data-bs-target="#tab"
+                data-bs-offset="0"
+              >
+                <span class="anchor" id="highlights"></span>
+                <div className="highlights mt-12 mt-sm-24">
+                  <h5 className="">Highlights</h5>
 
-              <div className="itinerary mt-12 mt-sm-32">
-                <div className="align-center gap-8">
-                  <SlDirections className="h4 text-primary" />
-                  <h4 className="">Itinerary</h4>
+                  <div
+                    className="trip-description p mt-12"
+                    dangerouslySetInnerHTML={{
+                      __html: packages?.data.description,
+                    }}
+                  ></div>
                 </div>
 
-                {packages?.data.activity.trip_duration ? (
-                  <div className="bg-blue50 px-32 py-16 h6 mt-12 ">
-                    {packages?.data.activity.trip_duration} &nbsp;
-                    {packages?.data.name} Itinerary
+                <span class="anchor" id="itinerary"></span>
+                <div className="itinerary mt-12 mt-sm-32">
+                  <div className="align-center gap-8">
+                    <SlDirections className="h4 text-primary" />
+                    <h4 className="">Itinerary</h4>
                   </div>
-                ) : (
-                  <div className="bg-blue50 px-32 py-16 h6 mt-12 ">
-                    {packages?.data.name} Itinerary
-                  </div>
-                )}
 
-                <Accordion className="mt-12 mt-sm-16" defaultActiveKey="0">
-                  {packages?.data.itenaries.map((data, i) => {
-                    return (
-                      <Accordion.Item eventKey={i} key={i}>
-                        <Accordion.Header>
-                          <span className="text-primary day">Day {i + 1}:</span>
-                          <p className="fw-medium">{data.title}</p>
-                        </Accordion.Header>
-                        <Accordion.Body>{data.description}</Accordion.Body>
-                      </Accordion.Item>
-                    );
-                  })}
-                </Accordion>
+                  {packages?.data.activity.trip_duration ? (
+                    <div className="bg-blue50 px-32 py-16 h6 mt-12 ">
+                      {packages?.data.activity.trip_duration} &nbsp;
+                      {packages?.data.name} Itinerary
+                    </div>
+                  ) : (
+                    <div className="bg-blue50 px-32 py-16 h6 mt-12 ">
+                      {packages?.data.name} Itinerary
+                    </div>
+                  )}
+
+                  <Accordion className="mt-12 mt-sm-16" defaultActiveKey="0">
+                    {packages?.data.itenaries.map((data, i) => {
+                      return (
+                        <Accordion.Item eventKey={i} key={i}>
+                          <Accordion.Header>
+                            <span className="text-primary day">
+                              Day {i + 1}:
+                            </span>
+                            <p className="fw-medium">{data.title}</p>
+                          </Accordion.Header>
+                          <Accordion.Body>{data.description}</Accordion.Body>
+                        </Accordion.Item>
+                      );
+                    })}
+                  </Accordion>
+                </div>
+
+                <span class="anchor" id="cost"></span>
+                <div className="cost-details mt-12 mt-sm-32">
+                  <div className="align-baseline gap-8">
+                    <SlCup className="h4 text-primary" />
+                    <h4>Cost Details</h4>
+                  </div>
+                  {packages?.data.inclusion ? (
+                    <div className="includes ps-40 mt-12">
+                      <h6 className="p">Cost Includes</h6>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: packages?.data.inclusion,
+                        }}
+                      ></div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                  {packages?.data.exclusion ? (
+                    <div className="excludes ps-40 mt-12">
+                      <h6 className="p">Cost Excludes</h6>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: packages?.data.exclusion,
+                        }}
+                      ></div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+
+                <span class="anchor" id="visa"></span>
+
+                <div className="essential mt-12 mt-sm-32">
+                  <div className="align-center gap-8">
+                    <TbCompass className="h3 text-primary" />
+                    <h4 className="">Visa Information</h4>
+                  </div>
+
+                  <div
+                    className="p mt-12"
+                    dangerouslySetInnerHTML={{
+                      __html: packages?.data.visa_process,
+                    }}
+                  ></div>
+                </div>
               </div>
 
-              <div className="cost-details mt-12 mt-sm-32">
-                <div className="align-baseline gap-8">
-                  <SlCup className="h4 text-primary" />
-                  <h4>Cost Details</h4>
-                </div>
-                {packages?.data.inclusion ? (
-                  <div className="includes ps-40 mt-12">
-                    <h6 className="p">Cost Includes</h6>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: packages?.data.inclusion,
-                      }}
-                    ></div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-                {packages?.data.exclusion ? (
-                  <div className="excludes ps-40 mt-12">
-                    <h6 className="p">Cost Excludes</h6>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: packages?.data.exclusion,
-                      }}
-                    ></div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
-
-              <div className="essential mt-12 mt-sm-32">
-                <div className="align-center gap-8">
-                  <TbCompass className="h3 text-primary" />
-                  <h4 className="">Visa Information</h4>
-                </div>
+              {/* <div className="highlights mt-12 mt-sm-24" id="highlights">
+                <h5 className="">Highlights</h5>
 
                 <div
-                  className="p mt-12"
+                  className="trip-description p mt-12"
                   dangerouslySetInnerHTML={{
-                    __html: packages?.data.visa_process,
+                    __html: packages?.data.description,
                   }}
                 ></div>
-              </div>
+              </div> */}
             </div>
             <div className="col-lg-3 col-sm-12">
               <div className="book-trip px-12 py-12 bg-primary rounded-4 position-sticky">
@@ -342,7 +413,7 @@ const SinglePackage = () => {
                   <h6>WHY BOOK WITH US?</h6>
 
                   <div
-                   className="mt-8"
+                    className="mt-8"
                     dangerouslySetInnerHTML={{
                       __html: settings?.data.why_book_with_us,
                     }}
@@ -379,6 +450,8 @@ const SinglePackage = () => {
             </div>
           </div>
         </div>
+
+        <span class="anchor" id="gallery"></span>
 
         <div className="single-gallery w-100 mt-12 mt-sm-32">
           <div className="text-center text-white pt-24">

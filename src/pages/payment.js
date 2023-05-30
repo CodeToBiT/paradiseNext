@@ -20,7 +20,7 @@ const Payment = () => {
     data: single,
     isError,
     isLoading,
-  } = useGetPageDetailsQuery("payment");
+  } = useGetPageDetailsQuery("payment-gateway");
 
   const { data: payment } = useGetPaymentQuery();
   const { data: settings } = useGetSettingsQuery();

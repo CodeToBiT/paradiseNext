@@ -709,6 +709,7 @@
 
   .book-trip {
     top: 120px;
+    margin-top: 12px;
     a {
       font-size: 1rem;
       font-weight: 700;
@@ -1003,5 +1004,28 @@
   }
   .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.8);
+  }
+}
+.anchor {
+  display: block;
+  height: 92px;
+  margin-top: -92px;
+  visibility: hidden;
+}
+
+.single-tabs {
+  .nav{
+    gap: 4px;
+  }
+  li {
+    background: $primary;
+    border-radius: 4px;
+    padding: 5px 10px;
+    a {
+      color: $white;
+      &:hover{
+        color: #c2d7e9;
+      }
+    }
   }
 }

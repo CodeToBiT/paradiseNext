@@ -8,12 +8,16 @@ import Head from "next/head";
 import {
   useGetSettingsQuery,
   useGetDestinationsQuery,
+  useGetMenusQuery,
 } from "../../../frontend/services/api";
 import Link from "next/link";
 
 const NavigationBar = () => {
   const { data: settings } = useGetSettingsQuery();
   const { data: destination } = useGetDestinationsQuery();
+  const { data: companyMenu, isSuccess } = useGetMenusQuery("1");
+  const { data: travellerMenu, isSuccess: success } = useGetMenusQuery("4");
+
   const [windowChange, setWindowChange] = useState(false);
   if (typeof window != "undefined") {
     const changeNavbarPosition = () => {
@@ -36,6 +40,35 @@ const NavigationBar = () => {
   };
 
   useEffect(() => {
+    if (isSuccess && success) {
+      if (window.innerWidth > 992) {
+        document
+          .querySelectorAll(".navbar .nav-item")
+          .forEach(function (everyitem) {
+            everyitem.addEventListener("mouseover", function (e) {
+              let el_link = this.querySelector("a[data-bs-toggle]");
+
+              if (el_link != null) {
+                let nextEl = el_link.nextElementSibling;
+                el_link.classList.add("show");
+                nextEl.classList.add("show");
+              }
+            });
+            everyitem.addEventListener("mouseleave", function (e) {
+              let el_link = this.querySelector("a[data-bs-toggle]");
+
+              if (el_link != null) {
+                let nextEl = el_link.nextElementSibling;
+                el_link.classList.remove("show");
+                nextEl.classList.remove("show");
+              }
+            });
+          });
+      }
+    }
+  }, [isSuccess, success]);
+
+  useEffect(() => {
     if (window.innerWidth < 1024) {
       document.querySelectorAll(".aside .nav-link").forEach(function (element) {
         element.addEventListener("click", function (e) {
@@ -53,33 +86,6 @@ const NavigationBar = () => {
           }
         });
       });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (window.innerWidth > 992) {
-      document
-        .querySelectorAll(".navbar .nav-item")
-        .forEach(function (everyitem) {
-          everyitem.addEventListener("mouseover", function (e) {
-            let el_link = this.querySelector("a[data-bs-toggle]");
-
-            if (el_link != null) {
-              let nextEl = el_link.nextElementSibling;
-              el_link.classList.add("show");
-              nextEl.classList.add("show");
-            }
-          });
-          everyitem.addEventListener("mouseleave", function (e) {
-            let el_link = this.querySelector("a[data-bs-toggle]");
-
-            if (el_link != null) {
-              let nextEl = el_link.nextElementSibling;
-              el_link.classList.remove("show");
-              nextEl.classList.remove("show");
-            }
-          });
-        });
     }
   }, []);
 
@@ -110,12 +116,6 @@ const NavigationBar = () => {
                   alt="logo"
                 />
               )}
-              {/* <Image
-                src={settings?.data.site_main_logo}
-                width="150"
-                height="70"
-                alt="logo"
-              /> */}
             </Link>
             <button
               className="navbar-toggler"
@@ -147,77 +147,41 @@ const NavigationBar = () => {
                     Home
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link dropdown-toggle"
-                    href="/about"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Our Company
-                  </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
+                {companyMenu?.data.map((data, i) => {
+                  return (
+                    <li className="nav-item dropdown" key={i}>
                       <Link
-                        className="dropdown-item"
+                        className="nav-link dropdown-toggle"
                         href="/about"
-                        onClick={handleLinkClick}
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
-                        About Us
+                        Our Company
                       </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
                       >
-                        Message From CEO
-                      </Link>
+                        {data.children[0]?.map((menu, i) => {
+                          return (
+                            <li key={i}>
+                              <Link
+                                className="dropdown-item"
+                                href={menu.slug}
+                                onClick={handleLinkClick}
+                              >
+                                {menu.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="/teams"
-                        onClick={handleLinkClick}
-                      >
-                        Our Team
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Wy Choose Us?
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Terms and Conditions
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="/contact"
-                        onClick={handleLinkClick}
-                      >
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
+                  );
+                })}
+
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
@@ -320,55 +284,147 @@ const NavigationBar = () => {
                     </li>
                   </ul>
                 </li>
+
+                {travellerMenu?.data.map((data, i) => {
+                  if (data.children) {
+                    return (
+                      <li className="nav-item dropdown" key={i}>
+                        <Link
+                          className="nav-link dropdown-toggle"
+                          href={data.slug}
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {data.title}
+                        </Link>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdownMenuLink"
+                        >
+                          {data.children[0].map((menu, i) => {
+                            return (
+                              <li key={i}>
+                                <Link
+                                  className="dropdown-item"
+                                  href={menu.slug}
+                                  onClick={handleLinkClick}
+                                >
+                                  {menu.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </li>
+                    );
+                  } else {
+                    return (
+                      <li className="nav-item" key={i}>
+                        <Link
+                          className="nav-link active"
+                          aria-current="page"
+                          href="/daytours"
+                          passHref
+                          onClick={handleLinkClick}
+                        >
+                          Day Tours
+                        </Link>
+                      </li>
+                    );
+                  }
+
+                  {
+                    data.children ? (
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link active"
+                          aria-current="page"
+                          href={data.slug}
+                          passHref
+                          onClick={handleLinkClick}
+                        >
+                          {data.title}
+                        </Link>
+                      </li>
+                    ) : (
+                      <li className="nav-item dropdown">
+                        <Link
+                          className="nav-link dropdown-toggle"
+                          href={data.slug}
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {data.title}
+                        </Link>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="navbarDropdownMenuLink"
+                        >
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              News and Updates
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              Nepal at Glance
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              Best time to visit Nepal
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              People and Language
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              Festivals and Holidays
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              href="#"
+                              onClick={handleLinkClick}
+                            >
+                              Equipment Checklist
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+                    );
+                  }
+                })}
+
                 {/* <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Combo Package
-                  </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <Link className="dropdown-item" href="#">
-                        Action
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" href="#">
-                        Another action
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" href="#">
-                        Something else here
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" href="/packages">
-                        View All
-                      </Link>
-                    </li>
-                  </ul>
-                </li> */}
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    href="/daytours"
-                    passHref
-                    onClick={handleLinkClick}
-                  >
-                    Day Tours
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -438,7 +494,7 @@ const NavigationBar = () => {
                       </Link>
                     </li>
                   </ul>
-                </li>
+                </li> */}
               </ul>
               <Link
                 href={`/deals/special-offer`}
