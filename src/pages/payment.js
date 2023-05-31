@@ -108,7 +108,7 @@ const Payment = () => {
                           style={{ textAlign: "center" }}
                         >
                           <p className="small">
-                            Account Holder's Name: {data.account_holder_name}
+                            Account Holder&apos;s Name: {data.account_holder_name}
                           </p>
                           <p className="small">
                             Account Number: {data.account_number}
