@@ -34910,6 +34910,7 @@ button:has(i) {
   color: white;
   background-color: #005294;
   background-repeat: no-repeat;
+  border: none;
 }
 
 .btn-bubble:hover,

@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
-import { Providers } from "../../frontend/services/providers";
-import NavigationBar from "@/components/header/Bottomnav";
-import Footer from "@/components/footer/Footer";
+// import { Providers } from "../../frontend/services/providers";
+// import NavigationBar from "@/components/header/Bottomnav";
+// import Footer from "@/components/footer/Footer";
 
 import {
   useGetPageDetailsQuery,
