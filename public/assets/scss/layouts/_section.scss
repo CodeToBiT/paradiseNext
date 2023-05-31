@@ -48,7 +48,19 @@
       right: 32px;
     }
     .location {
-      font-size: 2rem;
+      font-size: 32px;
+      @media (max-width: 995px) {
+        font-size: 60px;
+      }
+    }
+    .search {
+      padding: 15px 10px;
+      font-size: 0.875rem;
+    }
+    option {
+      @media (max-width: 995px) {
+        font-size: 0.875rem;
+      }
     }
   }
 }
@@ -1014,7 +1026,7 @@
 }
 
 .single-tabs {
-  .nav{
+  .nav {
     gap: 4px;
   }
   li {
@@ -1023,7 +1035,7 @@
     padding: 5px 10px;
     a {
       color: $white;
-      &:hover{
+      &:hover {
         color: #c2d7e9;
       }
     }

@@ -5,12 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
-import { useGetPageDetailsQuery } from "../../../frontend/services/api";
+import {
+  useGetPageDetailsQuery,
+  useGetSettingsQuery,
+} from "../../../frontend/services/api";
 
 const Single = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: single, isError, isLoading } = useGetPageDetailsQuery(id);
+  const { data: settings } = useGetSettingsQuery();
 
   return (
     <>
@@ -52,13 +56,23 @@ const Single = () => {
           </Head>
           <section className="single-banner">
             <div className="img-wide">
-              <Image
-                src={single?.data.image}
-                width={0}
-                height={0}
-                sizes="100vw"
-                alt="about"
-              />
+              {single?.data.image ? (
+                <Image
+                  src={single?.data.image}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="about"
+                />
+              ) : (
+                <Image
+                  src={settings?.data.destination_page_image}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="about"
+                />
+              )}
               <div className="single-banner-content">
                 <h1 className="text-white">{single?.data.title}</h1>
                 <Breadcrumb>

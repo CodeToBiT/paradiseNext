@@ -27,6 +27,7 @@ const Blog = () => {
                     title={data.title}
                     date={formatDate(data.date)}
                     slug={data.slug}
+                    cat={data.category.name}
                   />
                 </div>
               );

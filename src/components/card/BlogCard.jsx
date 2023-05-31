@@ -18,7 +18,7 @@ const BlogCard = (props) => {
             />
           </div>
           <div className="card-blog-content">
-            <div className="bcat">TRAVEL</div>
+            <div className="bcat">{props.cat}</div>
             <p className="fw-medium">{props.title}</p>
             <div className="flex-between mt-12">
               <p className="small text-cGray600">{props.date}</p>

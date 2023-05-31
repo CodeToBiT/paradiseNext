@@ -2,6 +2,7 @@ import React from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FiChevronRight } from "react-icons/fi";
 
 import Head from "next/head";
 
@@ -202,11 +203,12 @@ const NavigationBar = () => {
                         return (
                           <li key={i}>
                             <Link
-                              className="dropdown-item"
+                              className="dropdown-item right"
                               href={`/destinations/${data.slug}`}
                               onClick={handleLinkClick}
                             >
-                              {data.name}
+                              <span>{data.name}</span>
+                        
                             </Link>
 
                             <ul
@@ -221,7 +223,7 @@ const NavigationBar = () => {
                                   return (
                                     <li key={i}>
                                       <Link
-                                        className="dropdown-item"
+                                        className="dropdown-item right"
                                         href={`/destinations/${sub.slug}`}
                                         onClick={handleLinkClick}
                                       >

@@ -4,9 +4,11 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Image from "next/image";
 import Link from "next/link";
 
-
 import BlogCard from "@/components/card/BlogCard";
-import { useGetBlogsQuery , useGetSettingsQuery } from "../../../frontend/services/api";
+import {
+  useGetBlogsQuery,
+  useGetSettingsQuery,
+} from "../../../frontend/services/api";
 
 const Blogs = () => {
   const { data: blog } = useGetBlogsQuery();
@@ -19,9 +21,9 @@ const Blogs = () => {
   };
   return (
     <>
-    <Head>
-      <title>Blogs | Paradise Destination</title>
-    </Head>
+      <Head>
+        <title>Blogs | Paradise Destination</title>
+      </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
@@ -57,6 +59,7 @@ const Blogs = () => {
                     image={data.image}
                     title={data.title}
                     date={formatDate(data.date)}
+                    cat={data.category.name}
                     slug={data.slug}
                   />
                 </div>

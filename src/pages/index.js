@@ -80,7 +80,7 @@ export default function Home() {
                   </Form.Select>
                   <Link
                     href={`/destinations/${selectedSlug}`}
-                    className="btn btn-sm btn-secondary btn-bubble"
+                    className="btn btn-sm btn-secondary btn-bubble search"
                   >
                     Search Now
                   </Link>

@@ -45,8 +45,8 @@
     }
   }
 
-  .nav-item{
-    &:after{
+  .nav-item {
+    &:after {
       background-color: $primary !important;
     }
   }
@@ -135,6 +135,21 @@
       -webkit-transition: all 500ms ease;
       -ms-transition: all 500ms ease;
       -o-transition: all 500ms ease;
+    }
+
+    .right {
+      position: relative;
+    
+      &::after {
+        content: "\e923";
+        font-family: "icomoon";
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+        @media (max-width: 995px) {
+          display: none;
+        }
+      }
     }
   }
 }
