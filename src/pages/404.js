@@ -6,7 +6,7 @@ import Link from "next/link";
 const Notfound = () => {
   return (
     <>
-    <Head>
+      <Head>
         <title>404 Error | Paradise Destination</title>
       </Head>
       <div className="single-notfound flex-column mt-32 mt-sm-80">

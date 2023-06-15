@@ -126,7 +126,7 @@ const SingleDestination = () => {
                   <>
                     {tour?.data.map((data, i) => {
                       return (
-                        <div className="col-lg-4 col-sm-12" key={i}>
+                        <div className="col-lg-3 col-sm-12" key={i}>
                           <SingleCard
                             image={data.image}
                             description={data.short_description}

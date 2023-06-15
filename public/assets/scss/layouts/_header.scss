@@ -50,6 +50,13 @@
       background-color: $primary !important;
     }
   }
+
+  .navbar-nav {
+    background: $white;
+    .nav-link {
+      color: $black !important;
+    }
+  }
 }
 
 .navbar {
@@ -64,7 +71,7 @@
       background: $white;
       // padding: 0 20px;
     }
-    background: rgba(255, 255, 255, 0.4);
+    background: #005194e6;
     border-radius: 24px;
     .nav-item {
       font-size: 1rem;
@@ -91,7 +98,7 @@
       }
       .nav-link {
         padding: 18px 0;
-        color: #000 !important;
+        color: $white;
         &::after {
           content: none;
         }
@@ -139,7 +146,7 @@
 
     .right {
       position: relative;
-    
+
       &::after {
         content: "\e923";
         font-family: "icomoon";

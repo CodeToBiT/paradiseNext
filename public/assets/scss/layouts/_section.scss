@@ -610,8 +610,9 @@
 .single {
   .trip-info {
     &-item {
+      flex-wrap: wrap;
       list-style: none;
-      max-width: 33.33%;
+      // max-width: 33.33%;
       -webkit-box-flex: 0;
       -ms-flex: 0 0 33.33%;
       flex: 0 0 33.33%;

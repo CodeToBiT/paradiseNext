@@ -332,7 +332,7 @@ const Booking = () => {
                             htmlFor="travellers"
                             className="x-small text-cGray700"
                           >
-                            No. of Adults ( {packages?.data.currency}{" "}
+                            No. of Adults ( {packages?.data.currency}
                             {adultValue} / person )
                             <span className="text-accent">*</span>
                           </label>
@@ -367,7 +367,7 @@ const Booking = () => {
                             htmlFor="travellers"
                             className="x-small text-cGray700"
                           >
-                            No. of Children ( {packages?.data.currency}{" "}
+                            No. of Children ( {packages?.data.currency}
                             {childValue} / person )
                           </label>
 
@@ -898,7 +898,7 @@ const Booking = () => {
                     {packages?.data.name}
                   </h5>
                   <p className="small text-cGray600">
-                    <span className="fw-medium">Duration: </span>{" "}
+                    <span className="fw-medium">Duration: </span>
                     {packages?.data.duration}
                   </p>
                   <p className="small text-cGray600">
