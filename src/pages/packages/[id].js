@@ -71,7 +71,14 @@ const SinglePackage = () => {
         <title>{packages?.data?.seo_title}</title>
         <meta name="description" content={packages?.data?.meta_description} />
         <meta name="keywords" content={packages?.data?.meta_keywords} />
-        <meta property="image" content={packages?.data.image} />
+        <meta property="og:image" content={packages?.data.image} />
+
+        <meta name="description" content="Checkout our cool page" key="desc" />
+        <meta property="og:title" content={packages?.data?.seo_title} />
+        <meta
+          property="og:description"
+          content={packages?.data?.meta_description}
+        />
       </Head>
 
       <main>
