@@ -15,9 +15,9 @@ const Daytours = () => {
   const { data: destination } = useGetDestinationDetailQuery("nepal-day-tours");
   return (
     <>
-    <Head>
+      <Head>
         <title>Day Tours | Paradise Destination</title>
-      </Head> 
+      </Head>
       <section className="single-banner">
         <div className="img-wide">
           <Image
@@ -54,7 +54,7 @@ const Daytours = () => {
               <>
                 {tour?.data.map((data, i) => {
                   return (
-                    <div className="col-lg-4 col-sm-12" key={i}>
+                    <div className="col-lg-3 col-md-6 col-sm-12" key={i}>
                       <SingleCard
                         image={data.image}
                         description={data.short_description}
@@ -62,6 +62,7 @@ const Daytours = () => {
                         duration={data.duration}
                         price={data.adult_price}
                         slug={data.slug}
+                        currency={data.currency}
                         destination="Nepal"
                       />
                     </div>

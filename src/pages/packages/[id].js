@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -50,8 +50,16 @@ const SinglePackage = () => {
   const { id } = router.query;
   const { data: packages, isLoading } = useGetPackageDetailsQuery(id);
   const { data: settings } = useGetSettingsQuery();
-  const currentUrl = router.asPath;
+  const [currentUrl, setCurrentUrl] = useState("");
   // const currentUrl = "facebook.com";
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
+  console.log(currentUrl);
 
   if (isLoading) {
     return <OverlayLoader />;

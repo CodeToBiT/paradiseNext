@@ -38,10 +38,7 @@ const SingleDestination = () => {
           name="description"
           content={destination?.data?.meta_description}
         />
-        <meta
-          name="keywords"
-          content={destination?.data?.meta_keywords}
-        />
+        <meta name="keywords" content={destination?.data?.meta_keywords} />
       </Head>
       <section className="single-banner">
         <div className="img-wide">
@@ -126,7 +123,7 @@ const SingleDestination = () => {
                   <>
                     {tour?.data.map((data, i) => {
                       return (
-                        <div className="col-lg-3 col-sm-12" key={i}>
+                        <div className="col-lg-3 col-md-6 col-sm-12" key={i}>
                           <SingleCard
                             image={data.image}
                             description={data.short_description}
@@ -136,6 +133,7 @@ const SingleDestination = () => {
                             slug={data.slug}
                             size={data.activity.group_size}
                             destination={transformedText}
+                            currency={data.currency}
                           />
                         </div>
                       );
@@ -153,6 +151,7 @@ const SingleDestination = () => {
           </div>
         </div>
       </section>
+      {console.log(tour)}
 
       {destination?.data.children.length >= 1 ? (
         <section className="destination--activities mt-12 mt-sm-40">
@@ -163,7 +162,7 @@ const SingleDestination = () => {
               <div className="row gap-16-row mt-12 mt-sm-40">
                 {destination?.data.children.map((data, i) => {
                   return (
-                    <div className="col-lg-3" key={i}>
+                    <div className="col-lg-3 col-md-6 col-sm-12" key={i}>
                       <DestinationCard
                         name={data.name}
                         image={data.image}

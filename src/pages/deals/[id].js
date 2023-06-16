@@ -155,7 +155,7 @@ const Offers = () => {
                       <>
                         {tour?.data.map((data, i) => {
                           return (
-                            <div className="col-lg-4 col-sm-12" key={i}>
+                            <div className="col-lg-3 col-md-6 col-sm-12" key={i}>
                               <SingleCard
                                 image={data.image}
                                 description={data.short_description}
@@ -164,6 +164,7 @@ const Offers = () => {
                                 price={data.adult_price}
                                 slug={data.slug}
                                 destination={transformedText}
+                                currency={data.currency}
                               />
                             </div>
                           );

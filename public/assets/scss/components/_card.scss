@@ -72,7 +72,7 @@
         transform: scale(1.1);
       }
     }
-    a{
+    a {
       z-index: 9999999999;
     }
   }
@@ -288,7 +288,7 @@
         font-size: 1rem;
       }
     }
-    a{
+    a {
       z-index: 5;
     }
     &-content {
@@ -416,52 +416,70 @@
   }
 
   &-single {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
     .row > * {
       padding-right: 0;
       padding-left: 0;
     }
 
-    .price{
+    .overlay {
+      // position: absolute;
+      // top: 10px;
+      // right: 20px;
+      // background: $primary;
+      // color: $white;
+      // border-radius: 12px;
+      // padding: 8px 16px;
+
       position: absolute;
-      top: 10px;
-      right: 20px;
-      background: $primary;
-      color: $white;
-      border-radius: 12px;
-      padding: 8px 16px;
-    }
-
-    .info {
-      padding: 4px 8px 4px 12px;
-      background-color: var(--e-global-color-a29ea9b);
-      border-radius: 24px;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-      &-item {
-        padding: 0 8px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        svg {
-          color: $primary;
-          font-size: 16px;
-        }
-        &::after {
-          content: "";
-          position: absolute;
-          height: 100%;
-          width: 1px;
-          right: 0;
-          background: $primary;
-        }
-      }
-
-      &-item:nth-child(3) {
-        &::after {
-          content: none;
-        }
+      content: "";
+      bottom: -12px;
+      right: -8px;
+      background-color: $primary;
+      color: #fff;
+      padding: 5px 15px 5px 20px;
+      border-radius: 15px 0 0 15px;
+      font-size: 0.75rem;
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -8px;
+        width: 0;
+        height: 0;
+        border: 4px solid $primary;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        z-index: -1;
       }
     }
+
+    // .info {
+    //   padding: 4px 8px 4px 12px;
+    //   background-color: var(--e-global-color-a29ea9b);
+    //   border-radius: 24px;
+    //   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    //   &-item {
+    //     gap: 8px;
+    //     svg {
+    //       color: $primary;
+    //       font-size: 16px;
+    //     }
+    //     &::after {
+    //       content: "";
+    //       position: absolute;
+    //       height: 100%;
+    //       width: 1px;
+    //       right: 0;
+    //       background: $primary;
+    //     }
+    //   }
+
+    //   &-item:nth-child(3) {
+    //     &::after {
+    //       content: none;
+    //     }
+    //   }
+    // }
   }
 }
