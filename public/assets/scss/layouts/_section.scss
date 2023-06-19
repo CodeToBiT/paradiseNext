@@ -759,6 +759,101 @@
       }
     }
   }
+  .active-scroll-spy {
+    background-color: yellowgreen;
+    border-radius: 15px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+  @media (min-width: 768px) {
+    .anchor-navigation {
+      position: fixed !important;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      animation: fadeInDown 0.5s ease-in-out 0s 1 normal none running;
+      transition: 0.3s;
+      @keyframes fadeInDown {
+        0% {
+          -webkit-transform: translate3d(0, -100%, 0);
+          opacity: 0;
+          transform: translate3d(0, -100%, 0);
+        }
+        100% {
+          -webkit-transform: translateZ(0);
+          opacity: 1;
+          transform: translateZ(0);
+        }
+      }
+      .ant-anchor {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        background: $cool-gray-200;
+        &::before {
+          content: none !important;
+        }
+      }
+      .ant-anchor-ink-visible {
+        display: none !important;
+      }
+
+      .ant-anchor-link {
+        border-radius: 24px;
+        padding: 8px 24px !important;
+        &-title {
+          color: $primary !important;
+          font-size: 1rem;
+          font-weight: 600;
+          &:hover {
+            color: #c2d7e9;
+          }
+        }
+      }
+      .ant-anchor-link-active {
+        background: $white !important;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .anchor-navigation {
+      position: fixed;
+      bottom: 0;
+      z-index: 999;
+      left: 0;
+      right: 0;
+      .ant-anchor {
+        background: $primary;
+        &::before {
+          content: none !important;
+        }
+      }
+      .ant-anchor-ink-visible {
+        display: none !important;
+      }
+
+      .container {
+        padding: 0 !important;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .ant-anchor-link {
+        padding: 16px 4px;
+        &-title {
+          color: $white;
+        }
+      }
+      .ant-anchor-link-active {
+        background: $white !important;
+        .ant-anchor-link-title{
+          color: $primary;
+        }
+      }
+    }
+  }
 }
 
 .about {
@@ -1019,26 +1114,9 @@
     background: rgba(255, 255, 255, 0.8);
   }
 }
-.anchor {
-  display: block;
-  height: 92px;
-  margin-top: -92px;
-  visibility: hidden;
-}
-
-.single-tabs {
-  .nav {
-    gap: 4px;
-  }
-  li {
-    background: $primary;
-    border-radius: 4px;
-    padding: 5px 10px;
-    a {
-      color: $white;
-      &:hover {
-        color: #c2d7e9;
-      }
-    }
-  }
-}
+// .anchor {
+//   display: block;
+//   height: 92px;
+//   margin-top: -92px;
+//   visibility: hidden;
+// }

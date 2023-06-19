@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -25,7 +25,7 @@ import {
 import OverlayLoader from "@/components/layout/OverlayLoader";
 
 import Link from "next/link";
-import NavigationBar from "@/components/header/Bottomnav";
+import SingleNav from "@/components/header/Singlenav";
 import { Providers } from "../../../frontend/services/providers";
 import Footer from "@/components/footer/Footer";
 
@@ -43,7 +43,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { EffectCoverflow, Pagination } from "swiper";
-import { current } from "@reduxjs/toolkit";
+import { Anchor } from "antd";
 
 const SinglePackage = () => {
   const router = useRouter();
@@ -51,15 +51,26 @@ const SinglePackage = () => {
   const { data: packages, isLoading } = useGetPackageDetailsQuery(id);
   const { data: settings } = useGetSettingsQuery();
   const [currentUrl, setCurrentUrl] = useState("");
-  // const currentUrl = "facebook.com";
+  const [targetOffset, setTargetOffset] = useState();
+
+  const [windowChange, setWindowChange] = useState(false);
+  if (typeof window != "undefined") {
+    const changeNavbarPosition = () => {
+      if (window.scrollY >= 154) {
+        setWindowChange(true);
+      } else {
+        setWindowChange(false);
+      }
+    };
+    window.addEventListener("scroll", changeNavbarPosition);
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentUrl(window.location.href);
     }
+    setTargetOffset(64);
   }, []);
-
-  console.log(currentUrl);
 
   if (isLoading) {
     return <OverlayLoader />;
@@ -97,6 +108,17 @@ const SinglePackage = () => {
           </div>
         </div>
         <section className="single mt-16">
+          <div className={windowChange ? "anchor-navigation" : " hidden"}>
+            <Anchor targetOffset={targetOffset}>
+              <div className="container d-flex gap-4 py-12">
+                <Anchor.Link href="#highlights" title="Highlights" />
+                <Anchor.Link href="#itinerary" title="Itinerary" />
+                <Anchor.Link href="#cost" title="Cost Details" />
+                <Anchor.Link href="#visa" title="Visa Information" />
+                <Anchor.Link href="#gallery" title="Gallery" />
+              </div>
+            </Anchor>
+          </div>
           <div className="container">
             <div className="row gap-12-row">
               <div className="col-lg-9 col-sm-12">
@@ -113,7 +135,7 @@ const SinglePackage = () => {
                 </div>
 
                 <h6 className="mt-12 mt-24">Trip Information</h6>
-                <div className="trip-info d-flex flex-wrap mt-16">
+                <div className="trip-info d-flex flex-wrap mt-16 mb-12">
                   {packages?.data.activity.activities ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
                       <FaRunning />
@@ -237,7 +259,7 @@ const SinglePackage = () => {
                   )}
                 </div>
 
-                <nav id="tab" className="navbar single-tabs">
+                {/* <nav id="tab" className="navbar single-tabs">
                   <ul className="nav nav-pills">
                     <li className="nav-item">
                       <a className="nav-link" href="#highlights">
@@ -265,15 +287,10 @@ const SinglePackage = () => {
                       </a>
                     </li>
                   </ul>
-                </nav>
+                </nav> */}
 
-                <div
-                  data-bs-spy="scroll"
-                  data-bs-target="#tab"
-                  data-bs-offset="0"
-                >
-                  <span class="anchor" id="highlights"></span>
-                  <div className="highlights mt-12 mt-sm-24">
+                <div id="scrollContainer">
+                  <div className="highlights mt-12 mt-sm-24" id="highlights">
                     <h5 className="">Highlights</h5>
 
                     <div
@@ -284,8 +301,7 @@ const SinglePackage = () => {
                     ></div>
                   </div>
 
-                  <span class="anchor" id="itinerary"></span>
-                  <div className="itinerary mt-12 mt-sm-32">
+                  <div className="itinerary mt-12 mt-sm-32" id="itinerary">
                     <div className="align-center gap-8">
                       <SlDirections className="h4 text-primary" />
                       <h4 className="">Itinerary</h4>
@@ -319,8 +335,7 @@ const SinglePackage = () => {
                     </Accordion>
                   </div>
 
-                  <span class="anchor" id="cost"></span>
-                  <div className="cost-details mt-12 mt-sm-32">
+                  <div className="cost-details mt-12 mt-sm-32" id="cost">
                     <div className="align-baseline gap-8">
                       <SlCup className="h4 text-primary" />
                       <h4>Cost Details</h4>
@@ -351,9 +366,7 @@ const SinglePackage = () => {
                     )}
                   </div>
 
-                  <span class="anchor" id="visa"></span>
-
-                  <div className="essential mt-12 mt-sm-32">
+                  <div className="essential mt-12 mt-sm-32" id="visa">
                     <div className="align-center gap-8">
                       <TbCompass className="h3 text-primary" />
                       <h4 className="">Visa Information</h4>
@@ -367,17 +380,6 @@ const SinglePackage = () => {
                     ></div>
                   </div>
                 </div>
-
-                {/* <div className="highlights mt-12 mt-sm-24" id="highlights">
-                <h5 className="">Highlights</h5>
-
-                <div
-                  className="trip-description p mt-12"
-                  dangerouslySetInnerHTML={{
-                    __html: packages?.data.description,
-                  }}
-                ></div>
-              </div> */}
               </div>
               <div className="col-lg-3 col-sm-12">
                 <div className="book-trip px-12 py-12 bg-primary rounded-4 position-sticky">
@@ -526,9 +528,7 @@ const SinglePackage = () => {
             </div>
           </div>
 
-          <span class="anchor" id="gallery"></span>
-
-          <div className="single-gallery w-100 mt-12 mt-sm-32">
+          <div className="single-gallery w-100 mt-12 mt-sm-32" id="gallery">
             <div className="text-center text-white pt-24">
               <h3>Gallery</h3>
             </div>
@@ -590,7 +590,7 @@ SinglePackage.getLayout = function PageLayout(page) {
   return (
     <>
       <Providers>
-        <NavigationBar />
+        <SingleNav />
         {page}
         <Footer />
       </Providers>
