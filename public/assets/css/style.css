@@ -36622,6 +36622,9 @@ textarea:disabled {
 .breadcrumb-item:last-child .breadcrumb-main-link {
   color: #005294;
 }
+.breadcrumb-item a:hover {
+  color: #0d6efd;
+}
 .breadcrumb.underline .breadcrumb-main-item:not(:last-child) .breadcrumb-main-link {
   text-decoration: underline;
 }

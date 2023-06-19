@@ -20,6 +20,9 @@
         color: $primary;
       }
     }
+    a:hover{
+        color: $blue;
+    }
   }
   &.underline {
     .breadcrumb-main-item {
