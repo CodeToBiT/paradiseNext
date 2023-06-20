@@ -721,7 +721,7 @@
   }
 
   .book-trip {
-    top: 120px;
+    top: 80px;
     margin-top: 12px;
     a {
       font-size: 1rem;
@@ -731,6 +731,17 @@
       li {
         padding: 7px 0;
         border-bottom: 1px solid #d5e8f3;
+      }
+      .people {
+        button {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: $primary;
+          svg {
+            color: $white;
+          }
+        }
       }
     }
     .why-us {
@@ -759,10 +770,6 @@
       }
     }
   }
-  .active-scroll-spy {
-    background-color: yellowgreen;
-    border-radius: 15px;
-  }
 
   .hidden {
     display: none !important;
@@ -770,7 +777,7 @@
   @media (min-width: 768px) {
     .anchor-navigation {
       position: fixed !important;
-      z-index: 999;
+      z-index: 9;
       left: 0;
       top: 0;
       width: 100%;
@@ -848,12 +855,13 @@
       }
       .ant-anchor-link-active {
         background: $white !important;
-        .ant-anchor-link-title{
+        .ant-anchor-link-title {
           color: $primary;
         }
       }
     }
   }
+
 }
 
 .about {

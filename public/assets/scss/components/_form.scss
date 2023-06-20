@@ -63,21 +63,22 @@ select {
   height: calc($form-fs + calc(2 * $form-py) + $input-extra-height);
 }
 
-input[type = "range"]{
+input[type="range"] {
   padding: 0;
 }
 
 select {
   position: relative;
-  appearance: none;
+  // appearance: none;
   display: flex;
+  padding: 4px 16px !important;
   gap: 1rem;
   justify-content: space-between;
   &::after {
     content: "\e921";
     font-family: "icomoon";
-    font-size: 1rem;
-    color: inherit;
+    // font-size: 1rem;
+    // color: $black;
   }
 }
 

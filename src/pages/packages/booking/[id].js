@@ -19,7 +19,7 @@ const Booking = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: packages } = useGetPackageDetailsQuery(id);
-  const [createBooking, { isError, isLoading, isSuccess }] =
+  const [createBooking, { isError, isSuccess }] =
     useCreateBookingsMutation();
 
   const currentDate = new Date();
@@ -102,17 +102,17 @@ const Booking = () => {
     setCountry(event.target.value);
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
+  };
   const handleMinusClick = (event) => {
     event.preventDefault();
     const newValue = Math.max(adultCount - 1, 2);
     setAdultCount(newValue);
   };
 
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", options);
-  };
 
   const handlePlusClick = (event) => {
     event.preventDefault();
@@ -315,6 +315,7 @@ const Booking = () => {
                         className="border border-1 border-gray300 "
                         onChange={handleDateChange}
                       />
+                     
 
                       {showValidationError && isDate == false ? (
                         <small style={{ color: "red" }}>
