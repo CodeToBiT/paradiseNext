@@ -32558,6 +32558,11 @@ x-small,
 .navbar-nav .nav-item .nav-link::after {
   content: none;
 }
+@media (max-width: 992px) {
+  .navbar-nav .nav-item .nav-link {
+    color: #000 !important;
+  }
+}
 .navbar-nav li ul li a {
   position: relative;
   display: block;
@@ -33251,6 +33256,28 @@ x-small,
 .single .trip-info-item svg {
   font-size: 2.5rem;
   color: #005294;
+}
+.single .print {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.single .print a {
+  background-color: #fff;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 2px solid #005294;
+}
+.single .print svg {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #005294;
+}
+.single .print:hover a {
+  background-color: #005294;
+}
+.single .print:hover svg {
+  color: #fff;
 }
 .single .trip-description ul {
   padding-left: 40px;

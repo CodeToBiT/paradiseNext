@@ -623,6 +623,32 @@
     }
   }
 
+  .print {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    a {
+      background-color: $white;
+      padding: 5px 8px;
+      border-radius: 8px;
+      border: 2px solid $primary;
+    }
+    svg {
+      font-size: 2rem;
+      font-weight: 500;
+      color: $primary;
+    }
+
+    &:hover {
+      a {
+        background-color: $primary;
+      }
+      svg {
+        color: $white;
+      }
+    }
+  }
+
   .trip-description {
     ul {
       padding-left: 40px;
@@ -861,7 +887,6 @@
       }
     }
   }
-
 }
 
 .about {

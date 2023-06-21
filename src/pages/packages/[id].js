@@ -14,6 +14,7 @@ import { TbCompass } from "react-icons/tb";
 import { GiPriceTag, GiShare } from "react-icons/gi";
 import { HiUserGroup } from "react-icons/hi";
 import { RxPlus, RxMinus, RxCross2 } from "react-icons/rx";
+import { AiOutlinePrinter } from "react-icons/ai";
 
 import {
   FacebookIcon,
@@ -328,7 +329,16 @@ const SinglePackage = () => {
                   />
                 </div>
 
-                <h6 className="mt-12 mt-24">Trip Information</h6>
+                <div className="print">
+                  <h6 className="mt-12 mt-24">Trip Information</h6>
+
+                  <Link
+                    href={`https://admin.pdes.com.np/api/print/${packages?.data.id}`}
+                    target="__blank"
+                  >
+                    <AiOutlinePrinter />
+                  </Link>
+                </div>
                 <div className="trip-info d-flex flex-wrap mt-16 mb-12">
                   {packages?.data.activity.activities ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">

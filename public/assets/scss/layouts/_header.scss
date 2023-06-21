@@ -102,6 +102,10 @@
         &::after {
           content: none;
         }
+
+        @media (max-width: 992px) {
+          color: $black !important;
+        }
       }
     }
 
