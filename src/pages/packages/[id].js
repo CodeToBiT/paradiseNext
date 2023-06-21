@@ -109,7 +109,7 @@ const SinglePackage = () => {
       setChildValue(packages.data.child_price);
       setPackageId(packages.data.id);
     }
-  });
+  }, [data]);
 
   const [adultCount, setAdultCount] = useState(2);
   // const [childCount, setChildCount] = useState(0);
