@@ -580,7 +580,7 @@ const NavigationBar = () => {
                                     >
                                       {sub.children?.map((msub, i) => {
                                         return (
-                                          <li>
+                                          <li key={i}>
                                             <Link
                                               className="nav-link"
                                               href={`/destinations/${msub.slug}`}
