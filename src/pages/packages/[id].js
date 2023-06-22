@@ -78,10 +78,10 @@ const SinglePackage = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.failed("failed");
+      toast.failed("Failed to Submit Your Booking");
     }
     if (isSuccess) {
-      toast.success("Submitted Successfully");
+      toast.success("Booking Submitted Successfully");
 
       setTimeout(() => {
         router.push("/packages");
@@ -276,6 +276,7 @@ const SinglePackage = () => {
   };
   return (
     <>
+    <Toaster />
       <Head>
         <title>{packages?.data?.seo_title}</title>
         <meta name="description" content={packages?.data?.meta_description} />
