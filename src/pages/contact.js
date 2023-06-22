@@ -78,7 +78,10 @@ const Contact = () => {
           name="description"
           content={settings?.data?.contactpage_seo_description}
         />
-        <meta name="keywords" content={settings?.data?.contactpage_seo_keywords} />
+        <meta
+          name="keywords"
+          content={settings?.data?.contactpage_seo_keywords}
+        />
       </Head>
       <section className="contact">
         <div className="container">
@@ -270,6 +273,7 @@ Contact.getLayout = function PageLayout(page) {
     <>
       <Providers>
         <NavigationBar />
+
         {page}
         <Footer />
       </Providers>

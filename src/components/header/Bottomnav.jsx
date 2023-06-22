@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { FaPlus, FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+
+
 // import { IconName } from "react-icons/fa6";
 
 import Head from "next/head";
@@ -69,7 +71,11 @@ const NavigationBar = () => {
             });
           });
       }
+    }
+  }, [isSuccess, success]);
 
+  useEffect(() => {
+    if (isSuccess && success) {
       if (window.innerWidth < 1024) {
         document
           .querySelectorAll(".aside .nav-link")
@@ -92,27 +98,6 @@ const NavigationBar = () => {
       }
     }
   }, [isSuccess, success]);
-
-  // useEffect(() => {
-  //   if (window.innerWidth < 1024) {
-  //     document.querySelectorAll(".aside .nav-link").forEach(function (element) {
-  //       element.addEventListener("click", function (e) {
-  //         let nextEl = element.nextElementSibling;
-  //         let parentEl = element.parentElement;
-  //         let allSubmenus_array = parentEl.querySelectorAll(".submenu");
-
-  //         if (nextEl && nextEl.classList.contains("submenu")) {
-  //           e.preventDefault();
-  //           if (nextEl.style.display == "block") {
-  //             nextEl.style.display = "none";
-  //           } else {
-  //             nextEl.style.display = "block";
-  //           }
-  //         }
-  //       });
-  //     });
-  //   }
-  // }, []);
 
   return (
     <>
@@ -152,9 +137,7 @@ const NavigationBar = () => {
               <FaBars className="text-white" />
             </button>
             <div
-              className={`flex-center-between flex-grow-1 px-12 pb-8 py-sm-0 px-sm-0 hidden ${
-                isNavbarOpen ? "show" : ""
-              }`}
+              className="flex-center-between flex-grow-1 px-12 pb-8 py-sm-0 px-sm-0 hidden "
               id="navbarNavDropdown"
             >
               <ul className="navbar-nav mx-auto gap-4 gap-sm-32 px-sm-32">
@@ -164,7 +147,6 @@ const NavigationBar = () => {
                     aria-current="page"
                     href="/"
                     passHref
-                    // onClick={handleLinkClick}
                   >
                     Home
                   </Link>
@@ -189,11 +171,7 @@ const NavigationBar = () => {
                         {data.children[0]?.map((menu, i) => {
                           return (
                             <li key={i}>
-                              <Link
-                                className="dropdown-item"
-                                href={menu.slug}
-                                // onClick={handleLinkClick}
-                              >
+                              <Link className="dropdown-item" href={menu.slug}>
                                 {menu.title}
                               </Link>
                             </li>
@@ -226,7 +204,6 @@ const NavigationBar = () => {
                             <Link
                               className="dropdown-item right"
                               href={`/destinations/${data.slug}`}
-                              // onClick={handleLinkClick}
                             >
                               <span>{data.name}</span>
                             </Link>
@@ -245,7 +222,6 @@ const NavigationBar = () => {
                                       <Link
                                         className="dropdown-item right"
                                         href={`/destinations/${sub.slug}`}
-                                        // onClick={handleLinkClick}
                                       >
                                         {sub.name}
                                       </Link>
@@ -291,7 +267,6 @@ const NavigationBar = () => {
                             <Link
                               className="dropdown-item"
                               href={`/destinations/${data.slug}`}
-                              // onClick={handleLinkClick}
                             >
                               {data.name}
                             </Link>
@@ -331,7 +306,6 @@ const NavigationBar = () => {
                                 <Link
                                   className="dropdown-item"
                                   href={menu.slug}
-                                  // onClick={handleLinkClick}
                                 >
                                   {menu.title}
                                 </Link>
@@ -349,7 +323,6 @@ const NavigationBar = () => {
                           aria-current="page"
                           href="/daytours"
                           passHref
-                          // onClick={handleLinkClick}
                         >
                           Day Tours
                         </Link>
@@ -365,7 +338,7 @@ const NavigationBar = () => {
                   //         aria-current="page"
                   //         href={data.slug}
                   //         passHref
-                  //         // onClick={handleLinkClick}
+                  //
                   //       >
                   //         {data.title}
                   //       </Link>
@@ -389,8 +362,7 @@ const NavigationBar = () => {
                   //         <li>
                   //           <Link
                   //             className="dropdown-item"
-                  //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             h
                   //           >
                   //             News and Updates
                   //           </Link>
@@ -399,7 +371,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             //
                   //           >
                   //             Nepal at Glance
                   //           </Link>
@@ -408,7 +380,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             //
                   //           >
                   //             Best time to visit Nepal
                   //           </Link>
@@ -417,7 +389,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             //
                   //           >
                   //             People and Language
                   //           </Link>
@@ -426,7 +398,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             //
                   //           >
                   //             Festivals and Holidays
                   //           </Link>
@@ -435,7 +407,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             // onClick={handleLinkClick}
+                  //             //
                   //           >
                   //             Equipment Checklist
                   //           </Link>
@@ -458,7 +430,7 @@ const NavigationBar = () => {
       </div>
 
       <div
-        className="offcanvas offcanvas-end"
+        className={`offcanvas offcanvas-end ${isNavbarOpen ? "show" : ""}`}
         tabIndex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
