@@ -164,7 +164,7 @@ const NavigationBar = () => {
                     aria-current="page"
                     href="/"
                     passHref
-                    onClick={handleLinkClick}
+                    // onClick={handleLinkClick}
                   >
                     Home
                   </Link>
@@ -192,7 +192,7 @@ const NavigationBar = () => {
                               <Link
                                 className="dropdown-item"
                                 href={menu.slug}
-                                onClick={handleLinkClick}
+                                // onClick={handleLinkClick}
                               >
                                 {menu.title}
                               </Link>
@@ -226,7 +226,7 @@ const NavigationBar = () => {
                             <Link
                               className="dropdown-item right"
                               href={`/destinations/${data.slug}`}
-                              onClick={handleLinkClick}
+                              // onClick={handleLinkClick}
                             >
                               <span>{data.name}</span>
                             </Link>
@@ -245,7 +245,7 @@ const NavigationBar = () => {
                                       <Link
                                         className="dropdown-item right"
                                         href={`/destinations/${sub.slug}`}
-                                        onClick={handleLinkClick}
+                                        // onClick={handleLinkClick}
                                       >
                                         {sub.name}
                                       </Link>
@@ -291,7 +291,7 @@ const NavigationBar = () => {
                             <Link
                               className="dropdown-item"
                               href={`/destinations/${data.slug}`}
-                              onClick={handleLinkClick}
+                              // onClick={handleLinkClick}
                             >
                               {data.name}
                             </Link>
@@ -331,7 +331,7 @@ const NavigationBar = () => {
                                 <Link
                                   className="dropdown-item"
                                   href={menu.slug}
-                                  onClick={handleLinkClick}
+                                  // onClick={handleLinkClick}
                                 >
                                   {menu.title}
                                 </Link>
@@ -349,7 +349,7 @@ const NavigationBar = () => {
                           aria-current="page"
                           href="/daytours"
                           passHref
-                          onClick={handleLinkClick}
+                          // onClick={handleLinkClick}
                         >
                           Day Tours
                         </Link>
@@ -365,7 +365,7 @@ const NavigationBar = () => {
                   //         aria-current="page"
                   //         href={data.slug}
                   //         passHref
-                  //         onClick={handleLinkClick}
+                  //         // onClick={handleLinkClick}
                   //       >
                   //         {data.title}
                   //       </Link>
@@ -390,7 +390,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             News and Updates
                   //           </Link>
@@ -399,7 +399,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             Nepal at Glance
                   //           </Link>
@@ -408,7 +408,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             Best time to visit Nepal
                   //           </Link>
@@ -417,7 +417,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             People and Language
                   //           </Link>
@@ -426,7 +426,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             Festivals and Holidays
                   //           </Link>
@@ -435,7 +435,7 @@ const NavigationBar = () => {
                   //           <Link
                   //             className="dropdown-item"
                   //             href="#"
-                  //             onClick={handleLinkClick}
+                  //             // onClick={handleLinkClick}
                   //           >
                   //             Equipment Checklist
                   //           </Link>
@@ -503,7 +503,7 @@ const NavigationBar = () => {
                   aria-current="page"
                   href="/"
                   passHref
-                  onClick={handleLinkClick}
+                  // onClick={handleLinkClick}
                 >
                   Home
                 </Link>
@@ -525,7 +525,7 @@ const NavigationBar = () => {
                             <Link
                               className="nav-link"
                               href={menu.slug}
-                              onClick={handleLinkClick}
+                              // onClick={handleLinkClick}
                             >
                               {menu.title}
                             </Link>
@@ -553,7 +553,7 @@ const NavigationBar = () => {
                           <Link
                             className="nav-link d-flex flex-center-between"
                             href={`/destinations/${data.slug}`}
-                            onClick={handleLinkClick}
+                            // onClick={handleLinkClick}
                           >
                             {data.name} <FaPlus />
                           </Link>
@@ -569,7 +569,7 @@ const NavigationBar = () => {
                                     <Link
                                       className="nav-link d-flex flex-center-between"
                                       href={`/destinations/${sub.slug}`}
-                                      onClick={handleLinkClick}
+                                      // onClick={handleLinkClick}
                                     >
                                       {sub.name} <FaPlus />
                                     </Link>
@@ -615,7 +615,7 @@ const NavigationBar = () => {
                           <Link
                             className="nav-link"
                             href={`/destinations/${data.slug}`}
-                            onClick={handleLinkClick}
+                            // onClick={handleLinkClick}
                           >
                             {data.name}
                           </Link>
@@ -647,7 +647,7 @@ const NavigationBar = () => {
                               <Link
                                 className="nav-link"
                                 href={menu.slug}
-                                onClick={handleLinkClick}
+                                // onClick={handleLinkClick}
                               >
                                 {menu.title}
                               </Link>
@@ -665,7 +665,7 @@ const NavigationBar = () => {
                         aria-current="page"
                         href="/daytours"
                         passHref
-                        onClick={handleLinkClick}
+                        // onClick={handleLinkClick}
                       >
                         Day Tours
                       </Link>
