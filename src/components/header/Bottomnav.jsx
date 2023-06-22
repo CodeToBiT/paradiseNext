@@ -3,6 +3,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
+import { FaPlus, FaBars } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
+// import { IconName } from "react-icons/fa6";
 
 import Head from "next/head";
 
@@ -66,29 +69,50 @@ const NavigationBar = () => {
             });
           });
       }
+
+      if (window.innerWidth < 1024) {
+        document
+          .querySelectorAll(".aside .nav-link")
+          .forEach(function (element) {
+            element.addEventListener("click", function (e) {
+              let nextEl = element.nextElementSibling;
+              let parentEl = element.parentElement;
+              let allSubmenus_array = parentEl.querySelectorAll(".submenu");
+
+              if (nextEl && nextEl.classList.contains("submenu")) {
+                e.preventDefault();
+                if (nextEl.style.display == "block") {
+                  nextEl.style.display = "none";
+                } else {
+                  nextEl.style.display = "block";
+                }
+              }
+            });
+          });
+      }
     }
   }, [isSuccess, success]);
 
-  useEffect(() => {
-    if (window.innerWidth < 1024) {
-      document.querySelectorAll(".aside .nav-link").forEach(function (element) {
-        element.addEventListener("click", function (e) {
-          let nextEl = element.nextElementSibling;
-          let parentEl = element.parentElement;
-          let allSubmenus_array = parentEl.querySelectorAll(".submenu");
+  // useEffect(() => {
+  //   if (window.innerWidth < 1024) {
+  //     document.querySelectorAll(".aside .nav-link").forEach(function (element) {
+  //       element.addEventListener("click", function (e) {
+  //         let nextEl = element.nextElementSibling;
+  //         let parentEl = element.parentElement;
+  //         let allSubmenus_array = parentEl.querySelectorAll(".submenu");
 
-          if (nextEl && nextEl.classList.contains("submenu")) {
-            e.preventDefault();
-            if (nextEl.style.display == "block") {
-              nextEl.style.display = "none";
-            } else {
-              nextEl.style.display = "block";
-            }
-          }
-        });
-      });
-    }
-  }, []);
+  //         if (nextEl && nextEl.classList.contains("submenu")) {
+  //           e.preventDefault();
+  //           if (nextEl.style.display == "block") {
+  //             nextEl.style.display = "none";
+  //           } else {
+  //             nextEl.style.display = "block";
+  //           }
+  //         }
+  //       });
+  //     });
+  //   }
+  // }, []);
 
   return (
     <>
@@ -119,19 +143,16 @@ const NavigationBar = () => {
               )}
             </Link>
             <button
-              className="navbar-toggler"
+              className="btn-sm canvabtn btn-primary"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              onClick={handleNavbarToggle}
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
             >
-              <span className="navbar-toggler-icon"></span>
+              <FaBars className="text-white" />
             </button>
             <div
-              className={`collapse navbar-collapse px-12 pb-8 py-sm-0 px-sm-0 ${
+              className={`flex-center-between flex-grow-1 px-12 pb-8 py-sm-0 px-sm-0 hidden ${
                 isNavbarOpen ? "show" : ""
               }`}
               id="navbarNavDropdown"
@@ -208,7 +229,6 @@ const NavigationBar = () => {
                               onClick={handleLinkClick}
                             >
                               <span>{data.name}</span>
-                        
                             </Link>
 
                             <ul
@@ -337,166 +357,94 @@ const NavigationBar = () => {
                     );
                   }
 
-                  {
-                    data.children ? (
-                      <li className="nav-item">
-                        <Link
-                          className="nav-link active"
-                          aria-current="page"
-                          href={data.slug}
-                          passHref
-                          onClick={handleLinkClick}
-                        >
-                          {data.title}
-                        </Link>
-                      </li>
-                    ) : (
-                      <li className="nav-item dropdown">
-                        <Link
-                          className="nav-link dropdown-toggle"
-                          href={data.slug}
-                          id="navbarDropdownMenuLink"
-                          role="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          {data.title}
-                        </Link>
-                        <ul
-                          className="dropdown-menu"
-                          aria-labelledby="navbarDropdownMenuLink"
-                        >
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              News and Updates
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              Nepal at Glance
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              Best time to visit Nepal
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              People and Language
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              Festivals and Holidays
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              href="#"
-                              onClick={handleLinkClick}
-                            >
-                              Equipment Checklist
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-                    );
-                  }
+                  // {
+                  //   data.children ? (
+                  //     <li className="nav-item">
+                  //       <Link
+                  //         className="nav-link active"
+                  //         aria-current="page"
+                  //         href={data.slug}
+                  //         passHref
+                  //         onClick={handleLinkClick}
+                  //       >
+                  //         {data.title}
+                  //       </Link>
+                  //     </li>
+                  //   ) : (
+                  //     <li className="nav-item dropdown">
+                  //       <Link
+                  //         className="nav-link dropdown-toggle"
+                  //         href={data.slug}
+                  //         id="navbarDropdownMenuLink"
+                  //         role="button"
+                  //         data-bs-toggle="dropdown"
+                  //         aria-expanded="false"
+                  //       >
+                  //         {data.title}
+                  //       </Link>
+                  //       <ul
+                  //         className="dropdown-menu"
+                  //         aria-labelledby="navbarDropdownMenuLink"
+                  //       >
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             News and Updates
+                  //           </Link>
+                  //         </li>
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             Nepal at Glance
+                  //           </Link>
+                  //         </li>
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             Best time to visit Nepal
+                  //           </Link>
+                  //         </li>
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             People and Language
+                  //           </Link>
+                  //         </li>
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             Festivals and Holidays
+                  //           </Link>
+                  //         </li>
+                  //         <li>
+                  //           <Link
+                  //             className="dropdown-item"
+                  //             href="#"
+                  //             onClick={handleLinkClick}
+                  //           >
+                  //             Equipment Checklist
+                  //           </Link>
+                  //         </li>
+                  //       </ul>
+                  //     </li>
+                  //   );
+                  // }
                 })}
-
-                {/* <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Travelers Info
-                  </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        News and Updates
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Nepal at Glance
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Best time to visit Nepal
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        People and Language
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Festivals and Holidays
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        href="#"
-                        onClick={handleLinkClick}
-                      >
-                        Equipment Checklist
-                      </Link>
-                    </li>
-                  </ul>
-                </li> */}
               </ul>
               <Link
                 href={`/deals/special-offer`}
@@ -507,6 +455,227 @@ const NavigationBar = () => {
             </div>
           </div>
         </nav>
+      </div>
+
+      <div
+        className="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div className="offcanvas-header bg-white">
+          <Link
+            href="/"
+            className="offcanvas-title h5 text-white"
+            id="offcanvasExampleLabel"
+          >
+            {settings?.data.site_main_logo ? (
+              <Image
+                src={settings?.data.site_main_logo}
+                width="150"
+                height="70"
+                alt="logo"
+              />
+            ) : (
+              <Image
+                src="/assets/image/logo.png"
+                width="150"
+                height="70"
+                alt="logo"
+              />
+            )}
+          </Link>
+          <button
+            type="button"
+            className="btn-close text-primary"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <MdClose className="h4" />
+          </button>
+        </div>
+        <div className="offcanvas-body p-0">
+          <div className="aside">
+            <ul className="nav flex-column">
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/"
+                  passHref
+                  onClick={handleLinkClick}
+                >
+                  Home
+                </Link>
+              </li>
+
+              {companyMenu?.data.map((data, i) => {
+                return (
+                  <li className="nav-item" key={i}>
+                    <Link
+                      className="nav-link d-flex flex-center-between"
+                      href="/about"
+                    >
+                      Our Company <FaPlus />
+                    </Link>
+                    <ul className="dropdown-menu submenu">
+                      {data.children[0]?.map((menu, i) => {
+                        return (
+                          <li key={i}>
+                            <Link
+                              className="nav-link"
+                              href={menu.slug}
+                              onClick={handleLinkClick}
+                            >
+                              {menu.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                );
+              })}
+
+              <li className="nav-item">
+                <Link
+                  className="nav-link d-flex flex-center-between"
+                  href="/destinations"
+                >
+                  Destination <FaPlus />
+                </Link>
+
+                <ul className="submenu dropdown-menu">
+                  {destination?.data.slice(0, 5).map((data, i) => {
+                    if (data.children.length >= 1) {
+                      return (
+                        <li key={i}>
+                          <Link
+                            className="nav-link d-flex flex-center-between"
+                            href={`/destinations/${data.slug}`}
+                            onClick={handleLinkClick}
+                          >
+                            {data.name} <FaPlus />
+                          </Link>
+
+                          <ul className="dropdown-menu submenu" key={i}>
+                            {data.children?.map((sub, i) => {
+                              if (
+                                sub.children.length >= 1 &&
+                                sub.slug != "nepal-day-tours"
+                              ) {
+                                return (
+                                  <li key={i}>
+                                    <Link
+                                      className="nav-link d-flex flex-center-between"
+                                      href={`/destinations/${sub.slug}`}
+                                      onClick={handleLinkClick}
+                                    >
+                                      {sub.name} <FaPlus />
+                                    </Link>
+
+                                    <ul
+                                      className="dropdown-menu submenu"
+                                      key={i}
+                                    >
+                                      {sub.children?.map((msub, i) => {
+                                        return (
+                                          <li>
+                                            <Link
+                                              className="nav-link"
+                                              href={`/destinations/${msub.slug}`}
+                                            >
+                                              {msub.name}
+                                            </Link>
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                  </li>
+                                );
+                              } else if (sub.slug != "nepal-day-tours") {
+                                return (
+                                  <li key={i}>
+                                    <Link
+                                      className="nav-link"
+                                      href={`/destinations/${sub.slug}`}
+                                    >
+                                      {sub.name}
+                                    </Link>
+                                  </li>
+                                );
+                              }
+                            })}
+                          </ul>
+                        </li>
+                      );
+                    } else {
+                      return (
+                        <li key={i}>
+                          <Link
+                            className="nav-link"
+                            href={`/destinations/${data.slug}`}
+                            onClick={handleLinkClick}
+                          >
+                            {data.name}
+                          </Link>
+                        </li>
+                      );
+                    }
+                  })}
+                  <li>
+                    <Link className="nav-link " href="/destinations">
+                      View All
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              {travellerMenu?.data.map((data, i) => {
+                if (data.children) {
+                  return (
+                    <li className="nav-item dropdown" key={i}>
+                      <Link
+                        className="nav-link d-flex flex-center-between"
+                        href={data.slug}
+                      >
+                        {data.title} <FaPlus />
+                      </Link>
+                      <ul className="dropdown-menu submenu">
+                        {data.children[0].map((menu, i) => {
+                          return (
+                            <li key={i}>
+                              <Link
+                                className="nav-link"
+                                href={menu.slug}
+                                onClick={handleLinkClick}
+                              >
+                                {menu.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li className="nav-item" key={i}>
+                      <Link
+                        className="nav-link"
+                        aria-current="page"
+                        href="/daytours"
+                        passHref
+                        onClick={handleLinkClick}
+                      >
+                        Day Tours
+                      </Link>
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );
