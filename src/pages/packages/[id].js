@@ -269,6 +269,9 @@ const SinglePackage = () => {
     if (!phone) {
       formErrors.phone = "*Phone is required.*";
     }
+    if (acceptedTerms === false) {
+      formErrors.terms = "*Please Accept the terms and conditions.*";
+    }
     return formErrors;
   };
   return (
@@ -879,9 +882,20 @@ const SinglePackage = () => {
                   placeholder="Your First Name"
                   required
                 />
+                {errors.first_name && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "2px",
+                    }}
+                  >
+                    {errors.first_name}
+                  </span>
+                )}
               </div>
               <div className="col-lg-6 col-sm-12">
-                <label htmlFor="first_name" className="small ">
+                <label htmlFor="last_name" className="small ">
                   Last Name <span className="text-accent">*</span>
                 </label>
                 <input
@@ -892,6 +906,17 @@ const SinglePackage = () => {
                   onChange={onChange}
                   placeholder="Last Name"
                 />
+                {errors.last_name && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "2px",
+                    }}
+                  >
+                    {errors.last_name}
+                  </span>
+                )}
               </div>
               <div className="col-lg-12 col-sm-12">
                 <label htmlFor="email" className="small ">
@@ -907,6 +932,17 @@ const SinglePackage = () => {
                   onChange={onChange}
                   placeholder="Email Address"
                 />
+                {errors.email && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "2px",
+                    }}
+                  >
+                    {errors.email}
+                  </span>
+                )}
               </div>
 
               <div className="col-lg-6 col-sm-12">
@@ -922,13 +958,24 @@ const SinglePackage = () => {
                   value={phone}
                   name="phone"
                   onChange={onChange}
+                  required
                 />
+                {errors.phone && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "2px",
+                    }}
+                  >
+                    {errors.phone}
+                  </span>
+                )}
               </div>
 
               <div className="col-lg-6 col-sm-12">
                 <label htmlFor="country" className="small ">
                   Select Your Country
-                  <span className="text-secondary">*</span>
                 </label>
 
                 <select
@@ -1265,6 +1312,17 @@ const SinglePackage = () => {
                   <option value="Zambia">Zambia</option>
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
+                {errors.country && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "2px",
+                    }}
+                  >
+                    {errors.country}
+                  </span>
+                )}
               </div>
 
               <div className="col-lg-12 col-sm-12">
@@ -1295,19 +1353,30 @@ const SinglePackage = () => {
                     I accept the &nbsp;
                     <Link
                       href={`/terms-and-conditions`}
-                      className="text-primary"
+                      className="text-secondary"
                       target="_blank"
                     >
                       terms and conditions*
                     </Link>
                   </label>
                   <br />
+                  {errors.terms && (
+                    <span
+                      style={{
+                        color: "red",
+                        fontSize: "12px",
+                        marginTop: "2px",
+                      }}
+                    >
+                      {errors.terms}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="col-lg-12 col-sm-12">
                 <button
                   className="btn btn-primary btn-sm w-100 fw-bold"
-                  disabled={!acceptedTerms}
+                  // disabled={!acceptedTerms}
                   onClick={handleSubmit}
                 >
                   Book Now

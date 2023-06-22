@@ -33268,16 +33268,16 @@ x-small,
   border-radius: 8px;
   border: 2px solid #005294;
 }
+.single .print a:hover {
+  background-color: #005294;
+}
+.single .print a:hover svg {
+  color: #fff;
+}
 .single .print svg {
   font-size: 2rem;
   font-weight: 500;
   color: #005294;
-}
-.single .print:hover a {
-  background-color: #005294;
-}
-.single .print:hover svg {
-  color: #fff;
 }
 .single .trip-description ul {
   padding-left: 40px;
@@ -36665,9 +36665,14 @@ textarea:disabled {
   translate: 50% -50%;
   background: #fff;
   width: 550px;
-  height: 550px;
+  min-height: 550px;
   border-radius: 12px;
   color: #005294;
+}
+@media (max-width: 581px) {
+  .modal {
+    width: 100%;
+  }
 }
 .modal label {
   color: #005294;
@@ -36695,6 +36700,12 @@ textarea:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 581px) {
+  .modal .modal-content .cross {
+    right: 10px;
+    top: 16px;
+  }
 }
 .modal .modal-content .cross svg {
   color: #fff;
