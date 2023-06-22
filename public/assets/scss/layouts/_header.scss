@@ -163,11 +163,17 @@
       }
     }
   }
+  .canvabtn {
+    @media (min-width: 1025px) {
+      display: none;
+    }
+  }
 
-  .hidden{
+  .hidden {
     @media (max-width: 1025px) {
       display: none;
-      
     }
   }
 }
+
+

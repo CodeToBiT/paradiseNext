@@ -32618,6 +32618,11 @@ x-small,
     display: none;
   }
 }
+@media (min-width: 1025px) {
+  .navbar .canvabtn {
+    display: none;
+  }
+}
 @media (max-width: 1025px) {
   .navbar .hidden {
     display: none;
