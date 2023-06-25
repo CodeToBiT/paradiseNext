@@ -43,7 +43,7 @@ const FeaturedSlider = () => {
           modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
-          {packages?.data.map((data, i) => {
+          {packages?.data?.map((data, i) => {
             if (data.destinations.length >= 2) {
               return (
                 <SwiperSlide key={i}>
@@ -71,6 +71,7 @@ const FeaturedSlider = () => {
               );
             }
           })}
+          {console.log(packages)}
         </Swiper>
       </div>
     </>

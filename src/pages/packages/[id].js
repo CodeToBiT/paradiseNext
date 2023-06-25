@@ -276,7 +276,7 @@ const SinglePackage = () => {
   };
   return (
     <>
-    <Toaster />
+      <Toaster />
       <Head>
         <title>{packages?.data?.seo_title}</title>
         <meta name="description" content={packages?.data?.meta_description} />
@@ -334,7 +334,7 @@ const SinglePackage = () => {
                 </div>
 
                 <div className="print">
-                  <h6 className="mt-12 mt-24">Trip Information</h6>
+                  <h6 className="mt-12 mt-24 heading">Trip Information</h6>
 
                   <Link
                     href={`https://admin.pdes.com.np/api/print/${packages?.data.id}`}
@@ -346,7 +346,13 @@ const SinglePackage = () => {
                 <div className="trip-info d-flex flex-wrap mt-16 mb-12">
                   {packages?.data.activity.activities ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <FaRunning />
+                      {/* <FaRunning /> */}
+                      <Image
+                        src="/assets/icon/activity.png"
+                        width={50}
+                        height={50}
+                        alt="running"
+                      />
                       <div>
                         <p className="small">Trip Activity</p>
                         <p className=" small">
@@ -359,7 +365,12 @@ const SinglePackage = () => {
                   )}
                   {packages?.data.activity.trip_duration ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <FiClock />
+                      <Image
+                        src="/assets/icon/duration.png"
+                        width={50}
+                        height={50}
+                        alt="duration"
+                      />
                       <div>
                         <p className="small">Trip Duration</p>
                         <p className=" small">
@@ -373,7 +384,12 @@ const SinglePackage = () => {
 
                   {packages?.data.activity.trip_mode ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <SlDirections />
+                      <Image
+                        src="/assets/icon/tripmode.png"
+                        width={50}
+                        height={50}
+                        alt="tripmode"
+                      />
                       <div>
                         <p className="small">Trip Mode</p>
                         <p className=" small">
@@ -387,7 +403,12 @@ const SinglePackage = () => {
 
                   {packages?.data.activity.trip_grade ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <BiLandscape />
+                      <Image
+                        src="/assets/icon/tripgrade.png"
+                        width={50}
+                        height={50}
+                        alt="tripgrade"
+                      />
                       <div>
                         <p className="small">Trip Grade</p>
                         <p className=" small">
@@ -401,7 +422,12 @@ const SinglePackage = () => {
 
                   {packages?.data.activity.trip_type ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <BiUserPlus />
+                      <Image
+                        src="/assets/icon/type.png"
+                        width={50}
+                        height={50}
+                        alt="type"
+                      />
                       <div>
                         <p className="small">Trip Type</p>
                         <p className=" small">
@@ -414,7 +440,12 @@ const SinglePackage = () => {
                   )}
                   {packages?.data.activity.accomodation ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <IoBedOutline />
+                      <Image
+                        src="/assets/icon/accomodation.png"
+                        width={50}
+                        height={50}
+                        alt="accomodation"
+                      />
                       <div>
                         <p className="small">Accomodation</p>
                         <p className=" small">
@@ -428,7 +459,12 @@ const SinglePackage = () => {
 
                   {packages?.data.activity.transportation ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <FaRoute />
+                      <Image
+                        src="/assets/icon/transport.png"
+                        width={50}
+                        height={50}
+                        alt="transport"
+                      />
                       <div>
                         <p className="small">Transport</p>
                         <p className=" small">
@@ -441,7 +477,12 @@ const SinglePackage = () => {
                   )}
                   {packages?.data.activity.best_season ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <FaRegSnowflake />
+                      <Image
+                        src="/assets/icon/season.png"
+                        width={50}
+                        height={50}
+                        alt="season"
+                      />
                       <div>
                         <p className="small">Best Season</p>
                         <p className=" small">
@@ -454,7 +495,12 @@ const SinglePackage = () => {
                   )}
                   {packages?.data.activity.group_size ? (
                     <div className="trip-info-item d-flex align-center gap-12 px-4 py-8">
-                      <HiUserGroup />
+                      <Image
+                        src="/assets/icon/size.png"
+                        width={50}
+                        height={50}
+                        alt="size"
+                      />
                       <div>
                         <p className="small">Group Size</p>
                         <p className=" small">
@@ -469,10 +515,10 @@ const SinglePackage = () => {
 
                 <div id="scrollContainer">
                   <div className="highlights mt-12 mt-sm-24" id="highlights">
-                    <h5 className="">Highlights</h5>
+                    <h5 className="heading">Highlights</h5>
 
                     <div
-                      className="trip-description p mt-12"
+                      className="trip-description p text-black mt-12"
                       dangerouslySetInnerHTML={{
                         __html: packages?.data.description,
                       }}
@@ -480,9 +526,9 @@ const SinglePackage = () => {
                   </div>
 
                   <div className="itinerary mt-12 mt-sm-32" id="itinerary">
-                    <div className="align-center gap-8">
+                    <div className="align-center heading gap-8">
                       <SlDirections className="h4 text-primary" />
-                      <h4 className="">Itinerary</h4>
+                      <h4>Itinerary</h4>
                     </div>
 
                     {packages?.data.activity.trip_duration ? (
@@ -514,48 +560,64 @@ const SinglePackage = () => {
                   </div>
 
                   <div className="cost-details mt-12 mt-sm-32" id="cost">
-                    <div className="align-baseline gap-8">
+                    <div className="align-baseline gap-8 heading">
                       <SlCup className="h4 text-primary" />
                       <h4>Cost Details</h4>
                     </div>
-                    {packages?.data.inclusion ? (
-                      <div className="includes ps-40 mt-12">
-                        <h6 className="p">Cost Includes</h6>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: packages?.data.inclusion,
-                          }}
-                        ></div>
+
+                    <div className="row gap-16-row">
+                      <div className="col-lg-6 col-sm-12">
+                        {packages?.data.inclusion ? (
+                          <div className="includes ps-40 mt-12">
+                            <h6>Includes</h6>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: packages?.data.inclusion,
+                              }}
+                            ></div>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
                       </div>
-                    ) : (
-                      <></>
-                    )}
-                    {packages?.data.exclusion ? (
-                      <div className="excludes ps-40 mt-12">
-                        <h6 className="p">Cost Excludes</h6>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: packages?.data.exclusion,
-                          }}
-                        ></div>
+                      <div className="col-lg-6 col-sm-12">
+                        {packages?.data.exclusion ? (
+                          <div className="excludes ps-40 mt-12">
+                            <h6>Excludes</h6>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: packages?.data.exclusion,
+                              }}
+                            ></div>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
                       </div>
-                    ) : (
-                      <></>
-                    )}
+                    </div>
                   </div>
 
                   <div className="essential mt-12 mt-sm-32" id="visa">
-                    <div className="align-center gap-8">
+                    <div className="align-center heading gap-8">
                       <TbCompass className="h3 text-primary" />
-                      <h4 className="">Visa Information</h4>
+                      <h4>Useful Information</h4>
                     </div>
+                    <div className="ps-48">
+                      {packages?.data.otherinfos?.map((data, key) => {
+                        return (
+                          <div className="information mt-16" key={key}>
+                            <h5 className="text-primary">{data.title}</h5>
 
-                    <div
-                      className="p mt-12"
-                      dangerouslySetInnerHTML={{
-                        __html: packages?.data.visa_process,
-                      }}
-                    ></div>
+                            <div
+                              className="p mt-4"
+                              dangerouslySetInnerHTML={{
+                                __html: data.description,
+                              }}
+                            ></div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -33319,6 +33319,25 @@ x-small,
   font-size: 2.5rem;
   color: #005294;
 }
+.single .heading {
+  font-size: 2rem !important;
+  color: #005294 !important;
+  font-weight: 600 !important;
+  position: relative;
+  margin-bottom: 24px;
+}
+.single .heading::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  bottom: -5px;
+  width: 120px;
+  height: 2px;
+  background-color: #005294;
+}
+.single .highlights p, .single .highlights .booking .order-details label, .booking .order-details .single .highlights label {
+  font-weight: 600;
+}
 .single .print {
   display: flex;
   align-items: baseline;
@@ -33366,6 +33385,9 @@ x-small,
 }
 .single .itinerary .accordion-header button p, .single .itinerary .accordion-header button .booking .order-details label, .booking .order-details .single .itinerary .accordion-header button label {
   white-space: pre-wrap;
+}
+.single .itinerary .accordion-body {
+  padding: 8px 16px;
 }
 .single .cost-details .includes ul {
   margin-top: 12px;
@@ -33521,7 +33543,8 @@ x-small,
     right: 0;
   }
   .single .anchor-navigation .ant-anchor {
-    background: #005294;
+    border-radius: 24px;
+    background: #e9ecef;
   }
   .single .anchor-navigation .ant-anchor::before {
     content: none !important;
@@ -33535,13 +33558,21 @@ x-small,
     gap: 12px;
   }
   .single .anchor-navigation .ant-anchor-link {
-    padding: 16px 4px;
+    padding: 12px 4px;
+    flex: 1 1 auto !important;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
   .single .anchor-navigation .ant-anchor-link-title {
-    color: #fff;
+    color: #005294;
+  }
+  .single .anchor-navigation .ant-anchor-link:last-child {
+    display: none;
   }
   .single .anchor-navigation .ant-anchor-link-active {
     background: #fff !important;
+    border-radius: 24px;
   }
   .single .anchor-navigation .ant-anchor-link-active .ant-anchor-link-title {
     color: #005294;
