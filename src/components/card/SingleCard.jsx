@@ -19,7 +19,9 @@ const SingleCard = (props) => {
             alt={props.name}
           />
           <div className="overlay align-center gap-4">
-            <p className="x-small">Rs {props.price}</p>
+            <p className="x-small">
+              {props.currency} {props.price}
+            </p>
             <p className="x-small"> / person</p>
           </div>
         </div>

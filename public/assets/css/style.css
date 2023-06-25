@@ -33308,6 +33308,9 @@ x-small,
   margin-right: auto;
 }
 
+.single {
+  text-align: justify;
+}
 .single .trip-info-item {
   flex-wrap: wrap;
   list-style: none;
@@ -33391,7 +33394,6 @@ x-small,
 }
 .single .cost-details .includes ul {
   margin-top: 12px;
-  padding-left: 24px;
   color: #495057;
 }
 .single .cost-details .includes ul li {
@@ -33417,7 +33419,6 @@ x-small,
 }
 .single .cost-details .excludes ul {
   margin-top: 12px;
-  padding-left: 24px;
   color: #495057;
 }
 .single .cost-details .excludes ul li {

@@ -568,7 +568,7 @@ const SinglePackage = () => {
                     <div className="row gap-16-row">
                       <div className="col-lg-6 col-sm-12">
                         {packages?.data.inclusion ? (
-                          <div className="includes ps-8 mt-12">
+                          <div className="includes ps-4 mt-12">
                             <h6>Includes</h6>
                             <div
                               dangerouslySetInnerHTML={{
@@ -582,7 +582,7 @@ const SinglePackage = () => {
                       </div>
                       <div className="col-lg-6 col-sm-12">
                         {packages?.data.exclusion ? (
-                          <div className="excludes ps-8 mt-12">
+                          <div className="excludes ps-4 mt-12">
                             <h6>Excludes</h6>
                             <div
                               dangerouslySetInnerHTML={{
@@ -602,21 +602,30 @@ const SinglePackage = () => {
                       <TbCompass className="h3 text-primary" />
                       <h4>Useful Information</h4>
                     </div>
-                    <div className="ps-48">
-                      {packages?.data.otherinfos?.map((data, key) => {
-                        return (
-                          <div className="information mt-16" key={key}>
-                            <h5 className="text-primary">{data.title}</h5>
-
-                            <div
-                              className="p mt-4"
-                              dangerouslySetInnerHTML={{
-                                __html: data.description,
-                              }}
-                            ></div>
-                          </div>
-                        );
-                      })}
+                    <div className="ps-4">
+                      <Accordion
+                        className="mt-12 mt-sm-16"
+                        defaultActiveKey="0"
+                        alwaysOpen
+                      >
+                        {packages?.data.otherinfos?.map((data, i) => {
+                          return (
+                            <Accordion.Item eventKey={i} key={i}>
+                              <Accordion.Header>
+                                <h6 className="text-primary">{data.title}</h6>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                <div
+                                  className="p"
+                                  dangerouslySetInnerHTML={{
+                                    __html: data.description,
+                                  }}
+                                ></div>
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          );
+                        })}
+                      </Accordion>
                     </div>
                   </div>
                 </div>

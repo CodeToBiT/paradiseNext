@@ -80,7 +80,7 @@ const SingleDestination = () => {
             <div
               className="p text-cGray600 mt-12"
               dangerouslySetInnerHTML={{
-                __html: destination?.data.description,
+                __html: destination?.data.short_description,
               }}
             ></div>
           )}

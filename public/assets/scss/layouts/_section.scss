@@ -608,6 +608,7 @@
 }
 
 .single {
+  text-align: justify;
   .trip-info {
     &-item {
       flex-wrap: wrap;
@@ -713,7 +714,7 @@
     .includes {
       ul {
         margin-top: 12px;
-        padding-left: 24px;
+        // padding-left: 24px;
         @extend .p;
         color: $cool-gray-700;
         li {
@@ -742,7 +743,7 @@
     .excludes {
       ul {
         margin-top: 12px;
-        padding-left: 24px;
+        // padding-left: 24px;
         @extend .p;
         color: $cool-gray-700;
         li {
