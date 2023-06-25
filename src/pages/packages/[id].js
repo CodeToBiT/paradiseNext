@@ -568,7 +568,7 @@ const SinglePackage = () => {
                     <div className="row gap-16-row">
                       <div className="col-lg-6 col-sm-12">
                         {packages?.data.inclusion ? (
-                          <div className="includes ps-40 mt-12">
+                          <div className="includes ps-8 mt-12">
                             <h6>Includes</h6>
                             <div
                               dangerouslySetInnerHTML={{
@@ -582,7 +582,7 @@ const SinglePackage = () => {
                       </div>
                       <div className="col-lg-6 col-sm-12">
                         {packages?.data.exclusion ? (
-                          <div className="excludes ps-40 mt-12">
+                          <div className="excludes ps-8 mt-12">
                             <h6>Excludes</h6>
                             <div
                               dangerouslySetInnerHTML={{
