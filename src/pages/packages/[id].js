@@ -605,25 +605,43 @@ const SinglePackage = () => {
                     <div className="ps-4">
                       <Accordion
                         className="mt-12 mt-sm-16"
-                        defaultActiveKey="0"
+                        defaultActiveKey={["0"]}
                         alwaysOpen
                       >
                         {packages?.data.otherinfos?.map((data, i) => {
-                          return (
-                            <Accordion.Item eventKey={i} key={i}>
-                              <Accordion.Header>
-                                <h6 className="text-primary">{data.title}</h6>
-                              </Accordion.Header>
-                              <Accordion.Body>
-                                <div
-                                  className="p"
-                                  dangerouslySetInnerHTML={{
-                                    __html: data.description,
-                                  }}
-                                ></div>
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          );
+                          if (i == 0) {
+                            return (
+                              <Accordion.Item eventKey="0" key={i}>
+                                <Accordion.Header>
+                                  <h6 className="text-primary">{data.title}</h6>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                  <div
+                                    className="p"
+                                    dangerouslySetInnerHTML={{
+                                      __html: data.description,
+                                    }}
+                                  ></div>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            );
+                          } else {
+                            return (
+                              <Accordion.Item eventKey={i} key={i}>
+                                <Accordion.Header>
+                                  <h6 className="text-primary">{data.title}</h6>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                  <div
+                                    className="p"
+                                    dangerouslySetInnerHTML={{
+                                      __html: data.description,
+                                    }}
+                                  ></div>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            );
+                          }
                         })}
                       </Accordion>
                     </div>
