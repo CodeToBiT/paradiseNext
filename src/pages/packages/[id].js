@@ -144,7 +144,6 @@ const SinglePackage = () => {
   }
 
   const handleDateChange = (date, dateString) => {
-    console.log(dateString, "dateString");
     setTripDate(dateString);
   };
 
@@ -243,8 +242,6 @@ const SinglePackage = () => {
           return selectedService ? selectedService.service : "";
         }),
       };
-
-      // console.log(data);
       createBooking(data);
     } else {
       setErrors(formErrors);
@@ -649,117 +646,6 @@ const SinglePackage = () => {
                 </div>
               </div>
               <div className="col-lg-3 col-sm-12">
-                {/* <div className="book-trip px-12 py-12 bg-primary rounded-4 position-sticky">
-                  <div className="d-flex align-center gap-8 flex-center bg-blue50 py-8 rounded-4 mt-n32">
-                    <div className="rating d-flex gap-4 text-yellow500 align-center ">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                    </div>
-                    <div className="small fw-medium">based on</div>
-                    <Link href="#review" className="small text-primary">
-                      reviews
-                    </Link>
-                  </div>
-                  <div className="mt-8 d-flex price-tag gap-8 text-white">
-                    <GiPriceTag className="h2" />
-                    <div className="price">
-                      <div className="x-small">Start from </div>
-                      <h6>
-                        {packages?.data.currency} {packages?.data.adult_price}
-                       
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="group-price bg-white px-8 py-12 rounded-4 mt-12">
-                    <p className="">Share This Trip</p>
-                    <ul className=" mt-8">
-
-                      <li>
-                        <FacebookShareButton
-                          url={currentUrl}
-                          style={{ width: "100%" }}
-                        >
-                          <div className="flex-center-between">
-                            <div className="align-center gap-8">
-                              <FacebookIcon size={32} round />
-                              <p className="small fw-medium">Facebook </p>
-                            </div>
-
-                            <GiShare className="h5 text-primary" />
-                          </div>
-                        </FacebookShareButton>
-                      </li>
-                      <li>
-                        <TwitterShareButton
-                          url={currentUrl}
-                          style={{ width: "100%" }}
-                        >
-                          <div className="flex-center-between">
-                            <div className="align-center gap-8">
-                              <TwitterIcon size={32} round />
-                              <p className="small fw-medium">Twitter </p>
-                            </div>
-
-                            <GiShare className="h5 text-primary" />
-                          </div>
-                        </TwitterShareButton>
-                      </li>
-                      <li>
-                        <LinkedinShareButton
-                          url={currentUrl}
-                          style={{ width: "100%" }}
-                        >
-                          <div className="flex-center-between">
-                            <div className="align-center gap-8">
-                              <LinkedinIcon size={32} round />
-                              <p className="small fw-medium">Linked In </p>
-                            </div>
-                            <div>
-                              <GiShare className="h5 text-primary" />
-                            </div>
-                          </div>
-                        </LinkedinShareButton>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="why-us text-white mt-12">
-                    <h6>WHY BOOK WITH US?</h6>
-
-                    <div
-                      className="mt-8"
-                      dangerouslySetInnerHTML={{
-                        __html: settings?.data.why_book_with_us,
-                      }}
-                    ></div>
-                  
-                  </div>
-
-                  <Link
-                    href={`/packages/booking/${packages?.data.slug}`}
-                    className="mt-8 btn btn-white text-primary w-100 text-center"
-                  >
-                    BOOK THIS TRIP
-                  </Link>
-
-                  <div className="mt-12 call-us align-center gap-8 text-white">
-                    <Image
-                      src="/assets/icon/whatsapp.png"
-                      width="40"
-                      height="40"
-                      alt="whatsapp"
-                    />
-                    <div>
-                      <div className="x-small">
-                        Neep Help? Call us on WhatsApp
-                      </div>
-                      <p className="small mt-4">+977 9876543210 (Gabish)</p>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="book-trip px-12 py-12 bg-primary rounded-4 position-sticky">
                   <div className="d-flex align-center gap-8 flex-center bg-blue50 py-8 rounded-4 mt-n32">
                     <div className="rating d-flex gap-4 text-yellow500 align-center ">

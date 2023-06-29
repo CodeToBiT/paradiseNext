@@ -151,8 +151,6 @@ const SingleDestination = () => {
           </div>
         </div>
       </section>
-      {console.log(tour)}
-
       {destination?.data.children.length >= 1 ? (
         <section className="destination--activities mt-12 mt-sm-40">
           <div className="intro text-center">

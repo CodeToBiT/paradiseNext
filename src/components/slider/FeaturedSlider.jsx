@@ -71,7 +71,6 @@ const FeaturedSlider = () => {
               );
             }
           })}
-          {console.log(packages)}
         </Swiper>
       </div>
     </>
